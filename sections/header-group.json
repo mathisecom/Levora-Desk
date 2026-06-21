@@ -17,13 +17,21 @@
         "message": {
           "type": "message",
           "settings": {
-            "text": "Announce something here",
+            "text": "LIVRAISON OFFERTE EN FRANCE",
+            "url": ""
+          }
+        },
+        "message_nw4LDG": {
+          "type": "message",
+          "settings": {
+            "text": "RETOURS SOUS 30 JOURS",
             "url": ""
           }
         }
       },
       "block_order": [
-        "message"
+        "message",
+        "message_nw4LDG"
       ],
       "settings": {
         "enable_sticky": false,
