@@ -27,11 +27,19 @@
             "text": "RETOURS SOUS 30 JOURS",
             "url": ""
           }
+        },
+        "message_MLnWAt": {
+          "type": "message",
+          "settings": {
+            "text": "OFFRE D'ÉTÉ JUSQU'À -25% DE RÉDUCTION",
+            "url": ""
+          }
         }
       },
       "block_order": [
         "message",
-        "message_nw4LDG"
+        "message_nw4LDG",
+        "message_MLnWAt"
       ],
       "settings": {
         "enable_sticky": false,
