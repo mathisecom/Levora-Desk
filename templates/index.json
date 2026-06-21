@@ -138,6 +138,7 @@
         "item_rQxKpd",
         "item_LdTyCX"
       ],
+      "disabled": true,
       "name": "Text with icons",
       "settings": {
         "full_width": true,
@@ -145,7 +146,7 @@
         "title": "",
         "heading_tag": "h5",
         "text_alignment": "center",
-        "icon_spacing": "medium",
+        "icon_spacing": "large",
         "background": "",
         "background_gradient": "",
         "text_color": ""
