@@ -67,7 +67,9 @@
       "name": "Featured collection",
       "settings": {
         "collection": "",
-        "products": [],
+        "products": [
+          "bureau-assis-debout-levoradesk"
+        ],
         "full_width": true,
         "stack_products": false,
         "show_progress_bar": true,
