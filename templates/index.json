@@ -9,6 +9,71 @@
  */
 {
   "sections": {
+    "levoradesk_marquee_trust_J7jcCQ": {
+      "type": "levoradesk-marquee-trust",
+      "blocks": {
+        "trustpilot_9w9RPp": {
+          "type": "trustpilot",
+          "settings": {
+            "label": "Excellent",
+            "show_stars": true,
+            "stars_count": 4,
+            "trustpilot_text": "Trustpilot"
+          }
+        },
+        "item_jkKDja": {
+          "type": "item",
+          "settings": {
+            "icon": "thumb",
+            "text": "<p><strong>+10,000</strong> Clients Satisfaits</p>"
+          }
+        },
+        "item_LtBhzQ": {
+          "type": "item",
+          "settings": {
+            "icon": "truck",
+            "text": "<p>Livraison et Retours <strong>Rapides</strong></p>"
+          }
+        },
+        "item_xAa4kD": {
+          "type": "item",
+          "settings": {
+            "icon": "refund",
+            "text": "<p>Remboursement sous <strong>30 jours</strong></p>"
+          }
+        }
+      },
+      "block_order": [
+        "trustpilot_9w9RPp",
+        "item_jkKDja",
+        "item_LtBhzQ",
+        "item_xAa4kD"
+      ],
+      "name": "Bande réassurance",
+      "settings": {
+        "enable_marquee": true,
+        "speed": 28,
+        "pause_hover": true,
+        "bg_color": "#F7F7F6",
+        "text_color": "#171717",
+        "accent_color": "#00b67a",
+        "star_bg": "#00b67a",
+        "star_color": "#ffffff",
+        "font_size_desktop": 18,
+        "font_size_mobile": 14,
+        "font_weight": "500",
+        "gap_desktop": 95,
+        "padding_y_desktop": 16,
+        "padding_x_desktop": 24,
+        "gap_mobile": 55,
+        "padding_y_mobile": 12,
+        "padding_x_mobile": 16,
+        "icon_size_desktop": 24,
+        "icon_size_mobile": 19,
+        "star_size_desktop": 24,
+        "star_size_mobile": 18
+      }
+    },
     "featured_collection_7fYfYf": {
       "type": "featured-collection",
       "name": "Featured collection",
@@ -151,7 +216,7 @@
         "text_position": "center",
         "background": "#ffffff",
         "background_gradient": "linear-gradient(204deg, rgba(25, 25, 28, 1) 12%, rgba(26, 26, 26, 0.83) 85%)",
-        "text_color": "#FFFFFF",
+        "text_color": "#ffffff",
         "heading_color": "",
         "heading_gradient": "",
         "button_background": "",
@@ -162,6 +227,7 @@
     }
   },
   "order": [
+    "levoradesk_marquee_trust_J7jcCQ",
     "featured_collection_7fYfYf",
     "text_with_icons_HRbzpz",
     "faq"
