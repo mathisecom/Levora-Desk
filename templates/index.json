@@ -140,7 +140,7 @@
         "enable_marquee": true,
         "speed": 28,
         "pause_hover": true,
-        "bg_color": "#f7f7f6",
+        "bg_color": "#FBFBFB",
         "text_color": "#171717",
         "accent_color": "#00b67a",
         "star_bg": "#00b67a",
