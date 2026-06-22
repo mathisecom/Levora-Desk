@@ -119,15 +119,23 @@
         "166442457738b23caf-2": {
           "type": "item",
           "settings": {
-            "title": "Any question?",
+            "title": "Est-ce que mes commandes peuvent être assemblées avant la livraison ?",
             "content": "<p>You can contact us through our contact page! We will be happy to assist you.</p>"
+          }
+        },
+        "item_fwqrnM": {
+          "type": "item",
+          "settings": {
+            "title": "Est-ce que vous livrez partout dans le monde ?",
+            "content": "<p>Write content to answer to common questions your customers may have about your products, shipping policies..</p>"
           }
         }
       },
       "block_order": [
         "166442457738b23caf-0",
         "166442457738b23caf-1",
-        "166442457738b23caf-2"
+        "166442457738b23caf-2",
+        "item_fwqrnM"
       ],
       "settings": {
         "full_width": false,
@@ -135,8 +143,8 @@
         "title": "Questions Fréquentes",
         "content": "",
         "team_avatar_width": 160,
-        "support_hours": "Our customer support is available Monday to Friday: 8am-8:30pm.",
-        "answer_time": "Average answer time: 24h",
+        "support_hours": "",
+        "answer_time": "",
         "button_text": "",
         "button_url": "",
         "text_position": "center",
