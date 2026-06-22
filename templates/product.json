@@ -146,10 +146,158 @@
         "text_color": "",
         "text_gradient": ""
       }
+    },
+    "levoraavisclients_BTEX6X": {
+      "type": "levoraavisclients",
+      "blocks": {
+        "review_Pdxt7K": {
+          "type": "review",
+          "settings": {
+            "show_stars": true,
+            "rating": 5,
+            "title": "Une qualité incroyable",
+            "review": "<p>Je suis franchement surpris par la qualité. Le produit est propre, confortable et le rendu est encore mieux en vrai.</p>",
+            "show_author": true,
+            "initial": "J",
+            "author": "Jenny Lewis",
+            "date": "3 mai 2026"
+          }
+        },
+        "review_V4rCHG": {
+          "type": "review",
+          "settings": {
+            "show_stars": true,
+            "rating": 5,
+            "title": "Je recommande à 100%",
+            "review": "<p>Très bonne expérience du début à la fin. Livraison rapide, produit bien emballé et qualité au rendez-vous.</p>",
+            "show_author": true,
+            "initial": "M",
+            "author": "Melissa M.",
+            "date": "24 avril 2026"
+          }
+        },
+        "review_ECTwAK": {
+          "type": "review",
+          "settings": {
+            "show_stars": true,
+            "rating": 5,
+            "title": "Super confortable",
+            "review": "<p>Le produit est beau, agréable et très bien fini. On sent que les détails ont été travaillés.</p>",
+            "show_author": true,
+            "initial": "S",
+            "author": "Sally M.",
+            "date": "23 avril 2026"
+          }
+        },
+        "review_fMcY7i": {
+          "type": "review",
+          "settings": {
+            "show_stars": true,
+            "rating": 5,
+            "title": "Très satisfait",
+            "review": "<p>Commande reçue rapidement. Le produit correspond parfaitement à mes attentes, je recommande.</p>",
+            "show_author": true,
+            "initial": "L",
+            "author": "Lucas R.",
+            "date": "18 avril 2026"
+          }
+        }
+      },
+      "block_order": [
+        "review_Pdxt7K",
+        "review_V4rCHG",
+        "review_ECTwAK",
+        "review_fMcY7i"
+      ],
+      "name": "Avis slider image",
+      "settings": {
+        "heading": "Ils nous font confiance",
+        "subheading": "",
+        "heading_size": 38,
+        "heading_size_mobile": 25,
+        "heading_weight": "600",
+        "subheading_size": 16,
+        "subheading_size_mobile": 14,
+        "heading_margin": 36,
+        "heading_margin_mobile": 24,
+        "show_arrows": true,
+        "show_arrows_mobile": false,
+        "show_dots": true,
+        "autoplay": false,
+        "autoplay_speed": 4500,
+        "items_desktop": 3,
+        "items_tablet": 2,
+        "items_mobile": 1,
+        "bg_color": "#ffffff",
+        "card_bg": "#ffffff",
+        "border_color": "#e5ded4",
+        "text_color": "#111111",
+        "muted_color": "#787878",
+        "star_bg": "#00b67a",
+        "star_color": "#ffffff",
+        "avatar_bg": "#111111",
+        "avatar_text": "#ffffff",
+        "max_width": 1500,
+        "padding_y": 60,
+        "padding_x": 24,
+        "padding_y_mobile": 36,
+        "padding_x_mobile": 16,
+        "gap_desktop": 28,
+        "gap_mobile": 16,
+        "card_radius": 16,
+        "border_width": 1,
+        "card_height": 470,
+        "card_height_mobile": 440,
+        "card_padding_y": 38,
+        "card_padding_x": 38,
+        "card_padding_y_mobile": 30,
+        "card_padding_x_mobile": 24,
+        "image_height": 220,
+        "image_height_mobile": 200,
+        "image_radius": 12,
+        "image_fit": "cover",
+        "image_margin": 22,
+        "image_margin_mobile": 18,
+        "star_size": 28,
+        "star_size_mobile": 24,
+        "star_gap": 4,
+        "stars_margin": 28,
+        "stars_margin_mobile": 20,
+        "title_size": 25,
+        "title_size_mobile": 22,
+        "review_size": 20,
+        "review_size_mobile": 17,
+        "title_weight": "800",
+        "review_weight": "600",
+        "title_margin": 26,
+        "title_margin_mobile": 18,
+        "author_top_space": 62,
+        "author_gap": 24,
+        "avatar_size": 52,
+        "avatar_size_mobile": 46,
+        "avatar_font_size": 20,
+        "avatar_font_size_mobile": 18,
+        "author_size": 17,
+        "author_size_mobile": 16,
+        "date_size": 16,
+        "date_size_mobile": 14,
+        "arrow_size": 48,
+        "arrow_size_mobile": 40,
+        "arrow_offset": 24,
+        "arrow_bg": "#ffffff",
+        "arrow_color": "#111111",
+        "arrow_border": "#e5ded4",
+        "arrow_border_width": 1,
+        "dots_margin": 40,
+        "dot_color": "#111111",
+        "dot_size": 8,
+        "dot_active_width": 24
+      }
     }
   },
   "order": [
     "main",
-    "scrolling_text_9zWEGR"
+    "scrolling_text_9zWEGR",
+    "levoraavisclients_BTEX6X"
   ]
 }
