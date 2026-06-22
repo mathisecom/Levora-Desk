@@ -1,0 +1,633 @@
+{% comment %}
+  LevoraDesk - Bande de réassurance défilante
+{% endcomment %}
+
+<section 
+  class="ld-trust-marquee section-{{ section.id }}"
+  style="
+    --ld-bg: {{ section.settings.bg_color }};
+    --ld-text: {{ section.settings.text_color }};
+    --ld-accent: {{ section.settings.accent_color }};
+    --ld-star-bg: {{ section.settings.star_bg }};
+    --ld-star-color: {{ section.settings.star_color }};
+    --ld-speed: {{ section.settings.speed }}s;
+    --ld-gap-desktop: {{ section.settings.gap_desktop }}px;
+    --ld-gap-mobile: {{ section.settings.gap_mobile }}px;
+    --ld-font-desktop: {{ section.settings.font_size_desktop }}px;
+    --ld-font-mobile: {{ section.settings.font_size_mobile }}px;
+    --ld-padding-desktop: {{ section.settings.padding_y_desktop }}px {{ section.settings.padding_x_desktop }}px;
+    --ld-padding-mobile: {{ section.settings.padding_y_mobile }}px {{ section.settings.padding_x_mobile }}px;
+  "
+>
+  <div class="ld-trust-marquee__outer {% if section.settings.enable_marquee %}is-marquee{% endif %}">
+    <div class="ld-trust-marquee__track">
+
+      {% for repeat in (1..2) %}
+        <div class="ld-trust-marquee__group">
+          {% for block in section.blocks %}
+            <div class="ld-trust-marquee__item" {{ block.shopify_attributes }}>
+
+              {% if block.type == 'trustpilot' %}
+                <div class="ld-trustpilot">
+                  {% if block.settings.label != blank %}
+                    <span class="ld-trustpilot__label">
+                      {{ block.settings.label }}
+                    </span>
+                  {% endif %}
+
+                  {% if block.settings.show_stars %}
+                    <span class="ld-stars" aria-label="{{ block.settings.stars_count }} étoiles">
+                      {% for i in (1..5) %}
+                        <span class="ld-star {% if i > block.settings.stars_count %}is-empty{% endif %}">
+                          <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M12 2.2l2.95 6.1 6.72.97-4.86 4.73 1.15 6.69L12 17.53 6.04 20.69 7.19 14 2.33 9.27l6.72-.97L12 2.2z"/>
+                          </svg>
+                        </span>
+                      {% endfor %}
+                    </span>
+                  {% endif %}
+
+                  {% if block.settings.trustpilot_text != blank %}
+                    <span class="ld-trustpilot__brand">
+                      <svg class="ld-trustpilot__icon" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M12 2.2l2.95 6.1 6.72.97-4.86 4.73 1.15 6.69L12 17.53 6.04 20.69 7.19 14 2.33 9.27l6.72-.97L12 2.2z"/>
+                      </svg>
+                      {{ block.settings.trustpilot_text }}
+                    </span>
+                  {% endif %}
+                </div>
+
+              {% else %}
+                {% if block.settings.icon != 'none' %}
+                  <span class="ld-trust-marquee__icon">
+                    {% case block.settings.icon %}
+
+                      {% when 'thumb' %}
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                          <path d="M8.5 21H5.2C4 21 3 20 3 18.8v-7.1c0-1.2 1-2.2 2.2-2.2h3.3V21zM10 10l3.1-6.4c.3-.7 1.1-1 1.8-.7 1.1.5 1.7 1.7 1.4 2.9l-.8 3.2h3.3c1.4 0 2.5 1.2 2.3 2.6l-.8 6.5c-.2 1.7-1.6 2.9-3.3 2.9H10V10z"/>
+                        </svg>
+
+                      {% when 'truck' %}
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                          <path d="M3 6.5C3 5.7 3.7 5 4.5 5H15v10H3V6.5zM15 8h2.8c.5 0 .9.2 1.2.6l2 2.7c.2.3.3.6.3.9V15H15V8zM7 19.5A2.5 2.5 0 1 1 7 14.5a2.5 2.5 0 0 1 0 5zM18 19.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/>
+                        </svg>
+
+                      {% when 'refund' %}
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                          <path d="M12 3a9 9 0 1 1-8.3 12.5l2-.8A6.8 6.8 0 1 0 6.4 8H9v2H3V4h2v2.2A8.9 8.9 0 0 1 12 3zm1 4v1.1c1.4.3 2.4 1.2 2.8 2.5l-2 .7c-.2-.7-.8-1.2-1.8-1.2-.9 0-1.5.4-1.5 1s.5.9 1.8 1.2c2 .5 3.5 1.2 3.5 3.1 0 1.5-1.1 2.6-2.8 3V20h-2v-1.5c-1.6-.3-2.8-1.3-3.2-2.8l2-.7c.3.9 1 1.5 2.1 1.5 1 0 1.6-.4 1.6-1.1 0-.6-.5-.9-1.9-1.2-1.8-.4-3.3-1.1-3.3-3 0-1.5 1.1-2.6 2.7-3V7h2z"/>
+                        </svg>
+
+                      {% when 'shield' %}
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                          <path d="M12 2l8 3v6.3c0 5-3.4 9.6-8 10.7-4.6-1.1-8-5.7-8-10.7V5l8-3zm-1 13.5l5.2-5.2-1.4-1.4L11 12.7 9.2 10.9l-1.4 1.4 3.2 3.2z"/>
+                        </svg>
+
+                      {% when 'star' %}
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                          <path d="M12 2.2l2.95 6.1 6.72.97-4.86 4.73 1.15 6.69L12 17.53 6.04 20.69 7.19 14 2.33 9.27l6.72-.97L12 2.2z"/>
+                        </svg>
+
+                    {% endcase %}
+                  </span>
+                {% endif %}
+
+                <div class="ld-trust-marquee__text">
+                  {{ block.settings.text }}
+                </div>
+              {% endif %}
+
+            </div>
+          {% endfor %}
+        </div>
+      {% endfor %}
+
+    </div>
+  </div>
+</section>
+
+<style>
+  .section-{{ section.id }} {
+    width: 100%;
+    background: var(--ld-bg);
+    color: var(--ld-text);
+    overflow: hidden;
+  }
+
+  .section-{{ section.id }} .ld-trust-marquee__outer {
+    width: 100%;
+    overflow: hidden;
+    padding: var(--ld-padding-desktop);
+  }
+
+  .section-{{ section.id }} .ld-trust-marquee__track {
+    display: flex;
+    width: max-content;
+  }
+
+  .section-{{ section.id }} .is-marquee .ld-trust-marquee__track {
+    animation: ldMarquee-{{ section.id }} var(--ld-speed) linear infinite;
+  }
+
+  {% if section.settings.pause_hover %}
+    .section-{{ section.id }} .is-marquee:hover .ld-trust-marquee__track {
+      animation-play-state: paused;
+    }
+  {% endif %}
+
+  .section-{{ section.id }} .ld-trust-marquee__group {
+    display: flex;
+    align-items: center;
+    gap: var(--ld-gap-desktop);
+    padding-right: var(--ld-gap-desktop);
+    flex-shrink: 0;
+  }
+
+  .section-{{ section.id }} .ld-trust-marquee__item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: var(--ld-font-desktop);
+    line-height: 1;
+    color: var(--ld-text);
+    white-space: nowrap;
+    font-weight: {{ section.settings.font_weight }};
+  }
+
+  .section-{{ section.id }} .ld-trust-marquee__text {
+    display: flex;
+    align-items: center;
+  }
+
+  .section-{{ section.id }} .ld-trust-marquee__text p {
+    margin: 0;
+  }
+
+  .section-{{ section.id }} .ld-trust-marquee__item strong,
+  .section-{{ section.id }} .ld-trust-marquee__text b {
+    font-weight: 800;
+  }
+
+  .section-{{ section.id }} .ld-trust-marquee__icon {
+    display: inline-flex;
+    width: {{ section.settings.icon_size_desktop }}px;
+    height: {{ section.settings.icon_size_desktop }}px;
+    color: var(--ld-text);
+    flex-shrink: 0;
+  }
+
+  .section-{{ section.id }} .ld-trust-marquee__icon svg,
+  .section-{{ section.id }} .ld-trustpilot__icon,
+  .section-{{ section.id }} .ld-star svg {
+    width: 100%;
+    height: 100%;
+    fill: currentColor;
+    display: block;
+  }
+
+  .section-{{ section.id }} .ld-trustpilot {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    white-space: nowrap;
+  }
+
+  .section-{{ section.id }} .ld-trustpilot__label {
+    font-weight: {{ section.settings.font_weight }};
+  }
+
+  .section-{{ section.id }} .ld-trustpilot__brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 800;
+  }
+
+  .section-{{ section.id }} .ld-trustpilot__icon {
+    width: 20px;
+    height: 20px;
+    color: var(--ld-accent);
+  }
+
+  .section-{{ section.id }} .ld-stars {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+  }
+
+  .section-{{ section.id }} .ld-star {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: {{ section.settings.star_size_desktop }}px;
+    height: {{ section.settings.star_size_desktop }}px;
+    background: var(--ld-star-bg);
+    color: var(--ld-star-color);
+    padding: 3px;
+  }
+
+  .section-{{ section.id }} .ld-star.is-empty {
+    opacity: 0.35;
+  }
+
+  @keyframes ldMarquee-{{ section.id }} {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  {% unless section.settings.enable_marquee %}
+    .section-{{ section.id }} .ld-trust-marquee__track {
+      width: 100%;
+      justify-content: center;
+    }
+
+    .section-{{ section.id }} .ld-trust-marquee__group:nth-child(2) {
+      display: none;
+    }
+
+    .section-{{ section.id }} .ld-trust-marquee__group {
+      flex-wrap: wrap;
+      justify-content: center;
+      padding-right: 0;
+    }
+  {% endunless %}
+
+  @media screen and (max-width: 749px) {
+    .section-{{ section.id }} .ld-trust-marquee__outer {
+      padding: var(--ld-padding-mobile);
+    }
+
+    .section-{{ section.id }} .ld-trust-marquee__group {
+      gap: var(--ld-gap-mobile);
+      padding-right: var(--ld-gap-mobile);
+    }
+
+    .section-{{ section.id }} .ld-trust-marquee__item {
+      font-size: var(--ld-font-mobile);
+      gap: 8px;
+    }
+
+    .section-{{ section.id }} .ld-trust-marquee__icon {
+      width: {{ section.settings.icon_size_mobile }}px;
+      height: {{ section.settings.icon_size_mobile }}px;
+    }
+
+    .section-{{ section.id }} .ld-star {
+      width: {{ section.settings.star_size_mobile }}px;
+      height: {{ section.settings.star_size_mobile }}px;
+      padding: 2px;
+    }
+
+    .section-{{ section.id }} .ld-trustpilot {
+      gap: 7px;
+    }
+
+    .section-{{ section.id }} .ld-trustpilot__icon {
+      width: 16px;
+      height: 16px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Bande réassurance",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "enable_marquee",
+      "label": "Activer le défilement",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "speed",
+      "label": "Vitesse du défilement",
+      "min": 8,
+      "max": 80,
+      "step": 1,
+      "unit": "s",
+      "default": 28
+    },
+    {
+      "type": "checkbox",
+      "id": "pause_hover",
+      "label": "Pause au survol",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Couleurs"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Couleur de fond",
+      "default": "#eeeeeb"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Couleur du texte",
+      "default": "#171717"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Couleur accent",
+      "default": "#00b67a"
+    },
+    {
+      "type": "color",
+      "id": "star_bg",
+      "label": "Fond des étoiles",
+      "default": "#00b67a"
+    },
+    {
+      "type": "color",
+      "id": "star_color",
+      "label": "Couleur des étoiles",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Typographie"
+    },
+    {
+      "type": "range",
+      "id": "font_size_desktop",
+      "label": "Taille texte ordinateur",
+      "min": 12,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "font_size_mobile",
+      "label": "Taille texte mobile",
+      "min": 10,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "select",
+      "id": "font_weight",
+      "label": "Épaisseur du texte",
+      "default": "500",
+      "options": [
+        {
+          "value": "400",
+          "label": "Normal"
+        },
+        {
+          "value": "500",
+          "label": "Medium"
+        },
+        {
+          "value": "600",
+          "label": "Semi-bold"
+        },
+        {
+          "value": "700",
+          "label": "Bold"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Espacements ordinateur"
+    },
+    {
+      "type": "range",
+      "id": "gap_desktop",
+      "label": "Espace entre éléments PC",
+      "min": 20,
+      "max": 180,
+      "step": 5,
+      "unit": "px",
+      "default": 95
+    },
+    {
+      "type": "range",
+      "id": "padding_y_desktop",
+      "label": "Padding vertical PC",
+      "min": 4,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "padding_x_desktop",
+      "label": "Padding horizontal PC",
+      "min": 0,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "header",
+      "content": "Espacements mobile"
+    },
+    {
+      "type": "range",
+      "id": "gap_mobile",
+      "label": "Espace entre éléments mobile",
+      "min": 20,
+      "max": 120,
+      "step": 5,
+      "unit": "px",
+      "default": 55
+    },
+    {
+      "type": "range",
+      "id": "padding_y_mobile",
+      "label": "Padding vertical mobile",
+      "min": 4,
+      "max": 30,
+      "step": 1,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "padding_x_mobile",
+      "label": "Padding horizontal mobile",
+      "min": 0,
+      "max": 50,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Icônes"
+    },
+    {
+      "type": "range",
+      "id": "icon_size_desktop",
+      "label": "Taille icônes PC",
+      "min": 14,
+      "max": 36,
+      "step": 1,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "icon_size_mobile",
+      "label": "Taille icônes mobile",
+      "min": 12,
+      "max": 30,
+      "step": 1,
+      "unit": "px",
+      "default": 19
+    },
+    {
+      "type": "range",
+      "id": "star_size_desktop",
+      "label": "Taille étoiles PC",
+      "min": 14,
+      "max": 34,
+      "step": 1,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "star_size_mobile",
+      "label": "Taille étoiles mobile",
+      "min": 12,
+      "max": 28,
+      "step": 1,
+      "unit": "px",
+      "default": 18
+    }
+  ],
+  "blocks": [
+    {
+      "type": "trustpilot",
+      "name": "Avis Trustpilot",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Texte avant étoiles",
+          "default": "Excellent"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_stars",
+          "label": "Afficher les étoiles",
+          "default": true
+        },
+        {
+          "type": "range",
+          "id": "stars_count",
+          "label": "Nombre étoiles pleines",
+          "min": 1,
+          "max": 5,
+          "step": 1,
+          "default": 5
+        },
+        {
+          "type": "text",
+          "id": "trustpilot_text",
+          "label": "Texte après étoiles",
+          "default": "Trustpilot"
+        }
+      ]
+    },
+    {
+      "type": "item",
+      "name": "Élément simple",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icône",
+          "default": "thumb",
+          "options": [
+            {
+              "value": "none",
+              "label": "Aucune"
+            },
+            {
+              "value": "thumb",
+              "label": "Pouce"
+            },
+            {
+              "value": "truck",
+              "label": "Livraison"
+            },
+            {
+              "value": "refund",
+              "label": "Remboursement"
+            },
+            {
+              "value": "shield",
+              "label": "Protection"
+            },
+            {
+              "value": "star",
+              "label": "Étoile"
+            }
+          ]
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Texte",
+          "default": "<p><strong>500 000+</strong> clients satisfaits</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Bande réassurance",
+      "blocks": [
+        {
+          "type": "trustpilot",
+          "settings": {
+            "label": "Excellent",
+            "show_stars": true,
+            "stars_count": 4,
+            "trustpilot_text": "Trustpilot"
+          }
+        },
+        {
+          "type": "item",
+          "settings": {
+            "icon": "thumb",
+            "text": "<p><strong>500 000+</strong> clients satisfaits</p>"
+          }
+        },
+        {
+          "type": "item",
+          "settings": {
+            "icon": "truck",
+            "text": "<p>Livraison et retours <strong>rapides</strong></p>"
+          }
+        },
+        {
+          "type": "item",
+          "settings": {
+            "icon": "refund",
+            "text": "<p>Remboursement sous <strong>30 jours</strong></p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
