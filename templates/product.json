@@ -153,6 +153,7 @@
         "review_Pdxt7K": {
           "type": "review",
           "settings": {
+            "review_image": "shopify://shop_images/Snapinsta.app_440968309_18003032150599922_6830969532435286353_n_1080_copy.webp",
             "show_stars": true,
             "rating": 5,
             "title": "Une qualité incroyable",
@@ -166,6 +167,7 @@
         "review_V4rCHG": {
           "type": "review",
           "settings": {
+            "review_image": "shopify://shop_images/Snapinsta.app_video_5545E633BEE3CEC2423610355A4CC780_video_dashinit_copy_2.webp",
             "show_stars": true,
             "rating": 5,
             "title": "Je recommande à 100%",
@@ -179,6 +181,7 @@
         "review_ECTwAK": {
           "type": "review",
           "settings": {
+            "review_image": "shopify://shop_images/Snapinsta.app_460979180_1877825909413971_6274458685248048543_n_1080_copy.webp",
             "show_stars": true,
             "rating": 5,
             "title": "Super confortable",
@@ -214,7 +217,7 @@
         "heading": "Ils nous font confiance",
         "subheading": "",
         "heading_size": 38,
-        "heading_size_mobile": 25,
+        "heading_size_mobile": 24,
         "heading_weight": "600",
         "subheading_size": 16,
         "subheading_size_mobile": 14,
@@ -228,7 +231,7 @@
         "items_desktop": 3,
         "items_tablet": 2,
         "items_mobile": 1,
-        "bg_color": "#ffffff",
+        "bg_color": "#FBFBFB",
         "card_bg": "#ffffff",
         "border_color": "#e5ded4",
         "text_color": "#111111",
@@ -264,14 +267,14 @@
         "stars_margin": 28,
         "stars_margin_mobile": 20,
         "title_size": 25,
-        "title_size_mobile": 22,
+        "title_size_mobile": 20,
         "review_size": 20,
-        "review_size_mobile": 17,
+        "review_size_mobile": 15,
         "title_weight": "800",
-        "review_weight": "600",
+        "review_weight": "400",
         "title_margin": 26,
-        "title_margin_mobile": 18,
-        "author_top_space": 62,
+        "title_margin_mobile": 14,
+        "author_top_space": 56,
         "author_gap": 24,
         "avatar_size": 52,
         "avatar_size_mobile": 46,
