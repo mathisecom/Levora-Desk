@@ -195,6 +195,7 @@
         "review_fMcY7i": {
           "type": "review",
           "settings": {
+            "review_image": "shopify://shop_images/upload-953355ca12eabdb9146e61e5378cdcfa-1769675322.jpg",
             "show_stars": true,
             "rating": 5,
             "title": "Très satisfait",
