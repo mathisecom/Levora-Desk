@@ -14,6 +14,13 @@
     "announcement-bar": {
       "type": "announcement-bar",
       "blocks": {
+        "message_MLnWAt": {
+          "type": "message",
+          "settings": {
+            "text": "OFFRE D'ÉTÉ JUSQU'À -25% DE RÉDUCTION",
+            "url": ""
+          }
+        },
         "message": {
           "type": "message",
           "settings": {
@@ -27,26 +34,19 @@
             "text": "RETOURS SOUS 30 JOURS",
             "url": ""
           }
-        },
-        "message_MLnWAt": {
-          "type": "message",
-          "settings": {
-            "text": "OFFRE D'ÉTÉ JUSQU'À -25% DE RÉDUCTION",
-            "url": ""
-          }
         }
       },
       "block_order": [
+        "message_MLnWAt",
         "message",
-        "message_nw4LDG",
-        "message_MLnWAt"
+        "message_nw4LDG"
       ],
       "settings": {
         "enable_sticky": false,
         "autoplay": false,
         "cycle_speed": 6,
         "text_size": "text-xxs",
-        "navigation_mode": "scrolling",
+        "navigation_mode": "arrows",
         "scrolling_speed": 10,
         "background": "#1a1a1a",
         "background_gradient": "",
