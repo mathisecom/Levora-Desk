@@ -110,7 +110,7 @@
           "settings": {
             "icon": "truck",
             "title": "Livraison rapide",
-            "text": "<p>Toutes les commandes sont expédiées dans un délai de 3 à 5 jours.</p>"
+            "text": "<p>Expédition en 3 à 5 jours.</p>"
           }
         },
         "card_QPDbad": {
@@ -118,7 +118,7 @@
           "settings": {
             "icon": "return",
             "title": "Retour gratuit et facile",
-            "text": "<p>Si vous n'êtes pas satisfait, vous pouvez renvoyer le produit gratuitement dans les 30 jours suivant l'achat.</p>"
+            "text": "<p>Retour offert sous 30 jours.</p>"
           }
         },
         "card_CBiBWE": {
@@ -126,15 +126,16 @@
           "settings": {
             "icon": "shield",
             "title": "Garantie prolongée",
-            "text": "<p>Une expérience sans stress avec des remplacements rapides et une durabilité exceptionnelle.</p>"
+            "text": "<p>Remplacement rapide et fiable.</p>"
           }
         },
         "card_PLdpTj": {
           "type": "card",
+          "disabled": true,
           "settings": {
             "icon": "card",
             "title": "Options de paiement flexibles",
-            "text": "<p>Commandez ce dont vous avez besoin aujourd'hui et payez plus tard ou en plusieurs versements sans intérêt.</p>"
+            "text": "<p>Payez plus tard ou en plusieurs fois.</p>"
           }
         }
       },
@@ -147,12 +148,12 @@
       "name": "Cartes réassurance",
       "settings": {
         "heading": "",
-        "show_arrows": true,
+        "show_arrows": false,
         "show_arrows_mobile": false,
         "show_dots": true,
         "autoplay": false,
         "autoplay_speed": 4000,
-        "items_desktop": 4,
+        "items_desktop": 3,
         "items_tablet": 2,
         "items_mobile": 1,
         "bg_color": "#FBFBFB",
@@ -163,22 +164,22 @@
         "arrow_bg": "#ffffff",
         "arrow_color": "#171717",
         "dot_color": "#171717",
-        "max_width": 1380,
+        "max_width": 1220,
         "radius": 14,
-        "gap": 24,
+        "gap": 18,
         "gap_mobile": 14,
-        "card_height": 280,
+        "card_height": 220,
         "card_height_mobile": 210,
         "padding_y": 16,
         "padding_x": 16,
         "padding_y_mobile": 16,
         "padding_x_mobile": 14,
-        "card_padding_y": 48,
-        "card_padding_x": 42,
+        "card_padding_y": 28,
+        "card_padding_x": 20,
         "card_padding_y_mobile": 38,
         "card_padding_x_mobile": 30,
-        "title_size": 26,
-        "text_size": 19,
+        "title_size": 19,
+        "text_size": 13,
         "title_size_mobile": 18,
         "text_size_mobile": 13,
         "title_weight": "500",
