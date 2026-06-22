@@ -97,7 +97,7 @@
           "type": "text",
           "settings": {
             "title": "Contactez-Nous",
-            "content": "<p><strong>Téléphone :</strong> +33 07 45 73 27 06</p><p><strong>Email </strong>: levoradesk@gmail.com</p><p><strong>Adresse</strong> :  14 Place Paul Eychart, 63100 Clermont-Ferrand, France</p><p><strong>Horaires d'assistance </strong>:<br/>Du lundi au vendredi : de 9h00 à 19h00</p>",
+            "content": "<p><strong>Téléphone :</strong> +33 07 45 73 27 06</p><p><strong>Email </strong>: contact.levoradesk@gmail.com</p><p><strong>Adresse</strong> :  14 Place Paul Eychart, 63100 Clermont-Ferrand, France</p><p><strong>Horaires d'assistance </strong>:<br/>Du lundi au vendredi : de 9h00 à 19h00</p>",
             "enable_follow_on_shop": false
           }
         }
