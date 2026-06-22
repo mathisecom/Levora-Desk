@@ -1,0 +1,1353 @@
+{% comment %}
+  LevoraDesk - Hero banner avec avis clients
+{% endcomment %}
+
+<section
+  class="lv-hero section-{{ section.id }}"
+  style="
+    --lv-max-width: {{ section.settings.max_width }}px;
+    --lv-radius: {{ section.settings.radius }}px;
+    --lv-height: {{ section.settings.height_desktop }}px;
+    --lv-height-mobile: {{ section.settings.height_mobile }}px;
+    --lv-overlay: {{ section.settings.overlay_color }};
+    --lv-overlay-opacity: {{ section.settings.overlay_opacity | divided_by: 100.0 }};
+    --lv-text: {{ section.settings.text_color }};
+    --lv-muted: {{ section.settings.muted_color }};
+    --lv-badge-bg: {{ section.settings.badge_bg }};
+    --lv-badge-text: {{ section.settings.badge_text }};
+    --lv-button-bg: {{ section.settings.button_bg }};
+    --lv-button-text: {{ section.settings.button_text }};
+    --lv-star-bg: {{ section.settings.star_bg }};
+    --lv-star-color: {{ section.settings.star_color }};
+    --lv-padding-x: {{ section.settings.padding_x }}px;
+    --lv-padding-y: {{ section.settings.padding_y }}px;
+    --lv-padding-x-mobile: {{ section.settings.padding_x_mobile }}px;
+    --lv-padding-y-mobile: {{ section.settings.padding_y_mobile }}px;
+    --lv-title-size: {{ section.settings.title_size }}px;
+    --lv-title-size-mobile: {{ section.settings.title_size_mobile }}px;
+    --lv-text-size: {{ section.settings.text_size }}px;
+    --lv-text-size-mobile: {{ section.settings.text_size_mobile }}px;
+  "
+>
+  <div class="lv-hero__inner">
+    <div class="lv-hero__media">
+      {% if section.settings.image_desktop != blank %}
+        <picture>
+          {% if section.settings.image_mobile != blank %}
+            <source
+              media="(max-width: 749px)"
+              srcset="{{ section.settings.image_mobile | image_url: width: 900 }}"
+            >
+          {% endif %}
+
+          <img
+            src="{{ section.settings.image_desktop | image_url: width: 2200 }}"
+            alt="{{ section.settings.image_desktop.alt | escape }}"
+            loading="lazy"
+            width="{{ section.settings.image_desktop.width }}"
+            height="{{ section.settings.image_desktop.height }}"
+          >
+        </picture>
+      {% else %}
+        <div class="lv-hero__placeholder">
+          {{ 'lifestyle-1' | placeholder_svg_tag }}
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="lv-hero__overlay"></div>
+
+    <div class="lv-hero__content lv-align-{{ section.settings.content_position }} lv-align-mobile-{{ section.settings.content_position_mobile }}">
+      <div class="lv-hero__box">
+        {% if section.settings.badge != blank %}
+          <div class="lv-hero__badge">
+            {% if section.settings.badge_icon %}
+              <span class="lv-hero__badge-icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M20.6 13.4l-7.2 7.2a2 2 0 0 1-2.8 0L3.4 13.4A2 2 0 0 1 2.8 12V5.5A2.5 2.5 0 0 1 5.3 3h6.5a2 2 0 0 1 1.4.6l7.4 7a2 2 0 0 1 0 2.8z"></path>
+                  <circle cx="7.5" cy="7.5" r="1.5"></circle>
+                </svg>
+              </span>
+            {% endif %}
+            {{ section.settings.badge }}
+          </div>
+        {% endif %}
+
+        {% if section.settings.show_reviews and section.settings.review_position == 'above-title' %}
+          <div class="lv-hero__reviews">
+            <div class="lv-hero__stars" aria-label="{{ section.settings.rating }} étoiles">
+              {% for i in (1..5) %}
+                <span class="lv-hero__star {% if i > section.settings.rating %}is-empty{% endif %}">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M12 2.2l2.95 6.1 6.72.97-4.86 4.73 1.15 6.69L12 17.53 6.04 20.69 7.19 14 2.33 9.27l6.72-.97L12 2.2z"></path>
+                  </svg>
+                </span>
+              {% endfor %}
+            </div>
+
+            {% if section.settings.review_text != blank %}
+              <div class="lv-hero__review-text">
+                {{ section.settings.review_text }}
+              </div>
+            {% endif %}
+          </div>
+        {% endif %}
+
+        {% if section.settings.heading != blank %}
+          <h1 class="lv-hero__title">
+            {{ section.settings.heading }}
+          </h1>
+        {% endif %}
+
+        {% if section.settings.show_reviews and section.settings.review_position == 'below-title' %}
+          <div class="lv-hero__reviews lv-hero__reviews--below">
+            <div class="lv-hero__stars" aria-label="{{ section.settings.rating }} étoiles">
+              {% for i in (1..5) %}
+                <span class="lv-hero__star {% if i > section.settings.rating %}is-empty{% endif %}">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M12 2.2l2.95 6.1 6.72.97-4.86 4.73 1.15 6.69L12 17.53 6.04 20.69 7.19 14 2.33 9.27l6.72-.97L12 2.2z"></path>
+                  </svg>
+                </span>
+              {% endfor %}
+            </div>
+
+            {% if section.settings.review_text != blank %}
+              <div class="lv-hero__review-text">
+                {{ section.settings.review_text }}
+              </div>
+            {% endif %}
+          </div>
+        {% endif %}
+
+        {% if section.settings.text != blank %}
+          <div class="lv-hero__text">
+            {{ section.settings.text }}
+          </div>
+        {% endif %}
+
+        {% if section.settings.button_label != blank %}
+          <a
+            class="lv-hero__button"
+            href="{{ section.settings.button_link }}"
+          >
+            {{ section.settings.button_label }}
+          </a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .section-{{ section.id }} {
+    width: 100%;
+    background: {{ section.settings.section_bg }};
+    padding: {{ section.settings.section_padding_y }}px {{ section.settings.section_padding_x }}px;
+  }
+
+  .section-{{ section.id }} .lv-hero__inner {
+    position: relative;
+    max-width: var(--lv-max-width);
+    height: var(--lv-height);
+    margin: 0 auto;
+    border-radius: var(--lv-radius);
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  .section-{{ section.id }} .lv-hero__media,
+  .section-{{ section.id }} .lv-hero__media picture,
+  .section-{{ section.id }} .lv-hero__media img,
+  .section-{{ section.id }} .lv-hero__placeholder {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .section-{{ section.id }} .lv-hero__media img {
+    object-fit: cover;
+    object-position: {{ section.settings.image_position }};
+    display: block;
+  }
+
+  .section-{{ section.id }} .lv-hero__placeholder svg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .section-{{ section.id }} .lv-hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: var(--lv-overlay);
+    opacity: var(--lv-overlay-opacity);
+    z-index: 1;
+  }
+
+  .section-{{ section.id }} .lv-hero__content {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    padding: var(--lv-padding-y) var(--lv-padding-x);
+    box-sizing: border-box;
+  }
+
+  .section-{{ section.id }} .lv-align-left {
+    justify-content: flex-start;
+    align-items: center;
+    text-align: left;
+  }
+
+  .section-{{ section.id }} .lv-align-center {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .section-{{ section.id }} .lv-align-right {
+    justify-content: flex-end;
+    align-items: center;
+    text-align: left;
+  }
+
+  .section-{{ section.id }} .lv-align-bottom-left {
+    justify-content: flex-start;
+    align-items: flex-end;
+    text-align: left;
+  }
+
+  .section-{{ section.id }} .lv-hero__box {
+    max-width: {{ section.settings.content_width }}px;
+  }
+
+  .section-{{ section.id }} .lv-align-center .lv-hero__box {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .section-{{ section.id }} .lv-hero__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: var(--lv-badge-bg);
+    color: var(--lv-badge-text);
+    border-radius: {{ section.settings.badge_radius }}px;
+    padding: {{ section.settings.badge_padding_y }}px {{ section.settings.badge_padding_x }}px;
+    font-size: {{ section.settings.badge_size }}px;
+    font-weight: {{ section.settings.badge_weight }};
+    line-height: 1;
+    margin-bottom: {{ section.settings.badge_margin }}px;
+  }
+
+  .section-{{ section.id }} .lv-hero__badge-icon {
+    width: 14px;
+    height: 14px;
+    display: inline-flex;
+  }
+
+  .section-{{ section.id }} .lv-hero__badge-icon svg {
+    width: 100%;
+    height: 100%;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .section-{{ section.id }} .lv-hero__reviews {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--lv-text);
+    margin-bottom: {{ section.settings.review_margin }}px;
+  }
+
+  .section-{{ section.id }} .lv-hero__reviews--below {
+    margin-top: {{ section.settings.review_margin }}px;
+    margin-bottom: 0;
+  }
+
+  .section-{{ section.id }} .lv-hero__stars {
+    display: inline-flex;
+    align-items: center;
+    gap: {{ section.settings.star_gap }}px;
+    flex-shrink: 0;
+  }
+
+  .section-{{ section.id }} .lv-hero__star {
+    width: {{ section.settings.star_size }}px;
+    height: {{ section.settings.star_size }}px;
+    background: var(--lv-star-bg);
+    color: var(--lv-star-color);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3px;
+    box-sizing: border-box;
+  }
+
+  .section-{{ section.id }} .lv-hero__star.is-empty {
+    opacity: 0.35;
+  }
+
+  .section-{{ section.id }} .lv-hero__star svg {
+    width: 100%;
+    height: 100%;
+    fill: currentColor;
+  }
+
+  .section-{{ section.id }} .lv-hero__review-text {
+    font-size: {{ section.settings.review_size }}px;
+    line-height: 1.2;
+    color: var(--lv-text);
+    font-weight: {{ section.settings.review_weight }};
+  }
+
+  .section-{{ section.id }} .lv-hero__title {
+    margin: 0;
+    color: var(--lv-text);
+    font-size: var(--lv-title-size);
+    line-height: {{ section.settings.title_line_height | divided_by: 100.0 }};
+    font-weight: {{ section.settings.title_weight }};
+    letter-spacing: -0.04em;
+  }
+
+  .section-{{ section.id }} .lv-hero__text {
+    margin-top: {{ section.settings.text_margin }}px;
+    color: var(--lv-muted);
+    font-size: var(--lv-text-size);
+    line-height: 1.45;
+    font-weight: {{ section.settings.text_weight }};
+    max-width: {{ section.settings.text_width }}px;
+  }
+
+  .section-{{ section.id }} .lv-hero__text p {
+    margin: 0;
+  }
+
+  .section-{{ section.id }} .lv-hero__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: {{ section.settings.button_margin }}px;
+    background: var(--lv-button-bg);
+    color: var(--lv-button-text);
+    border-radius: {{ section.settings.button_radius }}px;
+    padding: {{ section.settings.button_padding_y }}px {{ section.settings.button_padding_x }}px;
+    font-size: {{ section.settings.button_size }}px;
+    font-weight: {{ section.settings.button_weight }};
+    line-height: 1;
+    text-decoration: none;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+
+  .section-{{ section.id }} .lv-hero__button:hover {
+    transform: translateY(-1px);
+    opacity: 0.92;
+  }
+
+  @media screen and (max-width: 749px) {
+    .section-{{ section.id }} {
+      padding: {{ section.settings.section_padding_y_mobile }}px {{ section.settings.section_padding_x_mobile }}px;
+    }
+
+    .section-{{ section.id }} .lv-hero__inner {
+      height: var(--lv-height-mobile);
+      border-radius: {{ section.settings.radius_mobile }}px;
+    }
+
+    .section-{{ section.id }} .lv-hero__media img {
+      object-position: {{ section.settings.image_position_mobile }};
+    }
+
+    .section-{{ section.id }} .lv-hero__content {
+      padding: var(--lv-padding-y-mobile) var(--lv-padding-x-mobile);
+    }
+
+    .section-{{ section.id }} .lv-align-mobile-left {
+      justify-content: flex-start;
+      align-items: center;
+      text-align: left;
+    }
+
+    .section-{{ section.id }} .lv-align-mobile-center {
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .section-{{ section.id }} .lv-align-mobile-bottom {
+      justify-content: flex-start;
+      align-items: flex-end;
+      text-align: left;
+    }
+
+    .section-{{ section.id }} .lv-hero__box {
+      max-width: {{ section.settings.content_width_mobile }}px;
+    }
+
+    .section-{{ section.id }} .lv-hero__badge {
+      font-size: {{ section.settings.badge_size_mobile }}px;
+      padding: {{ section.settings.badge_padding_y_mobile }}px {{ section.settings.badge_padding_x_mobile }}px;
+      margin-bottom: {{ section.settings.badge_margin_mobile }}px;
+    }
+
+    .section-{{ section.id }} .lv-hero__reviews {
+      gap: 9px;
+      flex-wrap: wrap;
+      margin-bottom: {{ section.settings.review_margin_mobile }}px;
+    }
+
+    .section-{{ section.id }} .lv-hero__reviews--below {
+      margin-top: {{ section.settings.review_margin_mobile }}px;
+      margin-bottom: 0;
+    }
+
+    .section-{{ section.id }} .lv-hero__star {
+      width: {{ section.settings.star_size_mobile }}px;
+      height: {{ section.settings.star_size_mobile }}px;
+      padding: 2px;
+    }
+
+    .section-{{ section.id }} .lv-hero__review-text {
+      font-size: {{ section.settings.review_size_mobile }}px;
+    }
+
+    .section-{{ section.id }} .lv-hero__title {
+      font-size: var(--lv-title-size-mobile);
+      line-height: {{ section.settings.title_line_height_mobile | divided_by: 100.0 }};
+    }
+
+    .section-{{ section.id }} .lv-hero__text {
+      margin-top: {{ section.settings.text_margin_mobile }}px;
+      font-size: var(--lv-text-size-mobile);
+      max-width: {{ section.settings.text_width_mobile }}px;
+    }
+
+    .section-{{ section.id }} .lv-hero__button {
+      margin-top: {{ section.settings.button_margin_mobile }}px;
+      font-size: {{ section.settings.button_size_mobile }}px;
+      padding: {{ section.settings.button_padding_y_mobile }}px {{ section.settings.button_padding_x_mobile }}px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Hero avec avis",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Images"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_desktop",
+      "label": "Image PC"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mobile",
+      "label": "Image mobile"
+    },
+    {
+      "type": "select",
+      "id": "image_position",
+      "label": "Position image PC",
+      "default": "center center",
+      "options": [
+        {
+          "value": "center center",
+          "label": "Centre"
+        },
+        {
+          "value": "left center",
+          "label": "Gauche"
+        },
+        {
+          "value": "right center",
+          "label": "Droite"
+        },
+        {
+          "value": "center top",
+          "label": "Haut"
+        },
+        {
+          "value": "center bottom",
+          "label": "Bas"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "image_position_mobile",
+      "label": "Position image mobile",
+      "default": "center center",
+      "options": [
+        {
+          "value": "center center",
+          "label": "Centre"
+        },
+        {
+          "value": "left center",
+          "label": "Gauche"
+        },
+        {
+          "value": "right center",
+          "label": "Droite"
+        },
+        {
+          "value": "center top",
+          "label": "Haut"
+        },
+        {
+          "value": "center bottom",
+          "label": "Bas"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Contenu"
+    },
+    {
+      "type": "text",
+      "id": "badge",
+      "label": "Badge",
+      "default": "Offres de saison"
+    },
+    {
+      "type": "checkbox",
+      "id": "badge_icon",
+      "label": "Icône badge",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Titre",
+      "default": "Achète un bureau et crée une forêt"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Texte",
+      "default": "<p>L’an dernier, on a planté 21 127 arbres. Cette année, plantons-en encore plus en commençant par le tiens.</p>"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Texte bouton",
+      "default": "Acheter maintenant"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Lien bouton"
+    },
+    {
+      "type": "select",
+      "id": "content_position",
+      "label": "Position contenu PC",
+      "default": "left",
+      "options": [
+        {
+          "value": "left",
+          "label": "Gauche"
+        },
+        {
+          "value": "center",
+          "label": "Centre"
+        },
+        {
+          "value": "right",
+          "label": "Droite"
+        },
+        {
+          "value": "bottom-left",
+          "label": "Bas gauche"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "content_position_mobile",
+      "label": "Position contenu mob",
+      "default": "bottom",
+      "options": [
+        {
+          "value": "left",
+          "label": "Gauche"
+        },
+        {
+          "value": "center",
+          "label": "Centre"
+        },
+        {
+          "value": "bottom",
+          "label": "Bas"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Avis étoiles"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_reviews",
+      "label": "Afficher avis",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "rating",
+      "label": "Note étoiles",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "default": 5
+    },
+    {
+      "type": "text",
+      "id": "review_text",
+      "label": "Texte avis",
+      "default": "Excellent 4.8/5 — +500 avis"
+    },
+    {
+      "type": "select",
+      "id": "review_position",
+      "label": "Position avis",
+      "default": "above-title",
+      "options": [
+        {
+          "value": "above-title",
+          "label": "Au-dessus titre"
+        },
+        {
+          "value": "below-title",
+          "label": "Sous le titre"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Couleurs"
+    },
+    {
+      "type": "color",
+      "id": "section_bg",
+      "label": "Fond section",
+      "default": "#eeeeeb"
+    },
+    {
+      "type": "color",
+      "id": "overlay_color",
+      "label": "Couleur overlay",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "label": "Opacité overlay",
+      "min": 0,
+      "max": 80,
+      "step": 2,
+      "unit": "%",
+      "default": 36
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Texte principal",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "muted_color",
+      "label": "Texte secondaire",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "badge_bg",
+      "label": "Fond badge",
+      "default": "#d63f44"
+    },
+    {
+      "type": "color",
+      "id": "badge_text",
+      "label": "Texte badge",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "button_bg",
+      "label": "Fond bouton",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "button_text",
+      "label": "Texte bouton",
+      "default": "#111111"
+    },
+    {
+      "type": "color",
+      "id": "star_bg",
+      "label": "Fond étoiles",
+      "default": "#00b67a"
+    },
+    {
+      "type": "color",
+      "id": "star_color",
+      "label": "Couleur étoiles",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Dimensions"
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "label": "Largeur max",
+      "min": 900,
+      "max": 1800,
+      "step": 20,
+      "unit": "px",
+      "default": 1600
+    },
+    {
+      "type": "range",
+      "id": "height_desktop",
+      "label": "Hauteur PC",
+      "min": 360,
+      "max": 900,
+      "step": 20,
+      "unit": "px",
+      "default": 620
+    },
+    {
+      "type": "range",
+      "id": "height_mobile",
+      "label": "Hauteur mobile",
+      "min": 360,
+      "max": 800,
+      "step": 20,
+      "unit": "px",
+      "default": 620
+    },
+    {
+      "type": "range",
+      "id": "radius",
+      "label": "Arrondi PC",
+      "min": 0,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "radius_mobile",
+      "label": "Arrondi mobile",
+      "min": 0,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "section_padding_y",
+      "label": "Padding section Y",
+      "min": 0,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "section_padding_x",
+      "label": "Padding section X",
+      "min": 0,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "section_padding_y_mobile",
+      "label": "Padding Y mobile",
+      "min": 0,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "section_padding_x_mobile",
+      "label": "Padding X mobile",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "padding_x",
+      "label": "Padding contenu X",
+      "min": 20,
+      "max": 160,
+      "step": 2,
+      "unit": "px",
+      "default": 56
+    },
+    {
+      "type": "range",
+      "id": "padding_y",
+      "label": "Padding contenu Y",
+      "min": 20,
+      "max": 160,
+      "step": 2,
+      "unit": "px",
+      "default": 56
+    },
+    {
+      "type": "range",
+      "id": "padding_x_mobile",
+      "label": "Contenu X mobile",
+      "min": 16,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "padding_y_mobile",
+      "label": "Contenu Y mobile",
+      "min": 16,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "default": 34
+    },
+    {
+      "type": "range",
+      "id": "content_width",
+      "label": "Largeur contenu PC",
+      "min": 320,
+      "max": 900,
+      "step": 10,
+      "unit": "px",
+      "default": 580
+    },
+    {
+      "type": "range",
+      "id": "content_width_mobile",
+      "label": "Largeur contenu mob",
+      "min": 260,
+      "max": 520,
+      "step": 10,
+      "unit": "px",
+      "default": 360
+    },
+    {
+      "type": "header",
+      "content": "Typographie"
+    },
+    {
+      "type": "range",
+      "id": "title_size",
+      "label": "Taille titre PC",
+      "min": 32,
+      "max": 96,
+      "step": 1,
+      "unit": "px",
+      "default": 58
+    },
+    {
+      "type": "range",
+      "id": "title_size_mobile",
+      "label": "Taille titre mobile",
+      "min": 28,
+      "max": 62,
+      "step": 1,
+      "unit": "px",
+      "default": 42
+    },
+    {
+      "type": "range",
+      "id": "title_line_height",
+      "label": "Interligne titre PC",
+      "min": 85,
+      "max": 130,
+      "step": 1,
+      "unit": "%",
+      "default": 105
+    },
+    {
+      "type": "range",
+      "id": "title_line_height_mobile",
+      "label": "Interligne titre mob",
+      "min": 85,
+      "max": 130,
+      "step": 1,
+      "unit": "%",
+      "default": 105
+    },
+    {
+      "type": "select",
+      "id": "title_weight",
+      "label": "Graisse titre",
+      "default": "400",
+      "options": [
+        {
+          "value": "300",
+          "label": "Light"
+        },
+        {
+          "value": "400",
+          "label": "Normal"
+        },
+        {
+          "value": "500",
+          "label": "Medium"
+        },
+        {
+          "value": "600",
+          "label": "Semi-bold"
+        },
+        {
+          "value": "700",
+          "label": "Bold"
+        }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "text_size",
+      "label": "Taille texte PC",
+      "min": 14,
+      "max": 30,
+      "step": 1,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "text_size_mobile",
+      "label": "Taille texte mob",
+      "min": 13,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "select",
+      "id": "text_weight",
+      "label": "Graisse texte",
+      "default": "400",
+      "options": [
+        {
+          "value": "400",
+          "label": "Normal"
+        },
+        {
+          "value": "500",
+          "label": "Medium"
+        },
+        {
+          "value": "600",
+          "label": "Semi-bold"
+        }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "text_width",
+      "label": "Largeur texte PC",
+      "min": 280,
+      "max": 760,
+      "step": 10,
+      "unit": "px",
+      "default": 560
+    },
+    {
+      "type": "range",
+      "id": "text_width_mobile",
+      "label": "Largeur texte mob",
+      "min": 240,
+      "max": 480,
+      "step": 10,
+      "unit": "px",
+      "default": 340
+    },
+    {
+      "type": "range",
+      "id": "text_margin",
+      "label": "Marge texte PC",
+      "min": 8,
+      "max": 50,
+      "step": 2,
+      "unit": "px",
+      "default": 22
+    },
+    {
+      "type": "range",
+      "id": "text_margin_mobile",
+      "label": "Marge texte mob",
+      "min": 6,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "header",
+      "content": "Bouton"
+    },
+    {
+      "type": "range",
+      "id": "button_size",
+      "label": "Texte bouton PC",
+      "min": 13,
+      "max": 28,
+      "step": 1,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "button_size_mobile",
+      "label": "Texte bouton mob",
+      "min": 13,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "select",
+      "id": "button_weight",
+      "label": "Graisse bouton",
+      "default": "500",
+      "options": [
+        {
+          "value": "400",
+          "label": "Normal"
+        },
+        {
+          "value": "500",
+          "label": "Medium"
+        },
+        {
+          "value": "600",
+          "label": "Semi-bold"
+        },
+        {
+          "value": "700",
+          "label": "Bold"
+        }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "button_radius",
+      "label": "Arrondi bouton",
+      "min": 0,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "button_padding_y",
+      "label": "Bouton Y PC",
+      "min": 8,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "button_padding_x",
+      "label": "Bouton X PC",
+      "min": 20,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "button_padding_y_mobile",
+      "label": "Bouton Y mobile",
+      "min": 8,
+      "max": 28,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "button_padding_x_mobile",
+      "label": "Bouton X mobile",
+      "min": 18,
+      "max": 70,
+      "step": 2,
+      "unit": "px",
+      "default": 28
+    },
+    {
+      "type": "range",
+      "id": "button_margin",
+      "label": "Marge bouton PC",
+      "min": 12,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 34
+    },
+    {
+      "type": "range",
+      "id": "button_margin_mobile",
+      "label": "Marge bouton mob",
+      "min": 10,
+      "max": 50,
+      "step": 2,
+      "unit": "px",
+      "default": 26
+    },
+    {
+      "type": "header",
+      "content": "Badge et avis"
+    },
+    {
+      "type": "range",
+      "id": "badge_size",
+      "label": "Badge texte PC",
+      "min": 11,
+      "max": 22,
+      "step": 1,
+      "unit": "px",
+      "default": 13
+    },
+    {
+      "type": "range",
+      "id": "badge_size_mobile",
+      "label": "Badge texte mob",
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "select",
+      "id": "badge_weight",
+      "label": "Graisse badge",
+      "default": "600",
+      "options": [
+        {
+          "value": "400",
+          "label": "Normal"
+        },
+        {
+          "value": "500",
+          "label": "Medium"
+        },
+        {
+          "value": "600",
+          "label": "Semi-bold"
+        },
+        {
+          "value": "700",
+          "label": "Bold"
+        }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "badge_radius",
+      "label": "Arrondi badge",
+      "min": 0,
+      "max": 30,
+      "step": 1,
+      "unit": "px",
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "badge_padding_y",
+      "label": "Badge Y PC",
+      "min": 4,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "badge_padding_x",
+      "label": "Badge X PC",
+      "min": 8,
+      "max": 34,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "badge_padding_y_mobile",
+      "label": "Badge Y mobile",
+      "min": 4,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "default": 9
+    },
+    {
+      "type": "range",
+      "id": "badge_padding_x_mobile",
+      "label": "Badge X mobile",
+      "min": 8,
+      "max": 30,
+      "step": 1,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "badge_margin",
+      "label": "Marge badge PC",
+      "min": 10,
+      "max": 70,
+      "step": 2,
+      "unit": "px",
+      "default": 42
+    },
+    {
+      "type": "range",
+      "id": "badge_margin_mobile",
+      "label": "Marge badge mob",
+      "min": 8,
+      "max": 50,
+      "step": 2,
+      "unit": "px",
+      "default": 26
+    },
+    {
+      "type": "range",
+      "id": "star_size",
+      "label": "Taille étoiles PC",
+      "min": 14,
+      "max": 34,
+      "step": 1,
+      "unit": "px",
+      "default": 22
+    },
+    {
+      "type": "range",
+      "id": "star_size_mobile",
+      "label": "Taille étoiles mob",
+      "min": 12,
+      "max": 30,
+      "step": 1,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "star_gap",
+      "label": "Espace étoiles",
+      "min": 1,
+      "max": 8,
+      "step": 1,
+      "unit": "px",
+      "default": 3
+    },
+    {
+      "type": "range",
+      "id": "review_size",
+      "label": "Texte avis PC",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 15
+    },
+    {
+      "type": "range",
+      "id": "review_size_mobile",
+      "label": "Texte avis mob",
+      "min": 11,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 13
+    },
+    {
+      "type": "select",
+      "id": "review_weight",
+      "label": "Graisse avis",
+      "default": "600",
+      "options": [
+        {
+          "value": "400",
+          "label": "Normal"
+        },
+        {
+          "value": "500",
+          "label": "Medium"
+        },
+        {
+          "value": "600",
+          "label": "Semi-bold"
+        },
+        {
+          "value": "700",
+          "label": "Bold"
+        }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "review_margin",
+      "label": "Marge avis PC",
+      "min": 8,
+      "max": 50,
+      "step": 2,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "review_margin_mobile",
+      "label": "Marge avis mob",
+      "min": 6,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 14
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero avec avis"
+    }
+  ]
+}
+{% endschema %}
