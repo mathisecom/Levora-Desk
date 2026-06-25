@@ -91,6 +91,7 @@
         },
         "collapsible_text_yG6wKB": {
           "type": "collapsible_text",
+          "disabled": true,
           "settings": {
             "icon": "none",
             "icon_width": 20,
