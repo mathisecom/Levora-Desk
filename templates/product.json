@@ -765,7 +765,7 @@
           "type": "spec_card",
           "settings": {
             "title": "Informations générales",
-            "open_by_default": true,
+            "open_by_default": false,
             "layout": "specs",
             "media_type": "none",
             "image_alt": "Illustration des caractéristiques",
@@ -789,7 +789,7 @@
           "type": "spec_card",
           "settings": {
             "title": "Caractéristiques du plateau",
-            "open_by_default": true,
+            "open_by_default": false,
             "layout": "tabbed",
             "media_type": "none",
             "image_alt": "Illustration des caractéristiques",
@@ -813,7 +813,7 @@
           "type": "spec_card",
           "settings": {
             "title": "Caractéristiques du cadre électrique",
-            "open_by_default": true,
+            "open_by_default": false,
             "layout": "specs",
             "media_type": "none",
             "image_alt": "Illustration des caractéristiques",
@@ -837,7 +837,7 @@
           "type": "spec_card",
           "settings": {
             "title": "Guide d’assemblage",
-            "open_by_default": true,
+            "open_by_default": false,
             "layout": "guide",
             "media_type": "none",
             "image_alt": "Illustration des caractéristiques",
