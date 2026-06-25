@@ -14,7 +14,6 @@
       "name": "Hero avec avis",
       "settings": {
         "image_desktop": "shopify://shop_images/Desktop_SS3_copy-2048x862.webp",
-        "image_mobile": "shopify://shop_images/Desktop_SS3_copy-2048x862.webp",
         "image_position": "center center",
         "image_position_mobile": "right center",
         "badge": "OFFRE D'ÉTÉ 2026",
