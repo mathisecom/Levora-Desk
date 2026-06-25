@@ -1,0 +1,1760 @@
+{% comment %}
+  Section Shopify : Caractéristiques principales en accordéon
+  Responsive PC + Mobile
+  Médias : image, vidéo Shopify, YouTube/Vimeo
+  Tableaux modifiables via textarea : Label|Valeur
+{% endcomment %}
+
+{% liquid
+  assign s = section.settings
+%}
+
+<section id="tm-specs-{{ section.id }}" class="tm-specs">
+  <div class="tm-specs__inner">
+
+    {% if s.heading != blank %}
+      <h2 class="tm-specs__heading">
+        {{ s.heading }}
+      </h2>
+    {% endif %}
+
+    <div class="tm-specs__accordion">
+      {% for block in section.blocks %}
+        <details
+          class="tm-specs__card"
+          {% if block.settings.open_by_default %}open{% endif %}
+          {{ block.shopify_attributes }}
+        >
+          <summary class="tm-specs__summary">
+            <span>{{ block.settings.title }}</span>
+
+            <span class="tm-specs__chevron" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M7 10l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </summary>
+
+          <div class="tm-specs__content">
+
+            {% if block.settings.layout == 'guide' %}
+              <div class="tm-specs__guide-grid">
+
+                <div class="tm-specs__guide-media">
+                  {% if block.settings.media_type == 'shopify_video' and block.settings.shopify_video != blank %}
+                    {{
+                      block.settings.shopify_video
+                      | video_tag:
+                        image_size: '1200x',
+                        autoplay: block.settings.video_autoplay,
+                        loop: block.settings.video_loop,
+                        muted: block.settings.video_muted,
+                        controls: block.settings.video_controls,
+                        class: 'tm-specs__media'
+                    }}
+
+                  {% elsif block.settings.media_type == 'external_video' and block.settings.external_video != blank %}
+                    <div class="tm-specs__iframe-wrap">
+                      {% if block.settings.external_video.type == 'youtube' %}
+                        <iframe
+                          src="https://www.youtube.com/embed/{{ block.settings.external_video.id }}?playsinline=1{% if block.settings.video_autoplay %}&autoplay=1&mute=1{% endif %}{% if block.settings.video_loop %}&loop=1&playlist={{ block.settings.external_video.id }}{% endif %}"
+                          title="{{ block.settings.video_title | escape }}"
+                          allow="autoplay; encrypted-media; picture-in-picture"
+                          allowfullscreen
+                          loading="lazy">
+                        </iframe>
+                      {% elsif block.settings.external_video.type == 'vimeo' %}
+                        <iframe
+                          src="https://player.vimeo.com/video/{{ block.settings.external_video.id }}?playsinline=1{% if block.settings.video_autoplay %}&autoplay=1&muted=1{% endif %}{% if block.settings.video_loop %}&loop=1{% endif %}"
+                          title="{{ block.settings.video_title | escape }}"
+                          allow="autoplay; encrypted-media; picture-in-picture"
+                          allowfullscreen
+                          loading="lazy">
+                        </iframe>
+                      {% endif %}
+                    </div>
+
+                  {% elsif block.settings.media_image != blank %}
+                    {{
+                      block.settings.media_image
+                      | image_url: width: 1200
+                      | image_tag:
+                        loading: 'lazy',
+                        class: 'tm-specs__media',
+                        alt: block.settings.image_alt
+                    }}
+
+                  {% else %}
+                    <div class="tm-specs__placeholder tm-specs__placeholder--video">
+                      <span class="tm-specs__play">
+                        <svg viewBox="0 0 24 24">
+                          <path d="M9 7l8 5-8 5V7z" fill="currentColor"/>
+                        </svg>
+                      </span>
+                    </div>
+                  {% endif %}
+                </div>
+
+                <div class="tm-specs__pdf-box">
+                  {% if block.settings.pdf_url != blank %}
+                    <a href="{{ block.settings.pdf_url }}" class="tm-specs__pdf-link" target="_blank" rel="noopener">
+                  {% else %}
+                    <div class="tm-specs__pdf-link">
+                  {% endif %}
+
+                    <span class="tm-specs__pdf-icon">
+                      <svg viewBox="0 0 64 64" aria-hidden="true">
+                        <path d="M18 6h20l12 12v40H18z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>
+                        <path d="M38 6v13h12" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>
+                        <text x="32" y="43" text-anchor="middle" font-size="12" font-weight="700" fill="currentColor">PDF</text>
+                      </svg>
+                    </span>
+
+                    <span class="tm-specs__pdf-title">
+                      {{ block.settings.pdf_label }}
+                    </span>
+
+                  {% if block.settings.pdf_url != blank %}
+                    </a>
+                  {% else %}
+                    </div>
+                  {% endif %}
+                </div>
+
+              </div>
+
+            {% else %}
+
+              {% if block.settings.layout == 'tabbed' %}
+                <div class="tm-specs__tabs">
+                  {% if block.settings.tab_1_label != blank %}
+                    <button type="button" class="tm-specs__tab is-active" data-tab="tab-1-{{ block.id }}">
+                      {{ block.settings.tab_1_label }}
+                    </button>
+                  {% endif %}
+
+                  {% if block.settings.tab_2_label != blank %}
+                    <button type="button" class="tm-specs__tab" data-tab="tab-2-{{ block.id }}">
+                      {{ block.settings.tab_2_label }}
+                    </button>
+                  {% endif %}
+
+                  {% if block.settings.tab_3_label != blank %}
+                    <button type="button" class="tm-specs__tab" data-tab="tab-3-{{ block.id }}">
+                      {{ block.settings.tab_3_label }}
+                    </button>
+                  {% endif %}
+                </div>
+              {% endif %}
+
+              <div class="tm-specs__main-grid">
+
+                <div class="tm-specs__media-box">
+                  {% if block.settings.media_type == 'shopify_video' and block.settings.shopify_video != blank %}
+                    {{
+                      block.settings.shopify_video
+                      | video_tag:
+                        image_size: '1200x',
+                        autoplay: block.settings.video_autoplay,
+                        loop: block.settings.video_loop,
+                        muted: block.settings.video_muted,
+                        controls: block.settings.video_controls,
+                        class: 'tm-specs__media'
+                    }}
+
+                  {% elsif block.settings.media_type == 'external_video' and block.settings.external_video != blank %}
+                    <div class="tm-specs__iframe-wrap">
+                      {% if block.settings.external_video.type == 'youtube' %}
+                        <iframe
+                          src="https://www.youtube.com/embed/{{ block.settings.external_video.id }}?playsinline=1{% if block.settings.video_autoplay %}&autoplay=1&mute=1{% endif %}{% if block.settings.video_loop %}&loop=1&playlist={{ block.settings.external_video.id }}{% endif %}"
+                          title="{{ block.settings.video_title | escape }}"
+                          allow="autoplay; encrypted-media; picture-in-picture"
+                          allowfullscreen
+                          loading="lazy">
+                        </iframe>
+                      {% elsif block.settings.external_video.type == 'vimeo' %}
+                        <iframe
+                          src="https://player.vimeo.com/video/{{ block.settings.external_video.id }}?playsinline=1{% if block.settings.video_autoplay %}&autoplay=1&muted=1{% endif %}{% if block.settings.video_loop %}&loop=1{% endif %}"
+                          title="{{ block.settings.video_title | escape }}"
+                          allow="autoplay; encrypted-media; picture-in-picture"
+                          allowfullscreen
+                          loading="lazy">
+                        </iframe>
+                      {% endif %}
+                    </div>
+
+                  {% elsif block.settings.media_image != blank %}
+                    {{
+                      block.settings.media_image
+                      | image_url: width: 1200
+                      | image_tag:
+                        loading: 'lazy',
+                        class: 'tm-specs__media',
+                        alt: block.settings.image_alt
+                    }}
+
+                  {% else %}
+                    <div class="tm-specs__technical-placeholder">
+                      <svg viewBox="0 0 520 360" aria-hidden="true">
+                        <path d="M95 95h315v22H95z" fill="none" stroke="currentColor" stroke-width="2"/>
+                        <path d="M140 117v155M365 117v155" fill="none" stroke="currentColor" stroke-width="2"/>
+                        <path d="M110 272h72M335 272h72" fill="none" stroke="currentColor" stroke-width="2"/>
+                        <path d="M120 290h52M345 290h52" fill="none" stroke="currentColor" stroke-width="2"/>
+                        <path d="M95 95l42-24h270l3 24" fill="none" stroke="currentColor" stroke-width="2"/>
+                        <path d="M80 323h360" fill="none" stroke="currentColor" stroke-width="1" opacity=".35"/>
+                      </svg>
+                    </div>
+                  {% endif %}
+                </div>
+
+                <div class="tm-specs__table-box">
+                  {% if block.settings.layout == 'tabbed' %}
+
+                    <div class="tm-specs__tab-panel is-active" data-panel="tab-1-{{ block.id }}">
+                      {% assign rows_1 = block.settings.tab_1_rows | newline_to_br | split: '<br />' %}
+                      {% for row in rows_1 %}
+                        {% assign clean_row = row | strip %}
+                        {% if clean_row != blank %}
+                          {% assign parts = clean_row | split: '|' %}
+                          <div class="tm-specs__row">
+                            <div class="tm-specs__label">{{ parts[0] | strip }}</div>
+                            <div class="tm-specs__value">
+                              {% if parts.size > 1 %}
+                                {{ parts[1] | strip }}
+                              {% endif %}
+                            </div>
+                          </div>
+                        {% endif %}
+                      {% endfor %}
+                    </div>
+
+                    <div class="tm-specs__tab-panel" data-panel="tab-2-{{ block.id }}">
+                      {% assign rows_2 = block.settings.tab_2_rows | newline_to_br | split: '<br />' %}
+                      {% for row in rows_2 %}
+                        {% assign clean_row = row | strip %}
+                        {% if clean_row != blank %}
+                          {% assign parts = clean_row | split: '|' %}
+                          <div class="tm-specs__row">
+                            <div class="tm-specs__label">{{ parts[0] | strip }}</div>
+                            <div class="tm-specs__value">
+                              {% if parts.size > 1 %}
+                                {{ parts[1] | strip }}
+                              {% endif %}
+                            </div>
+                          </div>
+                        {% endif %}
+                      {% endfor %}
+                    </div>
+
+                    <div class="tm-specs__tab-panel" data-panel="tab-3-{{ block.id }}">
+                      {% assign rows_3 = block.settings.tab_3_rows | newline_to_br | split: '<br />' %}
+                      {% for row in rows_3 %}
+                        {% assign clean_row = row | strip %}
+                        {% if clean_row != blank %}
+                          {% assign parts = clean_row | split: '|' %}
+                          <div class="tm-specs__row">
+                            <div class="tm-specs__label">{{ parts[0] | strip }}</div>
+                            <div class="tm-specs__value">
+                              {% if parts.size > 1 %}
+                                {{ parts[1] | strip }}
+                              {% endif %}
+                            </div>
+                          </div>
+                        {% endif %}
+                      {% endfor %}
+                    </div>
+
+                  {% else %}
+
+                    {% assign rows = block.settings.spec_rows | newline_to_br | split: '<br />' %}
+                    {% for row in rows %}
+                      {% assign clean_row = row | strip %}
+                      {% if clean_row != blank %}
+                        {% assign parts = clean_row | split: '|' %}
+                        <div class="tm-specs__row">
+                          <div class="tm-specs__label">{{ parts[0] | strip }}</div>
+                          <div class="tm-specs__value">
+                            {% if parts.size > 1 %}
+                              {{ parts[1] | strip }}
+                            {% endif %}
+                          </div>
+                        </div>
+                      {% endif %}
+                    {% endfor %}
+
+                  {% endif %}
+                </div>
+
+              </div>
+            {% endif %}
+
+          </div>
+        </details>
+      {% endfor %}
+    </div>
+
+  </div>
+</section>
+
+<style>
+  #tm-specs-{{ section.id }} {
+    background: {{ s.section_bg }};
+    padding: {{ s.padding_top }}px {{ s.padding_x }}px {{ s.padding_bottom }}px;
+    color: {{ s.text_color }};
+  }
+
+  #tm-specs-{{ section.id }} * {
+    box-sizing: border-box;
+  }
+
+  #tm-specs-{{ section.id }} .tm-specs__inner {
+    max-width: {{ s.max_width }}px;
+    margin: 0 auto;
+  }
+
+  #tm-specs-{{ section.id }} .tm-specs__heading {
+    margin: 0 0 {{ s.heading_margin_bottom }}px;
+    color: {{ s.heading_color }};
+    font-size: {{ s.heading_size }}px;
+    font-weight: {{ s.heading_weight }};
+    line-height: 1.2;
+  }
+
+  #tm-specs-{{ section.id }} .tm-specs__accordion {
+    display: flex;
+    flex-direction: column;
+    gap: {{ s.card_gap }}px;
+  }
+
+  #tm-specs-{{ section.id }} .tm-specs__card {
+    background: {{ s.card_bg }};
+    border-radius: {{ s.card_radius }}px;
+    overflow: hidden;
+    border: {{ s.card_border_width }}px solid {{ s.card_border_color }};
+  }
+
+  #tm-specs-{{ section.id }} .tm-specs__summary {
+    min-height: {{ s.summary_height }}px;
+    padding: {{ s.summary_padding_y }}px {{ s.summary_padding_x }}px;
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    color: {{ s.summary_color }};
+    font-size: {{ s.summary_size }}px;
+    font-weight: {{ s.summary_weight }};
+  }
+
+  #tm-specs-{{ section.id }} .tm-specs__summary::-webkit-details-marker {
+    display: none;
+  }
+
+  #tm-specs-{{ section.id }} .tm-specs__chevron {
+    width: {{ s.chevron_size }}px;
+    height: {{ s.chevron_size }}px;
+    color: {{ s.chevron_color }};
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.25s ease;
+  }
+
+  #tm-specs-{{ section.id }} .tm-specs__chevron svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  #tm-specs-{{ section.id }} .tm-specs__card[open] .tm-specs__chevron {
+    transform: rotate(180deg);
+  }
+
+  #tm-specs-{{ section.id }} .tm-specs__content {
+    padding: 0 {{ s.content_padding_x }}px {{ s.content_padding_bottom }}px;
+  }
+
+  #tm-specs-{{ section.id }} .tm-specs__main-grid {
+    display: grid;
+    grid-template-columns: {{ s.media_column_width }}fr {{ s.table_column_width }}fr;
+    gap: {{ s.grid_gap }}px;
+    align-items: center;
+  }
+
+  #tm-specs-{{ section.id }} .tm-specs__media-box,
+  #tm-specs-{{ section.id }} .tm-specs__guide-media,
+  #tm-specs-{{ section.id }} .tm-specs__pdf-box {
+    background: {{ s.media_bg }};
+    border-radius: {{ s.media_radius }}px;
+    overflow: hidden;
+  }
+
+  #tm-specs-{{ section.id }} .tm-specs__media-box {
+    min-height: {{ s.media_min_height }}px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #tm-specs-{{ section.id }} .tm-specs__media {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: {{ s.media_object_fit }};
+    object-position: center;
+  }
+
+  #tm-specs-{{ section.id }} .tm-specs__iframe-wrap {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+  }
+
+  #tm-specs-{{ section.id }} .tm-specs__iframe-wrap iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+  }
+
+  #tm-specs-{{ section.id }} .tm-specs__technical-placeholder {
+    width: 100%;
+    min-height: {{ s.media_min_height }}px;
+    padding: 24px;
+    color: {{ s.placeholder_color }};
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #tm-specs-{{ section.id }} .tm-specs__technical-placeholder svg {
+    width: 100%;
+    max-width: 420px;
+    height: auto;
+  }
+
+  #tm-specs-{{ section.id }} .tm-specs__tabs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: {{ s.tab_gap }}px;
+    margin-bottom: {{ s.tabs_margin_bottom }}px;
+    border-bottom: 1px solid {{ s.line_color }};
+  }
+
+  #tm-specs-{{ section.id }} .tm-specs__tab {
+    appearance: none;
+    border: 0;
+    background: transparent;
+    color: {{ s.tab_color }};
+    padding: {{ s.tab_padding_y }}px {{ s.tab_padding_x }}px;
+    cursor: pointer;
+    font-size: {{ s.tab_size }}px;
+    font-weight: {{ s.tab_weight }};
+    border-bottom: {{ s.tab_border_height }}px solid transparent;
+    margin-bottom: -1px;
+  }
+
+  #tm-specs-{{ section.id }} .tm-specs__tab.is-active {
+    color: {{ s.tab_active_color }};
+    border-bottom-color: {{ s.tab_active_line_color }};
+  }
+
+  #tm-specs-{{ section.id }} .tm-specs__tab-panel {
+    display: none;
+  }
+
+  #tm-specs-{{ section.id }} .tm-specs__tab-panel.is-active {
+    display: block;
+  }
+
+  #tm-specs-{{ section.id }} .tm-specs__table-box {
+    width: 100%;
+  }
+
+  #tm-specs-{{ section.id }} .tm-specs__row {
+    display: grid;
+    grid-template-columns: {{ s.label_column_width }}fr {{ s.value_column_width }}fr;
+    gap: {{ s.row_gap }}px;
+    border-bottom: 1px solid {{ s.line_color }};
+    padding: {{ s.row_padding_y }}px 0;
+    align-items: center;
+  }
+
+  #tm-specs-{{ section.id }} .tm-specs__row:first-child {
+    border-top: 1px solid {{ s.line_color }};
+  }
+
+  #tm-specs-{{ section.id }} .tm-specs__label {
+    color: {{ s.label_color }};
+    font-size: {{ s.label_size }}px;
+    font-weight: {{ s.label_weight }};
+    line-height: 1.35;
+  }
+
+  #tm-specs-{{ section.id }} .tm-specs__value {
+    color: {{ s.value_color }};
+    font-size: {{ s.value_size }}px;
+    font-weight: {{ s.value_weight }};
+    line-height: 1.35;
+  }
+
+  #tm-specs-{{ section.id }} .tm-specs__guide-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: {{ s.guide_gap }}px;
+  }
+
+  #tm-specs-{{ section.id }} .tm-specs__guide-media,
+  #tm-specs-{{ section.id }} .tm-specs__pdf-box {
+    min-height: {{ s.guide_height }}px;
+  }
+
+  #tm-specs-{{ section.id }} .tm-specs__guide-media {
+    position: relative;
+  }
+
+  #tm-specs-{{ section.id }} .tm-specs__placeholder--video {
+    width: 100%;
+    height: 100%;
+    min-height: {{ s.guide_height }}px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: {{ s.media_bg }};
+  }
+
+  #tm-specs-{{ section.id }} .tm-specs__play {
+    width: {{ s.play_size }}px;
+    height: {{ s.play_size }}px;
+    border-radius: 999px;
+    background: {{ s.play_bg }};
+    color: {{ s.play_color }};
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #tm-specs-{{ section.id }} .tm-specs__play svg {
+    width: 52%;
+    height: 52%;
+  }
+
+  #tm-specs-{{ section.id }} .tm-specs__pdf-link {
+    width: 100%;
+    height: 100%;
+    min-height: {{ s.guide_height }}px;
+    text-decoration: none;
+    color: {{ s.pdf_color }};
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: {{ s.pdf_gap }}px;
+    text-align: center;
+    padding: 24px;
+  }
+
+  #tm-specs-{{ section.id }} .tm-specs__pdf-icon {
+    width: {{ s.pdf_icon_size }}px;
+    height: {{ s.pdf_icon_size }}px;
+    color: {{ s.pdf_icon_color }};
+  }
+
+  #tm-specs-{{ section.id }} .tm-specs__pdf-icon svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  #tm-specs-{{ section.id }} .tm-specs__pdf-title {
+    font-size: {{ s.pdf_size }}px;
+    font-weight: {{ s.pdf_weight }};
+  }
+
+  @media screen and (max-width: 749px) {
+    #tm-specs-{{ section.id }} {
+      padding: {{ s.mobile_padding_top }}px {{ s.mobile_padding_x }}px {{ s.mobile_padding_bottom }}px;
+    }
+
+    #tm-specs-{{ section.id }} .tm-specs__heading {
+      font-size: {{ s.mobile_heading_size }}px;
+      margin-bottom: {{ s.mobile_heading_margin_bottom }}px;
+    }
+
+    #tm-specs-{{ section.id }} .tm-specs__summary {
+      min-height: {{ s.mobile_summary_height }}px;
+      padding: {{ s.mobile_summary_padding_y }}px {{ s.mobile_summary_padding_x }}px;
+      font-size: {{ s.mobile_summary_size }}px;
+    }
+
+    #tm-specs-{{ section.id }} .tm-specs__content {
+      padding: 0 {{ s.mobile_content_padding_x }}px {{ s.mobile_content_padding_bottom }}px;
+    }
+
+    #tm-specs-{{ section.id }} .tm-specs__main-grid,
+    #tm-specs-{{ section.id }} .tm-specs__guide-grid {
+      grid-template-columns: 1fr;
+      gap: {{ s.mobile_grid_gap }}px;
+    }
+
+    #tm-specs-{{ section.id }} .tm-specs__media-box {
+      min-height: {{ s.mobile_media_min_height }}px;
+    }
+
+    #tm-specs-{{ section.id }} .tm-specs__technical-placeholder {
+      min-height: {{ s.mobile_media_min_height }}px;
+    }
+
+    #tm-specs-{{ section.id }} .tm-specs__tabs {
+      justify-content: flex-start;
+      overflow-x: auto;
+      padding-bottom: 2px;
+    }
+
+    #tm-specs-{{ section.id }} .tm-specs__tab {
+      white-space: nowrap;
+      font-size: {{ s.mobile_tab_size }}px;
+    }
+
+    #tm-specs-{{ section.id }} .tm-specs__row {
+      grid-template-columns: 1fr;
+      gap: 4px;
+      padding: {{ s.mobile_row_padding_y }}px 0;
+    }
+
+    #tm-specs-{{ section.id }} .tm-specs__label {
+      font-size: {{ s.mobile_label_size }}px;
+    }
+
+    #tm-specs-{{ section.id }} .tm-specs__value {
+      font-size: {{ s.mobile_value_size }}px;
+    }
+
+    #tm-specs-{{ section.id }} .tm-specs__guide-media,
+    #tm-specs-{{ section.id }} .tm-specs__pdf-box,
+    #tm-specs-{{ section.id }} .tm-specs__pdf-link,
+    #tm-specs-{{ section.id }} .tm-specs__placeholder--video {
+      min-height: {{ s.mobile_guide_height }}px;
+    }
+  }
+</style>
+
+<script>
+  function initTmSpecsTabs{{ section.id | replace: '-', '' }}() {
+    var section = document.querySelector('#tm-specs-{{ section.id }}');
+    if (!section) return;
+
+    section.querySelectorAll('.tm-specs__tabs').forEach(function (tabs) {
+      var content = tabs.closest('.tm-specs__content');
+      if (!content) return;
+
+      tabs.querySelectorAll('.tm-specs__tab').forEach(function (button) {
+        if (button.dataset.tmSpecsReady === 'true') return;
+        button.dataset.tmSpecsReady = 'true';
+
+        button.addEventListener('click', function () {
+          var target = button.getAttribute('data-tab');
+
+          tabs.querySelectorAll('.tm-specs__tab').forEach(function (btn) {
+            btn.classList.remove('is-active');
+          });
+
+          content.querySelectorAll('.tm-specs__tab-panel').forEach(function (panel) {
+            panel.classList.remove('is-active');
+          });
+
+          button.classList.add('is-active');
+
+          var activePanel = content.querySelector('[data-panel="' + target + '"]');
+          if (activePanel) {
+            activePanel.classList.add('is-active');
+          }
+        });
+      });
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', initTmSpecsTabs{{ section.id | replace: '-', '' }});
+  document.addEventListener('shopify:section:load', initTmSpecsTabs{{ section.id | replace: '-', '' }});
+</script>
+
+{% schema %}
+{
+  "name": "Specs produit",
+  "tag": "section",
+  "class": "section-caracteristiques-accordeon",
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Titre de la section",
+      "default": "Caractéristiques principales"
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "label": "Largeur maximale",
+      "min": 600,
+      "max": 1600,
+      "step": 20,
+      "unit": "px",
+      "default": 920
+    },
+    {
+      "type": "color",
+      "id": "section_bg",
+      "label": "Fond de section",
+      "default": "#f4f6f2"
+    },
+    {
+      "type": "color",
+      "id": "card_bg",
+      "label": "Fond des cartes",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "media_bg",
+      "label": "Fond des médias",
+      "default": "#f4f4f1"
+    },
+    {
+      "type": "color",
+      "id": "line_color",
+      "label": "Couleur des lignes",
+      "default": "#d9d9d4"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Couleur texte général",
+      "default": "#111111"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Couleur titre section",
+      "default": "#111111"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Taille titre desktop",
+      "min": 14,
+      "max": 48,
+      "step": 1,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "mobile_heading_size",
+      "label": "Taille titre mobile",
+      "min": 14,
+      "max": 36,
+      "step": 1,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "select",
+      "id": "heading_weight",
+      "label": "Graisse titre section",
+      "default": "500",
+      "options": [
+        {
+          "value": "400",
+          "label": "Normal"
+        },
+        {
+          "value": "500",
+          "label": "Medium"
+        },
+        {
+          "value": "600",
+          "label": "Semi-bold"
+        },
+        {
+          "value": "700",
+          "label": "Bold"
+        }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "heading_margin_bottom",
+      "label": "Espace sous titre desktop",
+      "min": 8,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 28
+    },
+    {
+      "type": "range",
+      "id": "mobile_heading_margin_bottom",
+      "label": "Espace sous titre mobile",
+      "min": 8,
+      "max": 50,
+      "step": 2,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Marge haute desktop",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 28
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Marge basse desktop",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_x",
+      "label": "Marge côtés desktop",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_top",
+      "label": "Marge haute mobile",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_bottom",
+      "label": "Marge basse mobile",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 28
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_x",
+      "label": "Marge côtés mobile",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "card_gap",
+      "label": "Espace entre cartes",
+      "min": 4,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "card_radius",
+      "label": "Arrondi cartes",
+      "min": 0,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "default": 7
+    },
+    {
+      "type": "range",
+      "id": "card_border_width",
+      "label": "Épaisseur bordure cartes",
+      "min": 0,
+      "max": 4,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "color",
+      "id": "card_border_color",
+      "label": "Couleur bordure cartes",
+      "default": "#eeeeee"
+    },
+    {
+      "type": "range",
+      "id": "summary_height",
+      "label": "Hauteur titre accordéon desktop",
+      "min": 36,
+      "max": 90,
+      "step": 2,
+      "unit": "px",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "mobile_summary_height",
+      "label": "Hauteur titre accordéon mobile",
+      "min": 36,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "summary_padding_x",
+      "label": "Padding horizontal titre desktop",
+      "min": 8,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "summary_padding_y",
+      "label": "Padding vertical titre desktop",
+      "min": 6,
+      "max": 30,
+      "step": 1,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "mobile_summary_padding_x",
+      "label": "Padding horizontal titre mobile",
+      "min": 8,
+      "max": 30,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "mobile_summary_padding_y",
+      "label": "Padding vertical titre mobile",
+      "min": 6,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "color",
+      "id": "summary_color",
+      "label": "Couleur titre accordéon",
+      "default": "#111111"
+    },
+    {
+      "type": "range",
+      "id": "summary_size",
+      "label": "Taille titre accordéon desktop",
+      "min": 11,
+      "max": 26,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "mobile_summary_size",
+      "label": "Taille titre accordéon mobile",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 15
+    },
+    {
+      "type": "select",
+      "id": "summary_weight",
+      "label": "Graisse titre accordéon",
+      "default": "500",
+      "options": [
+        {
+          "value": "400",
+          "label": "Normal"
+        },
+        {
+          "value": "500",
+          "label": "Medium"
+        },
+        {
+          "value": "600",
+          "label": "Semi-bold"
+        },
+        {
+          "value": "700",
+          "label": "Bold"
+        }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "chevron_size",
+      "label": "Taille chevron",
+      "min": 12,
+      "max": 28,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "color",
+      "id": "chevron_color",
+      "label": "Couleur chevron",
+      "default": "#111111"
+    },
+    {
+      "type": "range",
+      "id": "content_padding_x",
+      "label": "Padding contenu horizontal desktop",
+      "min": 8,
+      "max": 50,
+      "step": 1,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "content_padding_bottom",
+      "label": "Padding contenu bas desktop",
+      "min": 8,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "mobile_content_padding_x",
+      "label": "Padding contenu horizontal mobile",
+      "min": 8,
+      "max": 30,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "mobile_content_padding_bottom",
+      "label": "Padding contenu bas mobile",
+      "min": 8,
+      "max": 50,
+      "step": 1,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "media_column_width",
+      "label": "Largeur colonne média",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "default": 2
+    },
+    {
+      "type": "range",
+      "id": "table_column_width",
+      "label": "Largeur colonne tableau",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "range",
+      "id": "grid_gap",
+      "label": "Espace média / tableau desktop",
+      "min": 12,
+      "max": 70,
+      "step": 2,
+      "unit": "px",
+      "default": 34
+    },
+    {
+      "type": "range",
+      "id": "mobile_grid_gap",
+      "label": "Espace média / tableau mobile",
+      "min": 12,
+      "max": 50,
+      "step": 2,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "media_min_height",
+      "label": "Hauteur minimum média desktop",
+      "min": 120,
+      "max": 520,
+      "step": 10,
+      "unit": "px",
+      "default": 250
+    },
+    {
+      "type": "range",
+      "id": "mobile_media_min_height",
+      "label": "Hauteur minimum média mobile",
+      "min": 120,
+      "max": 420,
+      "step": 10,
+      "unit": "px",
+      "default": 220
+    },
+    {
+      "type": "range",
+      "id": "media_radius",
+      "label": "Arrondi médias",
+      "min": 0,
+      "max": 28,
+      "step": 1,
+      "unit": "px",
+      "default": 6
+    },
+    {
+      "type": "select",
+      "id": "media_object_fit",
+      "label": "Ajustement image / vidéo",
+      "default": "contain",
+      "options": [
+        {
+          "value": "cover",
+          "label": "Remplir"
+        },
+        {
+          "value": "contain",
+          "label": "Contenir"
+        }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "placeholder_color",
+      "label": "Couleur dessin placeholder",
+      "default": "#111111"
+    },
+    {
+      "type": "range",
+      "id": "label_column_width",
+      "label": "Largeur libellé tableau",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "default": 2
+    },
+    {
+      "type": "range",
+      "id": "value_column_width",
+      "label": "Largeur valeur tableau",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "range",
+      "id": "row_gap",
+      "label": "Espace libellé / valeur",
+      "min": 8,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "row_padding_y",
+      "label": "Padding lignes tableau desktop",
+      "min": 6,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 11
+    },
+    {
+      "type": "range",
+      "id": "mobile_row_padding_y",
+      "label": "Padding lignes tableau mobile",
+      "min": 7,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "color",
+      "id": "label_color",
+      "label": "Couleur libellés",
+      "default": "#777777"
+    },
+    {
+      "type": "color",
+      "id": "value_color",
+      "label": "Couleur valeurs",
+      "default": "#111111"
+    },
+    {
+      "type": "range",
+      "id": "label_size",
+      "label": "Taille libellés desktop",
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 11
+    },
+    {
+      "type": "range",
+      "id": "value_size",
+      "label": "Taille valeurs desktop",
+      "min": 10,
+      "max": 22,
+      "step": 1,
+      "unit": "px",
+      "default": 11
+    },
+    {
+      "type": "range",
+      "id": "mobile_label_size",
+      "label": "Taille libellés mobile",
+      "min": 11,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "mobile_value_size",
+      "label": "Taille valeurs mobile",
+      "min": 11,
+      "max": 22,
+      "step": 1,
+      "unit": "px",
+      "default": 13
+    },
+    {
+      "type": "select",
+      "id": "label_weight",
+      "label": "Graisse libellés",
+      "default": "400",
+      "options": [
+        {
+          "value": "400",
+          "label": "Normal"
+        },
+        {
+          "value": "500",
+          "label": "Medium"
+        },
+        {
+          "value": "600",
+          "label": "Semi-bold"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "value_weight",
+      "label": "Graisse valeurs",
+      "default": "500",
+      "options": [
+        {
+          "value": "400",
+          "label": "Normal"
+        },
+        {
+          "value": "500",
+          "label": "Medium"
+        },
+        {
+          "value": "600",
+          "label": "Semi-bold"
+        },
+        {
+          "value": "700",
+          "label": "Bold"
+        }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "tab_gap",
+      "label": "Espace entre onglets",
+      "min": 0,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "tabs_margin_bottom",
+      "label": "Espace sous onglets",
+      "min": 12,
+      "max": 50,
+      "step": 1,
+      "unit": "px",
+      "default": 26
+    },
+    {
+      "type": "range",
+      "id": "tab_padding_x",
+      "label": "Padding onglet horizontal",
+      "min": 8,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "tab_padding_y",
+      "label": "Padding onglet vertical",
+      "min": 6,
+      "max": 22,
+      "step": 1,
+      "unit": "px",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "tab_size",
+      "label": "Taille onglets desktop",
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 11
+    },
+    {
+      "type": "range",
+      "id": "mobile_tab_size",
+      "label": "Taille onglets mobile",
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "select",
+      "id": "tab_weight",
+      "label": "Graisse onglets",
+      "default": "500",
+      "options": [
+        {
+          "value": "400",
+          "label": "Normal"
+        },
+        {
+          "value": "500",
+          "label": "Medium"
+        },
+        {
+          "value": "600",
+          "label": "Semi-bold"
+        }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "tab_color",
+      "label": "Couleur onglets",
+      "default": "#333333"
+    },
+    {
+      "type": "color",
+      "id": "tab_active_color",
+      "label": "Couleur onglet actif",
+      "default": "#111111"
+    },
+    {
+      "type": "color",
+      "id": "tab_active_line_color",
+      "label": "Ligne onglet actif",
+      "default": "#5952b5"
+    },
+    {
+      "type": "range",
+      "id": "tab_border_height",
+      "label": "Épaisseur ligne onglet actif",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "unit": "px",
+      "default": 2
+    },
+    {
+      "type": "range",
+      "id": "guide_gap",
+      "label": "Espace guide vidéo / PDF desktop",
+      "min": 12,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "guide_height",
+      "label": "Hauteur guide desktop",
+      "min": 120,
+      "max": 360,
+      "step": 10,
+      "unit": "px",
+      "default": 210
+    },
+    {
+      "type": "range",
+      "id": "mobile_guide_height",
+      "label": "Hauteur guide mobile",
+      "min": 120,
+      "max": 340,
+      "step": 10,
+      "unit": "px",
+      "default": 190
+    },
+    {
+      "type": "range",
+      "id": "play_size",
+      "label": "Taille bouton lecture",
+      "min": 34,
+      "max": 90,
+      "step": 2,
+      "unit": "px",
+      "default": 54
+    },
+    {
+      "type": "color",
+      "id": "play_bg",
+      "label": "Fond bouton lecture",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "play_color",
+      "label": "Couleur bouton lecture",
+      "default": "#111111"
+    },
+    {
+      "type": "color",
+      "id": "pdf_color",
+      "label": "Couleur texte PDF",
+      "default": "#5550b5"
+    },
+    {
+      "type": "color",
+      "id": "pdf_icon_color",
+      "label": "Couleur icône PDF",
+      "default": "#ff3b30"
+    },
+    {
+      "type": "range",
+      "id": "pdf_icon_size",
+      "label": "Taille icône PDF",
+      "min": 32,
+      "max": 90,
+      "step": 2,
+      "unit": "px",
+      "default": 52
+    },
+    {
+      "type": "range",
+      "id": "pdf_gap",
+      "label": "Espace icône / texte PDF",
+      "min": 4,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "pdf_size",
+      "label": "Taille texte PDF",
+      "min": 10,
+      "max": 22,
+      "step": 1,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "select",
+      "id": "pdf_weight",
+      "label": "Graisse texte PDF",
+      "default": "500",
+      "options": [
+        {
+          "value": "400",
+          "label": "Normal"
+        },
+        {
+          "value": "500",
+          "label": "Medium"
+        },
+        {
+          "value": "600",
+          "label": "Semi-bold"
+        }
+      ]
+    }
+  ],
+  "blocks": [
+    {
+      "type": "spec_card",
+      "name": "Bloc caractéristique",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Titre du bloc",
+          "default": "Informations générales"
+        },
+        {
+          "type": "checkbox",
+          "id": "open_by_default",
+          "label": "Ouvert par défaut",
+          "default": true
+        },
+        {
+          "type": "select",
+          "id": "layout",
+          "label": "Type de contenu",
+          "default": "specs",
+          "options": [
+            {
+              "value": "specs",
+              "label": "Média + tableau"
+            },
+            {
+              "value": "tabbed",
+              "label": "Onglets + média + tableau"
+            },
+            {
+              "value": "guide",
+              "label": "Guide vidéo + PDF"
+            }
+          ]
+        },
+        {
+          "type": "header",
+          "content": "Média"
+        },
+        {
+          "type": "select",
+          "id": "media_type",
+          "label": "Type de média",
+          "default": "image",
+          "options": [
+            {
+              "value": "none",
+              "label": "Aucun / dessin par défaut"
+            },
+            {
+              "value": "image",
+              "label": "Image"
+            },
+            {
+              "value": "shopify_video",
+              "label": "Vidéo Shopify"
+            },
+            {
+              "value": "external_video",
+              "label": "Vidéo YouTube / Vimeo"
+            }
+          ]
+        },
+        {
+          "type": "image_picker",
+          "id": "media_image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "image_alt",
+          "label": "Texte alternatif image",
+          "default": "Illustration des caractéristiques"
+        },
+        {
+          "type": "video",
+          "id": "shopify_video",
+          "label": "Vidéo Shopify"
+        },
+        {
+          "type": "video_url",
+          "id": "external_video",
+          "label": "Vidéo YouTube ou Vimeo",
+          "accept": [
+            "youtube",
+            "vimeo"
+          ]
+        },
+        {
+          "type": "text",
+          "id": "video_title",
+          "label": "Titre de la vidéo",
+          "default": "Vidéo produit"
+        },
+        {
+          "type": "checkbox",
+          "id": "video_autoplay",
+          "label": "Lecture automatique",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "video_loop",
+          "label": "Lecture en boucle",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "video_muted",
+          "label": "Vidéo muette",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "video_controls",
+          "label": "Afficher les contrôles vidéo",
+          "default": true
+        },
+        {
+          "type": "header",
+          "content": "Tableau simple"
+        },
+        {
+          "type": "textarea",
+          "id": "spec_rows",
+          "label": "Lignes du tableau",
+          "info": "Une ligne par caractéristique. Format : Libellé|Valeur",
+          "default": "Méthode de montage|Montage autonome\nDifficulté du montage|Facile, aucun outil supplémentaire n’est nécessaire\nTemps de montage moyen|30 minutes\nGarantie|5 ans\nRetours gratuits|30 jours"
+        },
+        {
+          "type": "header",
+          "content": "Onglets"
+        },
+        {
+          "type": "text",
+          "id": "tab_1_label",
+          "label": "Nom onglet 1",
+          "default": "Classique / Édition limitée"
+        },
+        {
+          "type": "textarea",
+          "id": "tab_1_rows",
+          "label": "Lignes onglet 1",
+          "info": "Format : Libellé|Valeur",
+          "default": "Dimensions|120 × 80 × 2,5 cm\nDimensions pour l’expédition|129,5 × 88,5 cm\nCouleurs classiques|Blanc, Noir, Chêne, Noyer, Gris\nCouleurs en édition limitée|Vert olive, Bleu nuit, Rose poudré\nMatériau|Aggloméré à surface mélaminée résistante aux déformations"
+        },
+        {
+          "type": "text",
+          "id": "tab_2_label",
+          "label": "Nom onglet 2",
+          "default": "Premium"
+        },
+        {
+          "type": "textarea",
+          "id": "tab_2_rows",
+          "label": "Lignes onglet 2",
+          "info": "Format : Libellé|Valeur",
+          "default": "Dimensions|140 × 70 cm\nÉpaisseur|2,5 cm\nPoids|Selon finition\nCouleurs|Bois massif, Noir, Blanc\nMatériau|Plateau premium haute résistance"
+        },
+        {
+          "type": "text",
+          "id": "tab_3_label",
+          "label": "Nom onglet 3",
+          "default": "150 × 80 cm"
+        },
+        {
+          "type": "textarea",
+          "id": "tab_3_rows",
+          "label": "Lignes onglet 3",
+          "info": "Format : Libellé|Valeur",
+          "default": "Dimensions|150 × 80 cm\nÉpaisseur|2,5 cm\nPoids|Selon finition\nCouleurs|Blanc, Noir, Gris\nMatériau|Surface résistante et facile à nettoyer"
+        },
+        {
+          "type": "header",
+          "content": "PDF / guide"
+        },
+        {
+          "type": "url",
+          "id": "pdf_url",
+          "label": "Lien du PDF"
+        },
+        {
+          "type": "text",
+          "id": "pdf_label",
+          "label": "Texte du PDF",
+          "default": "Instructions de montage PDF"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Specs produit",
+      "blocks": [
+        {
+          "type": "spec_card",
+          "settings": {
+            "title": "Informations générales",
+            "open_by_default": true,
+            "layout": "specs",
+            "media_type": "none",
+            "spec_rows": "Méthode de montage|Montage autonome\nDifficulté du montage|Facile, aucun outil supplémentaire n’est nécessaire\nTemps de montage moyen|30 minutes\nGarantie|5 ans\nRetours gratuits|30 jours"
+          }
+        },
+        {
+          "type": "spec_card",
+          "settings": {
+            "title": "Caractéristiques du plateau",
+            "open_by_default": true,
+            "layout": "tabbed",
+            "media_type": "none"
+          }
+        },
+        {
+          "type": "spec_card",
+          "settings": {
+            "title": "Caractéristiques du cadre électrique",
+            "open_by_default": true,
+            "layout": "specs",
+            "media_type": "none",
+            "spec_rows": "Type de moteur|Système à double moteur extra puissant\nVitesse de levage|30 mm/s\nCapacité de levage|Limite à 120 kg\nNiveau sonore|< 39 dB\nAjustement de la hauteur|70,2 cm – 118,5 cm\nLongueur des pieds du cadre|60 cm\nMatériau|Acier de qualité supérieure\nCouleurs classiques|Blanc, noir, gris\nTension d’alimentation|220–240 V\nAnti-collision|Avancé"
+          }
+        },
+        {
+          "type": "spec_card",
+          "settings": {
+            "title": "Guide d’assemblage",
+            "open_by_default": true,
+            "layout": "guide",
+            "media_type": "none",
+            "pdf_label": "Instructions de montage PDF"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
