@@ -496,7 +496,7 @@
         "show_arrows": false,
         "show_arrows_mobile": false,
         "show_dots": true,
-        "autoplay": false,
+        "autoplay": true,
         "autoplay_speed": 4000,
         "items_desktop": 4,
         "items_tablet": 2,
