@@ -448,6 +448,93 @@
         "spacing": "small"
       }
     },
+    "levoracardsslider_h7wC4V": {
+      "type": "levoracardsslider",
+      "blocks": {
+        "card_3nAE8t": {
+          "type": "card",
+          "settings": {
+            "icon": "truck",
+            "title": "Livraison rapide",
+            "text": "<p>Toutes les commandes sont expédiées dans un délai de 3 à 5 jours.</p>"
+          }
+        },
+        "card_ht3tPL": {
+          "type": "card",
+          "settings": {
+            "icon": "return",
+            "title": "Retour gratuit et facile",
+            "text": "<p>Si vous n'êtes pas satisfait, vous pouvez renvoyer le produit gratuitement dans les 30 jours suivant l'achat.</p>"
+          }
+        },
+        "card_MKNxy3": {
+          "type": "card",
+          "settings": {
+            "icon": "shield",
+            "title": "Garantie prolongée",
+            "text": "<p>Une expérience sans stress avec des remplacements rapides et une durabilité exceptionnelle.</p>"
+          }
+        },
+        "card_cUGzkm": {
+          "type": "card",
+          "settings": {
+            "icon": "card",
+            "title": "Options de paiement flexibles",
+            "text": "<p>Commandez ce dont vous avez besoin aujourd'hui et payez plus tard ou en plusieurs versements sans intérêt.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "card_3nAE8t",
+        "card_ht3tPL",
+        "card_MKNxy3",
+        "card_cUGzkm"
+      ],
+      "name": "Cartes réassurance",
+      "settings": {
+        "heading": "",
+        "show_arrows": false,
+        "show_arrows_mobile": false,
+        "show_dots": true,
+        "autoplay": false,
+        "autoplay_speed": 4000,
+        "items_desktop": 4,
+        "items_tablet": 2,
+        "items_mobile": 1,
+        "bg_color": "#FBFBFB",
+        "card_bg": "#f7f7f7",
+        "text_color": "#171717",
+        "muted_color": "#5f5f5f",
+        "icon_color": "#171717",
+        "arrow_bg": "#ffffff",
+        "arrow_color": "#171717",
+        "dot_color": "#171717",
+        "max_width": 1600,
+        "radius": 13,
+        "gap": 24,
+        "gap_mobile": 14,
+        "card_height": 250,
+        "card_height_mobile": 220,
+        "padding_y": 16,
+        "padding_x": 16,
+        "padding_y_mobile": 12,
+        "padding_x_mobile": 12,
+        "card_padding_y": 48,
+        "card_padding_x": 42,
+        "card_padding_y_mobile": 38,
+        "card_padding_x_mobile": 28,
+        "title_size": 19,
+        "text_size": 15,
+        "title_size_mobile": 19,
+        "text_size_mobile": 14,
+        "title_weight": "500",
+        "text_weight": "400",
+        "icon_size": 42,
+        "icon_size_mobile": 38,
+        "badge_width": 55,
+        "badge_width_mobile": 50
+      }
+    },
     "sectioncomparatif_73fArT": {
       "type": "sectioncomparatif",
       "blocks": {
@@ -730,6 +817,7 @@
     "scrolling_text_9zWEGR",
     "sectionmediabenefice_4YmbkC",
     "media_with_text_iXeeMH",
+    "levoracardsslider_h7wC4V",
     "sectioncomparatif_73fArT",
     "faq_Di9CFW"
   ]
