@@ -164,10 +164,8 @@
       "type": "featured-collection",
       "name": "Featured collection",
       "settings": {
-        "collection": "",
-        "products": [
-          "bureau-assis-debout-levoradesk"
-        ],
+        "collection": "frontpage",
+        "products": [],
         "full_width": true,
         "stack_products": false,
         "show_progress_bar": true,
@@ -346,7 +344,7 @@
         "desktop_image_position": "center center",
         "mobile_image_position": "center center",
         "fallback_background": "#111111",
-        "section_background": "#FBFBFB",
+        "section_background": "#fbfbfb",
         "overlay_color": "#000000",
         "overlay_opacity": 62,
         "show_icon": true,
@@ -394,7 +392,7 @@
         "mobile_icon_size": 32,
         "icon_margin_bottom": 8,
         "mobile_icon_margin_bottom": 8,
-        "button_background": "#FFFFFF",
+        "button_background": "#ffffff",
         "button_text_color": "#000000",
         "button_icon_background": "#1d1b2c",
         "button_icon_color": "#ffffff",
