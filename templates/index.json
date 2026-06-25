@@ -458,6 +458,8 @@
       "type": "section-garantie",
       "name": "Bannière garantie remboursement",
       "settings": {
+        "desktop_image": "shopify://shop_images/Hardwood-Grommet-Preview_1.webp",
+        "mobile_image": "shopify://shop_images/Hardwood-Grommet-Preview_1.webp",
         "desktop_image_position": "center center",
         "mobile_image_position": "center center",
         "fallback_background": "#111111",
