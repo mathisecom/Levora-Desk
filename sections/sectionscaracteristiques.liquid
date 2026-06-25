@@ -1,8 +1,7 @@
 {% comment %}
-  Section Shopify : Caractéristiques principales en accordéon
+  Section Shopify : Specs produit
+  Accordéons fermés par défaut
   Responsive PC + Mobile
-  Médias : image, vidéo Shopify, YouTube/Vimeo
-  Tableaux modifiables via textarea : Label|Valeur
 {% endcomment %}
 
 {% liquid
@@ -509,10 +508,6 @@
     min-height: {{ s.guide_height }}px;
   }
 
-  #tm-specs-{{ section.id }} .tm-specs__guide-media {
-    position: relative;
-  }
-
   #tm-specs-{{ section.id }} .tm-specs__placeholder--video {
     width: 100%;
     height: 100%;
@@ -596,10 +591,7 @@
       gap: {{ s.mobile_grid_gap }}px;
     }
 
-    #tm-specs-{{ section.id }} .tm-specs__media-box {
-      min-height: {{ s.mobile_media_min_height }}px;
-    }
-
+    #tm-specs-{{ section.id }} .tm-specs__media-box,
     #tm-specs-{{ section.id }} .tm-specs__technical-placeholder {
       min-height: {{ s.mobile_media_min_height }}px;
     }
@@ -681,7 +673,7 @@
 {
   "name": "Specs produit",
   "tag": "section",
-  "class": "section-caracteristiques-accordeon",
+  "class": "section-specs-produit",
   "settings": [
     {
       "type": "inline_richtext",
@@ -761,22 +753,10 @@
       "label": "Graisse titre section",
       "default": "500",
       "options": [
-        {
-          "value": "400",
-          "label": "Normal"
-        },
-        {
-          "value": "500",
-          "label": "Medium"
-        },
-        {
-          "value": "600",
-          "label": "Semi-bold"
-        },
-        {
-          "value": "700",
-          "label": "Bold"
-        }
+        { "value": "400", "label": "Normal" },
+        { "value": "500", "label": "Medium" },
+        { "value": "600", "label": "Semi-bold" },
+        { "value": "700", "label": "Bold" }
       ]
     },
     {
@@ -987,22 +967,10 @@
       "label": "Graisse titre accordéon",
       "default": "500",
       "options": [
-        {
-          "value": "400",
-          "label": "Normal"
-        },
-        {
-          "value": "500",
-          "label": "Medium"
-        },
-        {
-          "value": "600",
-          "label": "Semi-bold"
-        },
-        {
-          "value": "700",
-          "label": "Bold"
-        }
+        { "value": "400", "label": "Normal" },
+        { "value": "500", "label": "Medium" },
+        { "value": "600", "label": "Semi-bold" },
+        { "value": "700", "label": "Bold" }
       ]
     },
     {
@@ -1135,14 +1103,8 @@
       "label": "Ajustement image / vidéo",
       "default": "contain",
       "options": [
-        {
-          "value": "cover",
-          "label": "Remplir"
-        },
-        {
-          "value": "contain",
-          "label": "Contenir"
-        }
+        { "value": "cover", "label": "Remplir" },
+        { "value": "contain", "label": "Contenir" }
       ]
     },
     {
@@ -1257,18 +1219,9 @@
       "label": "Graisse libellés",
       "default": "400",
       "options": [
-        {
-          "value": "400",
-          "label": "Normal"
-        },
-        {
-          "value": "500",
-          "label": "Medium"
-        },
-        {
-          "value": "600",
-          "label": "Semi-bold"
-        }
+        { "value": "400", "label": "Normal" },
+        { "value": "500", "label": "Medium" },
+        { "value": "600", "label": "Semi-bold" }
       ]
     },
     {
@@ -1277,22 +1230,10 @@
       "label": "Graisse valeurs",
       "default": "500",
       "options": [
-        {
-          "value": "400",
-          "label": "Normal"
-        },
-        {
-          "value": "500",
-          "label": "Medium"
-        },
-        {
-          "value": "600",
-          "label": "Semi-bold"
-        },
-        {
-          "value": "700",
-          "label": "Bold"
-        }
+        { "value": "400", "label": "Normal" },
+        { "value": "500", "label": "Medium" },
+        { "value": "600", "label": "Semi-bold" },
+        { "value": "700", "label": "Bold" }
       ]
     },
     {
@@ -1361,18 +1302,9 @@
       "label": "Graisse onglets",
       "default": "500",
       "options": [
-        {
-          "value": "400",
-          "label": "Normal"
-        },
-        {
-          "value": "500",
-          "label": "Medium"
-        },
-        {
-          "value": "600",
-          "label": "Semi-bold"
-        }
+        { "value": "400", "label": "Normal" },
+        { "value": "500", "label": "Medium" },
+        { "value": "600", "label": "Semi-bold" }
       ]
     },
     {
@@ -1503,25 +1435,16 @@
       "label": "Graisse texte PDF",
       "default": "500",
       "options": [
-        {
-          "value": "400",
-          "label": "Normal"
-        },
-        {
-          "value": "500",
-          "label": "Medium"
-        },
-        {
-          "value": "600",
-          "label": "Semi-bold"
-        }
+        { "value": "400", "label": "Normal" },
+        { "value": "500", "label": "Medium" },
+        { "value": "600", "label": "Semi-bold" }
       ]
     }
   ],
   "blocks": [
     {
       "type": "spec_card",
-      "name": "Bloc caractéristique",
+      "name": "Bloc specs",
       "settings": [
         {
           "type": "text",
@@ -1533,7 +1456,7 @@
           "type": "checkbox",
           "id": "open_by_default",
           "label": "Ouvert par défaut",
-          "default": true
+          "default": false
         },
         {
           "type": "select",
@@ -1541,18 +1464,9 @@
           "label": "Type de contenu",
           "default": "specs",
           "options": [
-            {
-              "value": "specs",
-              "label": "Média + tableau"
-            },
-            {
-              "value": "tabbed",
-              "label": "Onglets + média + tableau"
-            },
-            {
-              "value": "guide",
-              "label": "Guide vidéo + PDF"
-            }
+            { "value": "specs", "label": "Média + tableau" },
+            { "value": "tabbed", "label": "Onglets + média + tableau" },
+            { "value": "guide", "label": "Guide vidéo + PDF" }
           ]
         },
         {
@@ -1565,22 +1479,10 @@
           "label": "Type de média",
           "default": "image",
           "options": [
-            {
-              "value": "none",
-              "label": "Aucun / dessin par défaut"
-            },
-            {
-              "value": "image",
-              "label": "Image"
-            },
-            {
-              "value": "shopify_video",
-              "label": "Vidéo Shopify"
-            },
-            {
-              "value": "external_video",
-              "label": "Vidéo YouTube / Vimeo"
-            }
+            { "value": "none", "label": "Aucun / dessin par défaut" },
+            { "value": "image", "label": "Image" },
+            { "value": "shopify_video", "label": "Vidéo Shopify" },
+            { "value": "external_video", "label": "Vidéo YouTube / Vimeo" }
           ]
         },
         {
@@ -1603,10 +1505,7 @@
           "type": "video_url",
           "id": "external_video",
           "label": "Vidéo YouTube ou Vimeo",
-          "accept": [
-            "youtube",
-            "vimeo"
-          ]
+          "accept": ["youtube", "vimeo"]
         },
         {
           "type": "text",
@@ -1718,7 +1617,7 @@
           "type": "spec_card",
           "settings": {
             "title": "Informations générales",
-            "open_by_default": true,
+            "open_by_default": false,
             "layout": "specs",
             "media_type": "none",
             "spec_rows": "Méthode de montage|Montage autonome\nDifficulté du montage|Facile, aucun outil supplémentaire n’est nécessaire\nTemps de montage moyen|30 minutes\nGarantie|5 ans\nRetours gratuits|30 jours"
@@ -1728,7 +1627,7 @@
           "type": "spec_card",
           "settings": {
             "title": "Caractéristiques du plateau",
-            "open_by_default": true,
+            "open_by_default": false,
             "layout": "tabbed",
             "media_type": "none"
           }
@@ -1737,7 +1636,7 @@
           "type": "spec_card",
           "settings": {
             "title": "Caractéristiques du cadre électrique",
-            "open_by_default": true,
+            "open_by_default": false,
             "layout": "specs",
             "media_type": "none",
             "spec_rows": "Type de moteur|Système à double moteur extra puissant\nVitesse de levage|30 mm/s\nCapacité de levage|Limite à 120 kg\nNiveau sonore|< 39 dB\nAjustement de la hauteur|70,2 cm – 118,5 cm\nLongueur des pieds du cadre|60 cm\nMatériau|Acier de qualité supérieure\nCouleurs classiques|Blanc, noir, gris\nTension d’alimentation|220–240 V\nAnti-collision|Avancé"
@@ -1747,7 +1646,7 @@
           "type": "spec_card",
           "settings": {
             "title": "Guide d’assemblage",
-            "open_by_default": true,
+            "open_by_default": false,
             "layout": "guide",
             "media_type": "none",
             "pdf_label": "Instructions de montage PDF"
