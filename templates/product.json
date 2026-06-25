@@ -803,10 +803,10 @@
             "spec_rows": "Méthode de montage|Montage autonome\nDifficulté du montage|Facile, aucun outil supplémentaire n’est nécessaire\nTemps de montage moyen|30 minutes\nGarantie|5 ans\nRetours gratuits|30 jours",
             "tab_1_label": "Classique / Édition limitée",
             "tab_1_rows": "Dimensions|120 × 80 × 2,5 cm\nDimensions pour l’expédition|129,5 × 88,5 cm\nCouleurs classiques|Blanc, Noir, Chêne, Noyer, Gris\nCouleurs en édition limitée|Vert olive, Bleu nuit, Rose poudré\nMatériau|Aggloméré à surface mélaminée résistante aux déformations",
-            "tab_2_label": "Premium",
-            "tab_2_rows": "Dimensions|140 × 70 cm\nÉpaisseur|2,5 cm\nPoids|Selon finition\nCouleurs|Bois massif, Noir, Blanc\nMatériau|Plateau premium haute résistance",
-            "tab_3_label": "150 × 80 cm",
-            "tab_3_rows": "Dimensions|150 × 80 cm\nÉpaisseur|2,5 cm\nPoids|Selon finition\nCouleurs|Blanc, Noir, Gris\nMatériau|Surface résistante et facile à nettoyer",
+            "tab_2_label": "",
+            "tab_2_rows": "",
+            "tab_3_label": "",
+            "tab_3_rows": "",
             "pdf_url": "",
             "pdf_label": "Instructions de montage PDF"
           }
@@ -838,6 +838,7 @@
         },
         "spec_card_4W9gzm": {
           "type": "spec_card",
+          "disabled": true,
           "settings": {
             "title": "Guide d’assemblage",
             "open_by_default": false,
