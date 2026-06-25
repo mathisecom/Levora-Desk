@@ -183,6 +183,228 @@
         "spacing": "small"
       }
     },
+    "sectioncomparatif_73fArT": {
+      "type": "sectioncomparatif",
+      "blocks": {
+        "row_ciUrif": {
+          "type": "row",
+          "settings": {
+            "feature": "Stabilité à toute épreuve",
+            "icon_type": "chair",
+            "custom_svg": "",
+            "brand_value_type": "check",
+            "brand_text": "Jusqu'à 50 mm/s",
+            "brand_info": "",
+            "competitor_value_type": "dash",
+            "competitor_text": "50–55 dB",
+            "competitor_info": ""
+          }
+        },
+        "row_gVAzdB": {
+          "type": "row",
+          "settings": {
+            "feature": "Presque silencieux",
+            "icon_type": "ear",
+            "custom_svg": "",
+            "brand_value_type": "text",
+            "brand_text": "39 dB",
+            "brand_info": "",
+            "competitor_value_type": "text",
+            "competitor_text": "50–55 dB",
+            "competitor_info": ""
+          }
+        },
+        "row_Hx7xbh": {
+          "type": "row",
+          "settings": {
+            "feature": "Plateau monobloc",
+            "icon_type": "plateau",
+            "custom_svg": "",
+            "brand_value_type": "check",
+            "brand_text": "Jusqu'à 50 mm/s",
+            "brand_info": "",
+            "competitor_value_type": "dash",
+            "competitor_text": "50–55 dB",
+            "competitor_info": ""
+          }
+        },
+        "row_V4i7Vb": {
+          "type": "row",
+          "settings": {
+            "feature": "Système à double moteur",
+            "icon_type": "motor",
+            "custom_svg": "",
+            "brand_value_type": "check",
+            "brand_text": "Jusqu'à 50 mm/s",
+            "brand_info": "",
+            "competitor_value_type": "dash",
+            "competitor_text": "50–55 dB",
+            "competitor_info": ""
+          }
+        },
+        "row_z8BtHt": {
+          "type": "row",
+          "settings": {
+            "feature": "Vitesse de levage",
+            "icon_type": "speed",
+            "custom_svg": "",
+            "brand_value_type": "text",
+            "brand_text": "Jusqu'à 50 mm/s",
+            "brand_info": "Vitesse maximale de levage.",
+            "competitor_value_type": "text",
+            "competitor_text": "20–25 mm/s",
+            "competitor_info": ""
+          }
+        },
+        "row_3pcxaa": {
+          "type": "row",
+          "settings": {
+            "feature": "Capacité de charge",
+            "icon_type": "load",
+            "custom_svg": "",
+            "brand_value_type": "text",
+            "brand_text": "Jusqu'à 160 kg",
+            "brand_info": "Charge maximale supportée.",
+            "competitor_value_type": "text",
+            "competitor_text": "~80 kg",
+            "competitor_info": ""
+          }
+        },
+        "row_fhfhUd": {
+          "type": "row",
+          "settings": {
+            "feature": "Certifié ergonomique",
+            "icon_type": "badge",
+            "custom_svg": "",
+            "brand_value_type": "text",
+            "brand_text": "Certifié TÜV Rheinland & Institut IGR",
+            "brand_info": "",
+            "competitor_value_type": "dash",
+            "competitor_text": "50–55 dB",
+            "competitor_info": ""
+          }
+        },
+        "row_aMmTkU": {
+          "type": "row",
+          "settings": {
+            "feature": "Service client dévoué",
+            "icon_type": "headset",
+            "custom_svg": "",
+            "brand_value_type": "check",
+            "brand_text": "Jusqu'à 50 mm/s",
+            "brand_info": "",
+            "competitor_value_type": "check",
+            "competitor_text": "50–55 dB",
+            "competitor_info": ""
+          }
+        },
+        "row_qpzDDy": {
+          "type": "row",
+          "settings": {
+            "feature": "Retour gratuit et sans risque",
+            "icon_type": "return",
+            "custom_svg": "",
+            "brand_value_type": "check",
+            "brand_text": "Jusqu'à 50 mm/s",
+            "brand_info": "",
+            "competitor_value_type": "check",
+            "competitor_text": "50–55 dB",
+            "competitor_info": ""
+          }
+        }
+      },
+      "block_order": [
+        "row_ciUrif",
+        "row_gVAzdB",
+        "row_Hx7xbh",
+        "row_V4i7Vb",
+        "row_z8BtHt",
+        "row_3pcxaa",
+        "row_fhfhUd",
+        "row_aMmTkU",
+        "row_qpzDDy"
+      ],
+      "name": "Comparatif marque",
+      "settings": {
+        "show_header": true,
+        "brand_name": "LevoraDesk",
+        "competitor_name": "Autres Marques",
+        "competitor_info": "Comparaison indicative avec certaines marques concurrentes.",
+        "show_rating": true,
+        "rating_stars": "★★★★★",
+        "rating_text": "4.8",
+        "max_width": 940,
+        "feature_column_width": 3,
+        "brand_column_width": 2,
+        "competitor_column_width": 2,
+        "header_height": 96,
+        "row_height": 86,
+        "cell_padding_x": 24,
+        "cell_padding_y": 16,
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "padding_x": 40,
+        "mobile_padding_top": 28,
+        "mobile_padding_bottom": 28,
+        "mobile_padding_x": 16,
+        "section_bg": "#f4f5f0",
+        "mobile_card_bg": "#ffffff",
+        "mobile_feature_bg": "#f4f5f0",
+        "line_color": "#d9d9d2",
+        "brand_header_bg": "#ffffff",
+        "brand_column_bg": "#fbfbfb",
+        "competitor_column_bg": "#f4f5f0",
+        "text_color": "#000000",
+        "brand_name_color": "#000000",
+        "brand_name_size": 16,
+        "mobile_brand_name_size": 17,
+        "brand_name_weight": "500",
+        "competitor_title_color": "#000000",
+        "competitor_title_size": 16,
+        "competitor_title_weight": "400",
+        "feature_text_color": "#000000",
+        "feature_text_weight": "400",
+        "value_text_color": "#000000",
+        "value_text_weight": "400",
+        "cell_font_size": 17,
+        "mobile_cell_font_size": 15,
+        "star_color": "#e6aa3c",
+        "rating_text_color": "#000000",
+        "rating_size": 12,
+        "mobile_rating_size": 12,
+        "icon_bg": "#ecece5",
+        "icon_color": "#000000",
+        "icon_box_size": 48,
+        "mobile_icon_box_size": 44,
+        "icon_size": 28,
+        "mobile_icon_size": 26,
+        "icon_radius": 9,
+        "icon_gap": 16,
+        "check_size": 32,
+        "brand_check_bg": "#e3e4f2",
+        "brand_check_color": "#6770b8",
+        "competitor_check_bg": "#eeeee6",
+        "competitor_check_color": "#000000",
+        "dash_color": "#a4a49e",
+        "dash_size": 22,
+        "info_size": 12,
+        "info_color": "#9d9d99",
+        "header_radius": 14,
+        "brand_bottom_radius": 0,
+        "show_shadow": false,
+        "header_padding": 16,
+        "mobile_row_gap": 12,
+        "mobile_card_radius": 14,
+        "mobile_cell_padding_x": 16,
+        "mobile_cell_padding_y": 14,
+        "mobile_header_margin": 18,
+        "mobile_header_padding": 16,
+        "mobile_vs_size": 14,
+        "mobile_label_color": "#555555",
+        "mobile_label_size": 13,
+        "mobile_label_weight": "600"
+      }
+    },
     "levoraavisclients_BTEX6X": {
       "type": "levoraavisclients",
       "blocks": {
@@ -392,6 +614,7 @@
     "main",
     "scrolling_text_9zWEGR",
     "media_with_text_iXeeMH",
+    "sectioncomparatif_73fArT",
     "levoraavisclients_BTEX6X",
     "faq_Di9CFW"
   ]
