@@ -1048,21 +1048,21 @@
           "type": "item",
           "settings": {
             "title": "Quelle est la garantie des produits LevoraDesk ?",
-            "content": "<p>Yes, we ship all over the world. Shipping costs will apply, and will be added at checkout. We run discounts and promotions all year, so stay tuned for exclusive deals.</p>"
+            "content": "<p>Tous nos bureaux LoveraDesk sont couverts par une garantie de 5 ans. Cette garantie couvre les défauts de fabrication et vous assure une utilisation fiable sur le long terme.</p>"
           }
         },
         "item_r8wiTL": {
           "type": "item",
           "settings": {
             "title": "Est-ce que mes commandes peuvent être assemblées avant la livraison ?",
-            "content": "<p>It depends on where you are. Orders processed here will take 5-7 business days to arrive. Overseas deliveries can take anywhere from 7-16 days. Delivery details will be provided in your confirmation email.</p>"
+            "content": "<p>Nos produits sont livrés prêts à assembler, avec une notice claire pour vous guider étape par étape. L’assemblage est simple et ne nécessite pas de compétences particulières.</p>"
           }
         },
         "item_P7HP8N": {
           "type": "item",
           "settings": {
             "title": "Est-ce que vous livrez partout dans le monde ?",
-            "content": "<p>You can contact us through our contact page! We will be happy to assist you.</p>"
+            "content": "<p>Pour le moment, LoveraDesk livre principalement en France. Certaines destinations peuvent être disponibles selon les transporteurs. Les options de livraison sont indiquées au moment de la commande.</p>"
           }
         }
       },
