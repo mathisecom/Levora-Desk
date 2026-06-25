@@ -21,7 +21,7 @@
         "heading": "Bureau Assis Debout",
         "text": "",
         "button_label": "Découvrir",
-        "button_link": "",
+        "button_link": "shopify://collections/frontpage",
         "content_position": "left",
         "content_position_mobile": "bottom",
         "show_reviews": true,
