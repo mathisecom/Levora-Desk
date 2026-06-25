@@ -506,6 +506,7 @@
         "image_ywLUPg": {
           "type": "image",
           "settings": {
+            "image": "shopify://shop_images/Image_4_copy.webp",
             "media_width": 50,
             "media_position": "start",
             "text_position": "place-self-center text-center",
