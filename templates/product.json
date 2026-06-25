@@ -91,11 +91,10 @@
         },
         "collapsible_text_yG6wKB": {
           "type": "collapsible_text",
-          "disabled": true,
           "settings": {
             "icon": "none",
             "icon_width": 20,
-            "title": "Title",
+            "title": "Avantages et Caractéristiques",
             "content": "<p>Share some content to your customers about your products.</p>",
             "page": ""
           }
