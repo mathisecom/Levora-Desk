@@ -984,7 +984,7 @@
         "mobile_text_align": "center",
         "max_width": 1420,
         "desktop_height": 400,
-        "mobile_height": 370,
+        "mobile_height": 400,
         "content_max_width": 650,
         "border_radius": 12,
         "mobile_border_radius": 12,
@@ -1053,7 +1053,7 @@
         "item_P7HP8N": {
           "type": "item",
           "settings": {
-            "title": "Any question?",
+            "title": "Est-ce que vous livrez partout dans le monde ?",
             "content": "<p>You can contact us through our contact page! We will be happy to assist you.</p>"
           }
         }
