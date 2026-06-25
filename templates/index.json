@@ -337,6 +337,119 @@
         "dot_active_width": 24
       }
     },
+    "sectionmediabenefice_bUeK4g": {
+      "type": "sectionmediabenefice",
+      "blocks": {
+        "benefit_xmY4Pp": {
+          "type": "benefit",
+          "settings": {
+            "show_line": true,
+            "title": "Très silencieux",
+            "text": "<p>Avec un niveau sonore de seulement 39 dB, le produit est idéal pour effectuer des ajustements discrètement sans perturber votre environnement.</p>",
+            "link_label": "",
+            "link_url": ""
+          }
+        },
+        "benefit_CynGx8": {
+          "type": "benefit",
+          "settings": {
+            "show_line": true,
+            "title": "Des transitions en douceur",
+            "text": "<p>La fonction intégrée de démarrage et d’arrêt en douceur permet un mouvement fluide, sans secousses ni vibrations.</p>",
+            "link_label": "",
+            "link_url": ""
+          }
+        },
+        "benefit_WkBCnt": {
+          "type": "benefit",
+          "settings": {
+            "show_line": true,
+            "title": "Pour les installations lourdes",
+            "text": "<p>Supporte des charges lourdes tout en maintenant des performances optimales, même avec plusieurs équipements.</p>",
+            "link_label": "",
+            "link_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "benefit_xmY4Pp",
+        "benefit_CynGx8",
+        "benefit_WkBCnt"
+      ],
+      "name": "Média + bénéfices",
+      "settings": {
+        "heading": "",
+        "subheading": "",
+        "intro_align": "center",
+        "mobile_intro_align": "center",
+        "intro_max_width": 720,
+        "intro_margin_bottom": 24,
+        "mobile_intro_margin_bottom": 20,
+        "media_type": "image",
+        "image_alt": "Image produit",
+        "video_title": "Vidéo produit",
+        "video_autoplay": true,
+        "video_loop": true,
+        "video_muted": true,
+        "video_controls": false,
+        "media_ratio_width": 16,
+        "media_ratio_height": 8,
+        "mobile_media_ratio_width": 4,
+        "mobile_media_ratio_height": 3,
+        "media_object_fit": "cover",
+        "media_position": "center center",
+        "mobile_media_position": "center center",
+        "max_width": 1380,
+        "padding_top": 12,
+        "padding_bottom": 48,
+        "padding_x": 30,
+        "mobile_padding_top": 16,
+        "mobile_padding_bottom": 36,
+        "mobile_padding_x": 16,
+        "desktop_columns": "3",
+        "grid_margin_top": 40,
+        "mobile_grid_margin_top": 28,
+        "column_gap": 20,
+        "mobile_column_gap": 28,
+        "section_bg": "#FBFBFB",
+        "media_bg": "#d1d1d1",
+        "placeholder_text_color": "#777777",
+        "text_color": "#222222",
+        "heading_color": "#222222",
+        "subheading_color": "#666666",
+        "item_title_color": "#222222",
+        "item_text_color": "#6f6f6f",
+        "line_color": "#222222",
+        "link_color": "#222222",
+        "media_radius": 10,
+        "mobile_media_radius": 10,
+        "heading_size": 38,
+        "mobile_heading_size": 30,
+        "heading_weight": "500",
+        "heading_line_height": 110,
+        "subheading_size": 16,
+        "mobile_subheading_size": 15,
+        "subheading_margin_top": 12,
+        "subheading_line_height": 145,
+        "line_height": 1,
+        "line_margin_bottom": 22,
+        "mobile_line_margin_bottom": 18,
+        "item_title_size": 26,
+        "mobile_item_title_size": 23,
+        "item_title_weight": "400",
+        "item_title_line_height": 115,
+        "item_text_size": 14,
+        "mobile_item_text_size": 14,
+        "item_text_weight": "400",
+        "item_text_margin_top": 18,
+        "mobile_item_text_margin_top": 14,
+        "item_text_line_height": 135,
+        "link_margin_top": 18,
+        "link_size": 14,
+        "link_weight": "500",
+        "link_decoration": "underline"
+      }
+    },
     "section_garantie_pXiCme": {
       "type": "section-garantie",
       "name": "Bannière garantie remboursement",
@@ -628,6 +741,7 @@
     "levoradesk_marquee_trust_J7jcCQ",
     "featured_collection_7fYfYf",
     "levoraavisclients_EXCNpx",
+    "sectionmediabenefice_bUeK4g",
     "section_garantie_pXiCme",
     "levoracardsslider_zVHPNK",
     "text_with_icons_HRbzpz",
