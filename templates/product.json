@@ -84,8 +84,8 @@
           "settings": {
             "icon": "none",
             "icon_width": 20,
-            "title": "Title",
-            "content": "<p>Share some content to your customers about your products.</p>",
+            "title": "Livraison & Retours",
+            "content": "<p>Livraison gratuite pour toutes les commandes.</p><p>Veuillez prévoir les délais de livraison suivants :</p><ul><li><strong>Temps de traitement :</strong> 1 à 2 jours</li><li><strong>Livraison standard :</strong> 5 à 8 jours</li></ul><p>Essayez votre Bureau <strong>LevoraDesk </strong>pendant <strong>30 jours</strong>. Si vous n’êtes pas entièrement satisfait, vous pouvez le retourner dans ce délai pour un remboursement complet.</p>",
             "page": ""
           }
         },
