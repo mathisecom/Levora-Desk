@@ -702,14 +702,14 @@
           "type": "item",
           "settings": {
             "title": "Est-ce que mes commandes peuvent être assemblées avant la livraison ?",
-            "content": "<p>You can contact us through our contact page! We will be happy to assist you.</p>"
+            "content": "<p><br/>Nos produits sont livrés prêts à assembler, avec une notice claire pour vous guider étape par étape. L’assemblage est simple et ne nécessite pas de compétences particulières.<br/><br/></p>"
           }
         },
         "item_fwqrnM": {
           "type": "item",
           "settings": {
             "title": "Est-ce que vous livrez partout dans le monde ?",
-            "content": "<p>Write content to answer to common questions your customers may have about your products, shipping policies..</p>"
+            "content": "<p>Pour le moment, LoveraDesk livre principalement en France. Certaines destinations peuvent être disponibles selon les transporteurs. Les options de livraison sont indiquées au moment de la commande.</p>"
           }
         }
       },
