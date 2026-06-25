@@ -624,10 +624,10 @@
             "icon_type": "load",
             "custom_svg": "",
             "brand_value_type": "text",
-            "brand_text": "Jusqu'à 160 kg",
+            "brand_text": "Jusqu'à 60 kg",
             "brand_info": "Charge maximale supportée.",
             "competitor_value_type": "text",
-            "competitor_text": "~80 kg",
+            "competitor_text": "~50 kg",
             "competitor_info": ""
           }
         },
@@ -810,7 +810,7 @@
             "video_controls": true,
             "spec_rows": "Méthode de montage|Montage autonome\nDifficulté du montage|Facile, aucun outil supplémentaire n’est nécessaire\nTemps de montage moyen|30 minutes\nGarantie|5 ans\nRetours gratuits|30 jours",
             "tab_1_label": "Classique / Édition limitée",
-            "tab_1_rows": "Dimensions|120 × 80 × 2,5 cm\nDimensions pour l’expédition|129,5 × 88,5 cm\nCouleurs classiques|Blanc, Noir, Chêne, Noyer, Gris\nCouleurs en édition limitée|Vert olive, Bleu nuit, Rose poudré\nMatériau|Aggloméré à surface mélaminée résistante aux déformations",
+            "tab_1_rows": "Dimensions|120 × 60 × 2,5 cm\nDimensions pour l’expédition|129,5 × 88,5 cm\nCouleurs classiques|Blanc, Noir, Chêne, Noyer\nMatériau|Aggloméré à surface mélaminée résistante aux déformations",
             "tab_2_label": "",
             "tab_2_rows": "",
             "tab_3_label": "",
