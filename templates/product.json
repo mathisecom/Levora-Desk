@@ -966,7 +966,7 @@
         "desktop_image_position": "center center",
         "mobile_image_position": "center center",
         "fallback_background": "#111111",
-        "section_background": "#FBFBFB",
+        "section_background": "#fbfbfb",
         "overlay_color": "#000000",
         "overlay_opacity": 59,
         "show_icon": true,
@@ -1014,7 +1014,7 @@
         "mobile_icon_size": 32,
         "icon_margin_bottom": 8,
         "mobile_icon_margin_bottom": 8,
-        "button_background": "#FFFFFF",
+        "button_background": "#ffffff",
         "button_text_color": "#101010",
         "button_icon_background": "#1d1b2c",
         "button_icon_color": "#ffffff",
@@ -1039,14 +1039,14 @@
         "item_zXkyUT": {
           "type": "item",
           "settings": {
-            "title": "Do you ship overseas?",
+            "title": "Quelle est la garantie des produits LevoraDesk ?",
             "content": "<p>Yes, we ship all over the world. Shipping costs will apply, and will be added at checkout. We run discounts and promotions all year, so stay tuned for exclusive deals.</p>"
           }
         },
         "item_r8wiTL": {
           "type": "item",
           "settings": {
-            "title": "How long will it take to get my orders?",
+            "title": "Est-ce que mes commandes peuvent être assemblées avant la livraison ?",
             "content": "<p>It depends on where you are. Orders processed here will take 5-7 business days to arrive. Overseas deliveries can take anywhere from 7-16 days. Delivery details will be provided in your confirmation email.</p>"
           }
         },
