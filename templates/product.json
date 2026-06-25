@@ -350,6 +350,7 @@
         "media_type": "shopify_video",
         "image_alt": "Image produit",
         "shopify_video": "shopify://files/videos/9d3180f6ca1f4da6905e2b846b1ee54b.HD-1080p-2.5Mbps-33824003.mp4",
+        "external_video": "",
         "video_title": "Vidéo produit",
         "video_autoplay": true,
         "video_loop": true,
@@ -374,7 +375,7 @@
         "mobile_grid_margin_top": 28,
         "column_gap": 20,
         "mobile_column_gap": 28,
-        "section_bg": "#FDFDFD",
+        "section_bg": "#fdfdfd",
         "media_bg": "#d1d1d1",
         "placeholder_text_color": "#777777",
         "text_color": "#222222",
@@ -411,41 +412,6 @@
         "link_size": 14,
         "link_weight": "500",
         "link_decoration": "underline"
-      }
-    },
-    "media_with_text_iXeeMH": {
-      "type": "media-with-text",
-      "blocks": {
-        "image_ywLUPg": {
-          "type": "image",
-          "settings": {
-            "media_width": 50,
-            "media_position": "start",
-            "text_position": "place-self-center text-center",
-            "icon": "none",
-            "icon_width": 48,
-            "subheading": "",
-            "title": "Heading",
-            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>",
-            "link_text": "OBTENIR MAINTENANT",
-            "link_url": "#shopify-section-template--29359508128079__main",
-            "background": "#f9f9f9",
-            "background_gradient": "",
-            "text_color": "#000000",
-            "text_gradient": "",
-            "button_background": "",
-            "button_text_color": ""
-          }
-        }
-      },
-      "block_order": [
-        "image_ywLUPg"
-      ],
-      "name": "Media with text",
-      "settings": {
-        "full_width": false,
-        "alternate_media_position": false,
-        "spacing": "small"
       }
     },
     "levoracardsslider_h7wC4V": {
@@ -501,7 +467,7 @@
         "items_desktop": 4,
         "items_tablet": 2,
         "items_mobile": 1,
-        "bg_color": "#FBFBFB",
+        "bg_color": "#fbfbfb",
         "card_bg": "#f7f7f7",
         "text_color": "#171717",
         "muted_color": "#5f5f5f",
@@ -533,6 +499,41 @@
         "icon_size_mobile": 38,
         "badge_width": 55,
         "badge_width_mobile": 50
+      }
+    },
+    "media_with_text_iXeeMH": {
+      "type": "media-with-text",
+      "blocks": {
+        "image_ywLUPg": {
+          "type": "image",
+          "settings": {
+            "media_width": 50,
+            "media_position": "start",
+            "text_position": "place-self-center text-center",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "",
+            "title": "Heading",
+            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>",
+            "link_text": "OBTENIR MAINTENANT",
+            "link_url": "#shopify-section-template--29359508128079__main",
+            "background": "#f9f9f9",
+            "background_gradient": "",
+            "text_color": "#000000",
+            "text_gradient": "",
+            "button_background": "",
+            "button_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_ywLUPg"
+      ],
+      "name": "Media with text",
+      "settings": {
+        "full_width": false,
+        "alternate_media_position": false,
+        "spacing": "small"
       }
     },
     "sectioncomparatif_73fArT": {
@@ -800,8 +801,8 @@
         "button_url": "",
         "text_position": "center",
         "background": "",
-        "background_gradient": "",
-        "text_color": "",
+        "background_gradient": "linear-gradient(129deg, rgba(25, 25, 28, 1) 14%, rgba(61, 61, 61, 1) 84%)",
+        "text_color": "#FFFFFF",
         "heading_color": "",
         "heading_gradient": "",
         "button_background": "",
