@@ -471,7 +471,7 @@
         "heading": "Garantie de remboursement de 30 jours",
         "text": "<p>Essayez nos produits. S’ils ne correspondent pas à vos attentes, nous les reprenons et vous remboursons intégralement, sans poser de questions.</p>",
         "button_label": "Achetez maintenant",
-        "button_link": "",
+        "button_link": "shopify://collections/frontpage",
         "show_arrow": true,
         "horizontal_align": "center",
         "vertical_align": "center",
