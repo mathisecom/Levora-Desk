@@ -287,11 +287,11 @@
       "name": "Scrolling text",
       "settings": {
         "full_width": true,
-        "text": "Promotion text",
+        "text": "Essayez Votre Bureau LevoraDesk Pendant 30 jours",
         "text_size": "xsmall",
         "text_style": "fill",
         "scrolling_mode": "auto",
-        "scrolling_speed": 7,
+        "scrolling_speed": 6,
         "background": "",
         "background_gradient": "",
         "text_color": "",
@@ -442,6 +442,7 @@
         },
         "card_cUGzkm": {
           "type": "card",
+          "disabled": true,
           "settings": {
             "icon": "card",
             "title": "Options de paiement flexibles",
@@ -463,7 +464,7 @@
         "show_dots": true,
         "autoplay": true,
         "autoplay_speed": 4000,
-        "items_desktop": 4,
+        "items_desktop": 3,
         "items_tablet": 2,
         "items_mobile": 1,
         "bg_color": "#fbfbfb",
