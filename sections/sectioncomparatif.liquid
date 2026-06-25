@@ -1,0 +1,1444 @@
+{% comment %}
+  Section Shopify : Comparatif marque
+  Responsive desktop + mobile
+  Tous les contenus sont modifiables dans l’éditeur Shopify
+{% endcomment %}
+
+{% liquid
+  assign s = section.settings
+%}
+
+<section
+  id="tm-comparison-{{ section.id }}"
+  class="tm-comparison"
+>
+  <div class="tm-comparison__inner">
+
+    {% if s.show_header %}
+      <div class="tm-comparison__header">
+        <div class="tm-comparison__header-empty"></div>
+
+        <div class="tm-comparison__brand-card">
+          {% if s.brand_name != blank %}
+            <div class="tm-comparison__brand-name">
+              {{ s.brand_name }}
+            </div>
+          {% endif %}
+
+          {% if s.show_rating %}
+            <div class="tm-comparison__rating">
+              <span class="tm-comparison__stars">{{ s.rating_stars }}</span>
+              <span class="tm-comparison__rating-text">{{ s.rating_text }}</span>
+            </div>
+          {% endif %}
+        </div>
+
+        <div class="tm-comparison__competitor-title">
+          {{ s.competitor_name }}
+
+          {% if s.competitor_info != blank %}
+            <span class="tm-comparison__info" title="{{ s.competitor_info | escape }}">
+              ?
+            </span>
+          {% endif %}
+        </div>
+      </div>
+
+      <div class="tm-comparison__mobile-header">
+        <div class="tm-comparison__brand-card">
+          {% if s.brand_name != blank %}
+            <div class="tm-comparison__brand-name">
+              {{ s.brand_name }}
+            </div>
+          {% endif %}
+
+          {% if s.show_rating %}
+            <div class="tm-comparison__rating">
+              <span class="tm-comparison__stars">{{ s.rating_stars }}</span>
+              <span class="tm-comparison__rating-text">{{ s.rating_text }}</span>
+            </div>
+          {% endif %}
+        </div>
+
+        <div class="tm-comparison__mobile-vs">
+          vs {{ s.competitor_name }}
+        </div>
+      </div>
+    {% endif %}
+
+    <div class="tm-comparison__table">
+      {% for block in section.blocks %}
+        <div class="tm-comparison__row" {{ block.shopify_attributes }}>
+
+          <div class="tm-comparison__cell tm-comparison__cell--feature">
+            <div class="tm-comparison__icon">
+              {% if block.settings.custom_icon != blank %}
+                {{ block.settings.custom_icon | image_url: width: 120 | image_tag: loading: 'lazy', class: 'tm-comparison__icon-img' }}
+              {% elsif block.settings.custom_svg != blank %}
+                {{ block.settings.custom_svg }}
+              {% else %}
+                {% case block.settings.icon_type %}
+
+                  {% when 'chair' %}
+                    <svg viewBox="0 0 48 48" aria-hidden="true">
+                      <path d="M17 19h14v10H17z" fill="none" stroke="currentColor" stroke-width="2"/>
+                      <path d="M16 29h16M20 29v9M28 29v9M14 38h20M20 10h8c2 0 4 2 4 4v5H16v-5c0-2 2-4 4-4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+
+                  {% when 'ear' %}
+                    <svg viewBox="0 0 48 48" aria-hidden="true">
+                      <path d="M18 18c0-5 4-9 10-9s10 4 10 10c0 8-8 9-8 16 0 3-2 5-5 5-2 0-4-1-5-3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                      <path d="M23 22c0-3 2-5 5-5s5 2 5 5c0 5-6 5-6 10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                      <path d="M12 17c1-4 4-7 8-9M11 25c0-2 0-4 1-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+
+                  {% when 'plateau' %}
+                    <svg viewBox="0 0 48 48" aria-hidden="true">
+                      <path d="M10 23l14-6 14 6-14 6-14-6z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                      <path d="M10 27l14 6 14-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                    </svg>
+
+                  {% when 'motor' %}
+                    <svg viewBox="0 0 48 48" aria-hidden="true">
+                      <rect x="12" y="12" width="24" height="24" rx="3" fill="none" stroke="currentColor" stroke-width="2"/>
+                      <path d="M20 17v14M28 17v14M16 36v4M32 36v4M16 8v4M32 8v4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+
+                  {% when 'speed' %}
+                    <svg viewBox="0 0 48 48" aria-hidden="true">
+                      <path d="M10 31a14 14 0 0 1 28 0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                      <path d="M24 31l8-10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                      <path d="M15 31h18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+
+                  {% when 'load' %}
+                    <svg viewBox="0 0 48 48" aria-hidden="true">
+                      <path d="M16 18h16l3 20H13l3-20z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                      <path d="M20 18a4 4 0 0 1 8 0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                      <text x="24" y="32" text-anchor="middle" font-size="6" fill="currentColor">MAX</text>
+                    </svg>
+
+                  {% when 'badge' %}
+                    <svg viewBox="0 0 48 48" aria-hidden="true">
+                      <path d="M24 8l5 4 7 1 2 7 4 4-4 4-2 7-7 1-5 4-5-4-7-1-2-7-4-4 4-4 2-7 7-1 5-4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                      <path d="M17 24l5 5 10-11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+
+                  {% when 'headset' %}
+                    <svg viewBox="0 0 48 48" aria-hidden="true">
+                      <path d="M12 27v-3a12 12 0 0 1 24 0v3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                      <rect x="9" y="25" width="7" height="10" rx="3" fill="none" stroke="currentColor" stroke-width="2"/>
+                      <rect x="32" y="25" width="7" height="10" rx="3" fill="none" stroke="currentColor" stroke-width="2"/>
+                      <path d="M36 34c0 4-3 6-8 6h-3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+
+                  {% when 'return' %}
+                    <svg viewBox="0 0 48 48" aria-hidden="true">
+                      <path d="M16 13h19v22H13V20" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                      <path d="M20 18l-7 7 7 7M13 25h17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+
+                  {% else %}
+                    <svg viewBox="0 0 48 48" aria-hidden="true">
+                      <circle cx="24" cy="24" r="16" fill="none" stroke="currentColor" stroke-width="2"/>
+                      <path d="M17 24l5 5 10-11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+
+                {% endcase %}
+              {% endif %}
+            </div>
+
+            <div class="tm-comparison__feature-text">
+              {{ block.settings.feature }}
+            </div>
+          </div>
+
+          <div class="tm-comparison__cell tm-comparison__cell--brand">
+            <span class="tm-comparison__mobile-label">{{ s.brand_name }}</span>
+
+            <div class="tm-comparison__value">
+              {% case block.settings.brand_value_type %}
+                {% when 'check' %}
+                  <span class="tm-comparison__check tm-comparison__check--brand">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </span>
+
+                {% when 'dash' %}
+                  <span class="tm-comparison__dash">—</span>
+
+                {% when 'empty' %}
+                  <span></span>
+
+                {% else %}
+                  <span class="tm-comparison__text-value">
+                    {{ block.settings.brand_text | newline_to_br }}
+                  </span>
+              {% endcase %}
+
+              {% if block.settings.brand_info != blank %}
+                <span class="tm-comparison__info" title="{{ block.settings.brand_info | escape }}">
+                  ?
+                </span>
+              {% endif %}
+            </div>
+          </div>
+
+          <div class="tm-comparison__cell tm-comparison__cell--competitor">
+            <span class="tm-comparison__mobile-label">{{ s.competitor_name }}</span>
+
+            <div class="tm-comparison__value">
+              {% case block.settings.competitor_value_type %}
+                {% when 'check' %}
+                  <span class="tm-comparison__check tm-comparison__check--competitor">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </span>
+
+                {% when 'dash' %}
+                  <span class="tm-comparison__dash">—</span>
+
+                {% when 'empty' %}
+                  <span></span>
+
+                {% else %}
+                  <span class="tm-comparison__text-value">
+                    {{ block.settings.competitor_text | newline_to_br }}
+                  </span>
+              {% endcase %}
+
+              {% if block.settings.competitor_info != blank %}
+                <span class="tm-comparison__info" title="{{ block.settings.competitor_info | escape }}">
+                  ?
+                </span>
+              {% endif %}
+            </div>
+          </div>
+
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<style>
+  #tm-comparison-{{ section.id }} {
+    background: {{ s.section_bg }};
+    padding: {{ s.padding_top }}px {{ s.padding_x }}px {{ s.padding_bottom }}px;
+    color: {{ s.text_color }};
+    font-family: inherit;
+  }
+
+  #tm-comparison-{{ section.id }} * {
+    box-sizing: border-box;
+  }
+
+  #tm-comparison-{{ section.id }} .tm-comparison__inner {
+    max-width: {{ s.max_width }}px;
+    margin: 0 auto;
+  }
+
+  #tm-comparison-{{ section.id }} .tm-comparison__header,
+  #tm-comparison-{{ section.id }} .tm-comparison__row {
+    display: grid;
+    grid-template-columns: minmax(280px, {{ s.feature_column_width }}fr) minmax(190px, {{ s.brand_column_width }}fr) minmax(190px, {{ s.competitor_column_width }}fr);
+  }
+
+  #tm-comparison-{{ section.id }} .tm-comparison__header {
+    align-items: end;
+  }
+
+  #tm-comparison-{{ section.id }} .tm-comparison__header-empty {
+    min-height: {{ s.header_height }}px;
+    border-bottom: 1px solid {{ s.line_color }};
+  }
+
+  #tm-comparison-{{ section.id }} .tm-comparison__brand-card {
+    min-height: {{ s.header_height }}px;
+    background: {{ s.brand_header_bg }};
+    border-radius: {{ s.header_radius }}px {{ s.header_radius }}px 0 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: {{ s.header_padding }}px;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    box-shadow: {% if s.show_shadow %}0 18px 40px rgba(0, 0, 0, 0.08){% else %}none{% endif %};
+  }
+
+  #tm-comparison-{{ section.id }} .tm-comparison__brand-name {
+    color: {{ s.brand_name_color }};
+    font-size: {{ s.brand_name_size }}px;
+    font-weight: {{ s.brand_name_weight }};
+    line-height: 1.2;
+  }
+
+  #tm-comparison-{{ section.id }} .tm-comparison__rating {
+    margin-top: 8px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: {{ s.rating_size }}px;
+    line-height: 1;
+  }
+
+  #tm-comparison-{{ section.id }} .tm-comparison__stars {
+    color: {{ s.star_color }};
+    letter-spacing: 1px;
+  }
+
+  #tm-comparison-{{ section.id }} .tm-comparison__rating-text {
+    color: {{ s.rating_text_color }};
+  }
+
+  #tm-comparison-{{ section.id }} .tm-comparison__competitor-title {
+    min-height: {{ s.header_height }}px;
+    border-bottom: 1px solid {{ s.line_color }};
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    text-align: center;
+    color: {{ s.competitor_title_color }};
+    font-size: {{ s.competitor_title_size }}px;
+    font-weight: {{ s.competitor_title_weight }};
+    padding: 16px;
+  }
+
+  #tm-comparison-{{ section.id }} .tm-comparison__table {
+    width: 100%;
+  }
+
+  #tm-comparison-{{ section.id }} .tm-comparison__cell {
+    min-height: {{ s.row_height }}px;
+    border-bottom: 1px solid {{ s.line_color }};
+    display: flex;
+    align-items: center;
+    padding: {{ s.cell_padding_y }}px {{ s.cell_padding_x }}px;
+    font-size: {{ s.cell_font_size }}px;
+    line-height: 1.35;
+  }
+
+  #tm-comparison-{{ section.id }} .tm-comparison__cell--feature {
+    gap: {{ s.icon_gap }}px;
+    justify-content: flex-start;
+  }
+
+  #tm-comparison-{{ section.id }} .tm-comparison__cell--brand {
+    justify-content: center;
+    text-align: center;
+    background: {{ s.brand_column_bg }};
+  }
+
+  #tm-comparison-{{ section.id }} .tm-comparison__cell--competitor {
+    justify-content: center;
+    text-align: center;
+    background: {{ s.competitor_column_bg }};
+  }
+
+  #tm-comparison-{{ section.id }} .tm-comparison__row:last-child .tm-comparison__cell--brand {
+    border-radius: 0 0 {{ s.brand_bottom_radius }}px {{ s.brand_bottom_radius }}px;
+  }
+
+  #tm-comparison-{{ section.id }} .tm-comparison__icon {
+    width: {{ s.icon_box_size }}px;
+    min-width: {{ s.icon_box_size }}px;
+    height: {{ s.icon_box_size }}px;
+    border-radius: {{ s.icon_radius }}px;
+    background: {{ s.icon_bg }};
+    color: {{ s.icon_color }};
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #tm-comparison-{{ section.id }} .tm-comparison__icon svg,
+  #tm-comparison-{{ section.id }} .tm-comparison__icon-img {
+    width: {{ s.icon_size }}px;
+    height: {{ s.icon_size }}px;
+    object-fit: contain;
+  }
+
+  #tm-comparison-{{ section.id }} .tm-comparison__feature-text {
+    color: {{ s.feature_text_color }};
+    font-weight: {{ s.feature_text_weight }};
+  }
+
+  #tm-comparison-{{ section.id }} .tm-comparison__value {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    color: {{ s.value_text_color }};
+    font-weight: {{ s.value_text_weight }};
+  }
+
+  #tm-comparison-{{ section.id }} .tm-comparison__text-value {
+    display: inline-block;
+  }
+
+  #tm-comparison-{{ section.id }} .tm-comparison__check {
+    width: {{ s.check_size }}px;
+    height: {{ s.check_size }}px;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #tm-comparison-{{ section.id }} .tm-comparison__check svg {
+    width: 56%;
+    height: 56%;
+  }
+
+  #tm-comparison-{{ section.id }} .tm-comparison__check--brand {
+    background: {{ s.brand_check_bg }};
+    color: {{ s.brand_check_color }};
+  }
+
+  #tm-comparison-{{ section.id }} .tm-comparison__check--competitor {
+    background: {{ s.competitor_check_bg }};
+    color: {{ s.competitor_check_color }};
+  }
+
+  #tm-comparison-{{ section.id }} .tm-comparison__dash {
+    color: {{ s.dash_color }};
+    font-size: {{ s.dash_size }}px;
+    line-height: 1;
+  }
+
+  #tm-comparison-{{ section.id }} .tm-comparison__info {
+    width: {{ s.info_size }}px;
+    height: {{ s.info_size }}px;
+    border-radius: 999px;
+    border: 1px solid {{ s.info_color }};
+    color: {{ s.info_color }};
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: calc({{ s.info_size }}px * 0.65);
+    line-height: 1;
+    cursor: help;
+    opacity: 0.75;
+  }
+
+  #tm-comparison-{{ section.id }} .tm-comparison__mobile-header,
+  #tm-comparison-{{ section.id }} .tm-comparison__mobile-label {
+    display: none;
+  }
+
+  @media screen and (max-width: 749px) {
+    #tm-comparison-{{ section.id }} {
+      padding: {{ s.mobile_padding_top }}px {{ s.mobile_padding_x }}px {{ s.mobile_padding_bottom }}px;
+    }
+
+    #tm-comparison-{{ section.id }} .tm-comparison__inner {
+      max-width: 100%;
+    }
+
+    #tm-comparison-{{ section.id }} .tm-comparison__header {
+      display: none;
+    }
+
+    #tm-comparison-{{ section.id }} .tm-comparison__mobile-header {
+      display: block;
+      margin-bottom: {{ s.mobile_header_margin }}px;
+    }
+
+    #tm-comparison-{{ section.id }} .tm-comparison__mobile-header .tm-comparison__brand-card {
+      border-radius: {{ s.mobile_card_radius }}px;
+      min-height: auto;
+      padding: {{ s.mobile_header_padding }}px;
+    }
+
+    #tm-comparison-{{ section.id }} .tm-comparison__mobile-vs {
+      margin-top: 10px;
+      text-align: center;
+      font-size: {{ s.mobile_vs_size }}px;
+      color: {{ s.competitor_title_color }};
+      font-weight: {{ s.competitor_title_weight }};
+    }
+
+    #tm-comparison-{{ section.id }} .tm-comparison__table {
+      display: flex;
+      flex-direction: column;
+      gap: {{ s.mobile_row_gap }}px;
+    }
+
+    #tm-comparison-{{ section.id }} .tm-comparison__row {
+      display: grid;
+      grid-template-columns: 1fr;
+      overflow: hidden;
+      border: 1px solid {{ s.line_color }};
+      border-radius: {{ s.mobile_card_radius }}px;
+      background: {{ s.mobile_card_bg }};
+    }
+
+    #tm-comparison-{{ section.id }} .tm-comparison__cell {
+      min-height: auto;
+      border-bottom: 1px solid {{ s.line_color }};
+      padding: {{ s.mobile_cell_padding_y }}px {{ s.mobile_cell_padding_x }}px;
+      font-size: {{ s.mobile_cell_font_size }}px;
+    }
+
+    #tm-comparison-{{ section.id }} .tm-comparison__cell--feature {
+      background: {{ s.mobile_feature_bg }};
+      gap: 12px;
+    }
+
+    #tm-comparison-{{ section.id }} .tm-comparison__cell--brand,
+    #tm-comparison-{{ section.id }} .tm-comparison__cell--competitor {
+      justify-content: space-between;
+      text-align: right;
+    }
+
+    #tm-comparison-{{ section.id }} .tm-comparison__cell--brand {
+      background: {{ s.brand_column_bg }};
+    }
+
+    #tm-comparison-{{ section.id }} .tm-comparison__cell--competitor {
+      background: {{ s.competitor_column_bg }};
+      border-bottom: 0;
+    }
+
+    #tm-comparison-{{ section.id }} .tm-comparison__row:last-child .tm-comparison__cell--brand {
+      border-radius: 0;
+    }
+
+    #tm-comparison-{{ section.id }} .tm-comparison__mobile-label {
+      display: inline-block;
+      color: {{ s.mobile_label_color }};
+      font-size: {{ s.mobile_label_size }}px;
+      font-weight: {{ s.mobile_label_weight }};
+      text-align: left;
+      margin-right: 16px;
+    }
+
+    #tm-comparison-{{ section.id }} .tm-comparison__value {
+      justify-content: flex-end;
+      text-align: right;
+      max-width: 62%;
+    }
+
+    #tm-comparison-{{ section.id }} .tm-comparison__icon {
+      width: {{ s.mobile_icon_box_size }}px;
+      min-width: {{ s.mobile_icon_box_size }}px;
+      height: {{ s.mobile_icon_box_size }}px;
+    }
+
+    #tm-comparison-{{ section.id }} .tm-comparison__icon svg,
+    #tm-comparison-{{ section.id }} .tm-comparison__icon-img {
+      width: {{ s.mobile_icon_size }}px;
+      height: {{ s.mobile_icon_size }}px;
+    }
+
+    #tm-comparison-{{ section.id }} .tm-comparison__brand-name {
+      font-size: {{ s.mobile_brand_name_size }}px;
+    }
+
+    #tm-comparison-{{ section.id }} .tm-comparison__rating {
+      font-size: {{ s.mobile_rating_size }}px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Comparatif marque",
+  "tag": "section",
+  "class": "section-comparatif-marque",
+  "settings": [
+    {
+      "type": "header",
+      "content": "En-tête"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_header",
+      "label": "Afficher l’en-tête",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "brand_name",
+      "label": "Nom de votre marque",
+      "default": "Desktronic"
+    },
+    {
+      "type": "text",
+      "id": "competitor_name",
+      "label": "Nom du concurrent",
+      "default": "Marques sur Amazon"
+    },
+    {
+      "type": "text",
+      "id": "competitor_info",
+      "label": "Info au survol concurrent",
+      "default": "Comparaison indicative avec certaines marques concurrentes."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_rating",
+      "label": "Afficher la note",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "rating_stars",
+      "label": "Étoiles",
+      "default": "★★★★★"
+    },
+    {
+      "type": "text",
+      "id": "rating_text",
+      "label": "Texte de la note",
+      "default": "4.8"
+    },
+    {
+      "type": "header",
+      "content": "Dimensions desktop"
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "label": "Largeur maximale",
+      "min": 700,
+      "max": 1600,
+      "step": 20,
+      "unit": "px",
+      "default": 940
+    },
+    {
+      "type": "range",
+      "id": "feature_column_width",
+      "label": "Largeur colonne caractéristiques",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "range",
+      "id": "brand_column_width",
+      "label": "Largeur colonne marque",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "default": 2
+    },
+    {
+      "type": "range",
+      "id": "competitor_column_width",
+      "label": "Largeur colonne concurrent",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "default": 2
+    },
+    {
+      "type": "range",
+      "id": "header_height",
+      "label": "Hauteur en-tête",
+      "min": 50,
+      "max": 150,
+      "step": 2,
+      "unit": "px",
+      "default": 96
+    },
+    {
+      "type": "range",
+      "id": "row_height",
+      "label": "Hauteur des lignes",
+      "min": 56,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "default": 86
+    },
+    {
+      "type": "range",
+      "id": "cell_padding_x",
+      "label": "Padding horizontal cellules",
+      "min": 8,
+      "max": 50,
+      "step": 1,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "cell_padding_y",
+      "label": "Padding vertical cellules",
+      "min": 8,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Espacements section"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Marge haute desktop",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Marge basse desktop",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_x",
+      "label": "Marge côtés desktop",
+      "min": 0,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_top",
+      "label": "Marge haute mobile",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 28
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_bottom",
+      "label": "Marge basse mobile",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 28
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_x",
+      "label": "Marge côtés mobile",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Couleurs principales"
+    },
+    {
+      "type": "color",
+      "id": "section_bg",
+      "label": "Fond de la section",
+      "default": "#f4f5f0"
+    },
+    {
+      "type": "color",
+      "id": "mobile_card_bg",
+      "label": "Fond cartes mobile",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "mobile_feature_bg",
+      "label": "Fond caractéristique mobile",
+      "default": "#f4f5f0"
+    },
+    {
+      "type": "color",
+      "id": "line_color",
+      "label": "Couleur des séparateurs",
+      "default": "#d9d9d2"
+    },
+    {
+      "type": "color",
+      "id": "brand_header_bg",
+      "label": "Fond carte marque",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "brand_column_bg",
+      "label": "Fond colonne marque",
+      "default": "#fbfbfb"
+    },
+    {
+      "type": "color",
+      "id": "competitor_column_bg",
+      "label": "Fond colonne concurrent",
+      "default": "#f4f5f0"
+    },
+    {
+      "type": "header",
+      "content": "Textes"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Couleur texte général",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "brand_name_color",
+      "label": "Couleur nom marque",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "brand_name_size",
+      "label": "Taille nom marque",
+      "min": 12,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "mobile_brand_name_size",
+      "label": "Taille nom marque mobile",
+      "min": 12,
+      "max": 28,
+      "step": 1,
+      "unit": "px",
+      "default": 17
+    },
+    {
+      "type": "select",
+      "id": "brand_name_weight",
+      "label": "Graisse nom marque",
+      "default": "500",
+      "options": [
+        { "value": "400", "label": "Normal" },
+        { "value": "500", "label": "Medium" },
+        { "value": "600", "label": "Semi-bold" },
+        { "value": "700", "label": "Bold" }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "competitor_title_color",
+      "label": "Couleur titre concurrent",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "competitor_title_size",
+      "label": "Taille titre concurrent",
+      "min": 12,
+      "max": 28,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "select",
+      "id": "competitor_title_weight",
+      "label": "Graisse titre concurrent",
+      "default": "400",
+      "options": [
+        { "value": "400", "label": "Normal" },
+        { "value": "500", "label": "Medium" },
+        { "value": "600", "label": "Semi-bold" },
+        { "value": "700", "label": "Bold" }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "feature_text_color",
+      "label": "Couleur caractéristiques",
+      "default": "#000000"
+    },
+    {
+      "type": "select",
+      "id": "feature_text_weight",
+      "label": "Graisse caractéristiques",
+      "default": "400",
+      "options": [
+        { "value": "400", "label": "Normal" },
+        { "value": "500", "label": "Medium" },
+        { "value": "600", "label": "Semi-bold" },
+        { "value": "700", "label": "Bold" }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "value_text_color",
+      "label": "Couleur valeurs",
+      "default": "#000000"
+    },
+    {
+      "type": "select",
+      "id": "value_text_weight",
+      "label": "Graisse valeurs",
+      "default": "400",
+      "options": [
+        { "value": "400", "label": "Normal" },
+        { "value": "500", "label": "Medium" },
+        { "value": "600", "label": "Semi-bold" },
+        { "value": "700", "label": "Bold" }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "cell_font_size",
+      "label": "Taille texte cellules desktop",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 17
+    },
+    {
+      "type": "range",
+      "id": "mobile_cell_font_size",
+      "label": "Taille texte cellules mobile",
+      "min": 12,
+      "max": 22,
+      "step": 1,
+      "unit": "px",
+      "default": 15
+    },
+    {
+      "type": "header",
+      "content": "Note"
+    },
+    {
+      "type": "color",
+      "id": "star_color",
+      "label": "Couleur étoiles",
+      "default": "#e6aa3c"
+    },
+    {
+      "type": "color",
+      "id": "rating_text_color",
+      "label": "Couleur texte note",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "rating_size",
+      "label": "Taille note desktop",
+      "min": 10,
+      "max": 22,
+      "step": 1,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "mobile_rating_size",
+      "label": "Taille note mobile",
+      "min": 10,
+      "max": 22,
+      "step": 1,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "header",
+      "content": "Icônes"
+    },
+    {
+      "type": "color",
+      "id": "icon_bg",
+      "label": "Fond des icônes",
+      "default": "#ecece5"
+    },
+    {
+      "type": "color",
+      "id": "icon_color",
+      "label": "Couleur des icônes",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "icon_box_size",
+      "label": "Taille carré icône desktop",
+      "min": 30,
+      "max": 80,
+      "step": 1,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "mobile_icon_box_size",
+      "label": "Taille carré icône mobile",
+      "min": 28,
+      "max": 70,
+      "step": 1,
+      "unit": "px",
+      "default": 44
+    },
+    {
+      "type": "range",
+      "id": "icon_size",
+      "label": "Taille dessin icône desktop",
+      "min": 14,
+      "max": 50,
+      "step": 1,
+      "unit": "px",
+      "default": 28
+    },
+    {
+      "type": "range",
+      "id": "mobile_icon_size",
+      "label": "Taille dessin icône mobile",
+      "min": 14,
+      "max": 46,
+      "step": 1,
+      "unit": "px",
+      "default": 26
+    },
+    {
+      "type": "range",
+      "id": "icon_radius",
+      "label": "Arrondi carré icône",
+      "min": 0,
+      "max": 30,
+      "step": 1,
+      "unit": "px",
+      "default": 9
+    },
+    {
+      "type": "range",
+      "id": "icon_gap",
+      "label": "Espace icône / texte",
+      "min": 6,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Checks et tirets"
+    },
+    {
+      "type": "range",
+      "id": "check_size",
+      "label": "Taille rond check",
+      "min": 20,
+      "max": 50,
+      "step": 1,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "color",
+      "id": "brand_check_bg",
+      "label": "Fond check marque",
+      "default": "#e3e4f2"
+    },
+    {
+      "type": "color",
+      "id": "brand_check_color",
+      "label": "Couleur check marque",
+      "default": "#6770b8"
+    },
+    {
+      "type": "color",
+      "id": "competitor_check_bg",
+      "label": "Fond check concurrent",
+      "default": "#eeeee6"
+    },
+    {
+      "type": "color",
+      "id": "competitor_check_color",
+      "label": "Couleur check concurrent",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "dash_color",
+      "label": "Couleur tiret",
+      "default": "#a4a49e"
+    },
+    {
+      "type": "range",
+      "id": "dash_size",
+      "label": "Taille tiret",
+      "min": 14,
+      "max": 34,
+      "step": 1,
+      "unit": "px",
+      "default": 22
+    },
+    {
+      "type": "header",
+      "content": "Infos et arrondis"
+    },
+    {
+      "type": "range",
+      "id": "info_size",
+      "label": "Taille icône info",
+      "min": 10,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "color",
+      "id": "info_color",
+      "label": "Couleur icône info",
+      "default": "#9d9d99"
+    },
+    {
+      "type": "range",
+      "id": "header_radius",
+      "label": "Arrondi carte marque desktop",
+      "min": 0,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "brand_bottom_radius",
+      "label": "Arrondi bas colonne marque",
+      "min": 0,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "checkbox",
+      "id": "show_shadow",
+      "label": "Afficher ombre carte marque",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "header_padding",
+      "label": "Padding carte marque",
+      "min": 8,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Mobile"
+    },
+    {
+      "type": "range",
+      "id": "mobile_row_gap",
+      "label": "Espace entre cartes mobile",
+      "min": 6,
+      "max": 30,
+      "step": 1,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "mobile_card_radius",
+      "label": "Arrondi cartes mobile",
+      "min": 0,
+      "max": 30,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "mobile_cell_padding_x",
+      "label": "Padding horizontal mobile",
+      "min": 10,
+      "max": 34,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "mobile_cell_padding_y",
+      "label": "Padding vertical mobile",
+      "min": 10,
+      "max": 30,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "mobile_header_margin",
+      "label": "Marge sous en-tête mobile",
+      "min": 8,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "mobile_header_padding",
+      "label": "Padding en-tête mobile",
+      "min": 10,
+      "max": 34,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "mobile_vs_size",
+      "label": "Taille texte vs mobile",
+      "min": 11,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "color",
+      "id": "mobile_label_color",
+      "label": "Couleur labels mobile",
+      "default": "#555555"
+    },
+    {
+      "type": "range",
+      "id": "mobile_label_size",
+      "label": "Taille labels mobile",
+      "min": 11,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 13
+    },
+    {
+      "type": "select",
+      "id": "mobile_label_weight",
+      "label": "Graisse labels mobile",
+      "default": "600",
+      "options": [
+        { "value": "400", "label": "Normal" },
+        { "value": "500", "label": "Medium" },
+        { "value": "600", "label": "Semi-bold" },
+        { "value": "700", "label": "Bold" }
+      ]
+    }
+  ],
+  "blocks": [
+    {
+      "type": "row",
+      "name": "Ligne comparatif",
+      "settings": [
+        {
+          "type": "text",
+          "id": "feature",
+          "label": "Texte de la caractéristique",
+          "default": "Stabilité à toute épreuve"
+        },
+        {
+          "type": "select",
+          "id": "icon_type",
+          "label": "Icône",
+          "default": "chair",
+          "options": [
+            { "value": "chair", "label": "Chaise / bureau" },
+            { "value": "ear", "label": "Silence" },
+            { "value": "plateau", "label": "Plateau" },
+            { "value": "motor", "label": "Moteur" },
+            { "value": "speed", "label": "Vitesse" },
+            { "value": "load", "label": "Charge" },
+            { "value": "badge", "label": "Certification" },
+            { "value": "headset", "label": "Service client" },
+            { "value": "return", "label": "Retour" },
+            { "value": "check", "label": "Check simple" }
+          ]
+        },
+        {
+          "type": "image_picker",
+          "id": "custom_icon",
+          "label": "Icône personnalisée"
+        },
+        {
+          "type": "textarea",
+          "id": "custom_svg",
+          "label": "SVG personnalisé",
+          "info": "Optionnel. Si renseigné, il remplace l’icône sélectionnée."
+        },
+        {
+          "type": "header",
+          "content": "Colonne marque"
+        },
+        {
+          "type": "select",
+          "id": "brand_value_type",
+          "label": "Type de valeur",
+          "default": "check",
+          "options": [
+            { "value": "check", "label": "Check" },
+            { "value": "dash", "label": "Tiret" },
+            { "value": "text", "label": "Texte" },
+            { "value": "empty", "label": "Vide" }
+          ]
+        },
+        {
+          "type": "textarea",
+          "id": "brand_text",
+          "label": "Texte marque",
+          "default": "Jusqu'à 50 mm/s"
+        },
+        {
+          "type": "text",
+          "id": "brand_info",
+          "label": "Info au survol marque"
+        },
+        {
+          "type": "header",
+          "content": "Colonne concurrent"
+        },
+        {
+          "type": "select",
+          "id": "competitor_value_type",
+          "label": "Type de valeur",
+          "default": "dash",
+          "options": [
+            { "value": "check", "label": "Check" },
+            { "value": "dash", "label": "Tiret" },
+            { "value": "text", "label": "Texte" },
+            { "value": "empty", "label": "Vide" }
+          ]
+        },
+        {
+          "type": "textarea",
+          "id": "competitor_text",
+          "label": "Texte concurrent",
+          "default": "50–55 dB"
+        },
+        {
+          "type": "text",
+          "id": "competitor_info",
+          "label": "Info au survol concurrent"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Comparatif marque",
+      "blocks": [
+        {
+          "type": "row",
+          "settings": {
+            "feature": "Stabilité à toute épreuve",
+            "icon_type": "chair",
+            "brand_value_type": "check",
+            "competitor_value_type": "dash"
+          }
+        },
+        {
+          "type": "row",
+          "settings": {
+            "feature": "Presque silencieux",
+            "icon_type": "ear",
+            "brand_value_type": "text",
+            "brand_text": "39 dB",
+            "competitor_value_type": "text",
+            "competitor_text": "50–55 dB"
+          }
+        },
+        {
+          "type": "row",
+          "settings": {
+            "feature": "Plateau monobloc",
+            "icon_type": "plateau",
+            "brand_value_type": "check",
+            "competitor_value_type": "dash"
+          }
+        },
+        {
+          "type": "row",
+          "settings": {
+            "feature": "Système à double moteur",
+            "icon_type": "motor",
+            "brand_value_type": "check",
+            "competitor_value_type": "dash"
+          }
+        },
+        {
+          "type": "row",
+          "settings": {
+            "feature": "Vitesse de levage",
+            "icon_type": "speed",
+            "brand_value_type": "text",
+            "brand_text": "Jusqu'à 50 mm/s",
+            "brand_info": "Vitesse maximale de levage.",
+            "competitor_value_type": "text",
+            "competitor_text": "20–25 mm/s"
+          }
+        },
+        {
+          "type": "row",
+          "settings": {
+            "feature": "Capacité de charge",
+            "icon_type": "load",
+            "brand_value_type": "text",
+            "brand_text": "Jusqu'à 160 kg",
+            "brand_info": "Charge maximale supportée.",
+            "competitor_value_type": "text",
+            "competitor_text": "~80 kg"
+          }
+        },
+        {
+          "type": "row",
+          "settings": {
+            "feature": "Certifié ergonomique",
+            "icon_type": "badge",
+            "brand_value_type": "text",
+            "brand_text": "Certifié TÜV Rheinland & Institut IGR",
+            "competitor_value_type": "dash"
+          }
+        },
+        {
+          "type": "row",
+          "settings": {
+            "feature": "Service client dévoué",
+            "icon_type": "headset",
+            "brand_value_type": "check",
+            "competitor_value_type": "check"
+          }
+        },
+        {
+          "type": "row",
+          "settings": {
+            "feature": "Retour gratuit et sans risque",
+            "icon_type": "return",
+            "brand_value_type": "check",
+            "competitor_value_type": "check"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
