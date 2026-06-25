@@ -1,0 +1,967 @@
+{% comment %}
+  Section : Bannière garantie remboursement
+  Responsive PC / Mobile
+{% endcomment %}
+
+{% liquid
+  assign s = section.settings
+  assign button_href = s.button_link | default: '#'
+%}
+
+<section id="garantie-banner-{{ section.id }}" class="garantie-banner">
+  <div class="garantie-banner__wrapper">
+    <div class="garantie-banner__overlay"></div>
+
+    <div class="garantie-banner__content">
+      {% if s.show_icon %}
+        <div class="garantie-banner__icon">
+          {% if s.icon_image != blank %}
+            {{ s.icon_image | image_url: width: 160 | image_tag: loading: 'lazy', class: 'garantie-banner__icon-img' }}
+          {% elsif s.icon_svg != blank %}
+            {{ s.icon_svg }}
+          {% else %}
+            <svg viewBox="0 0 48 48" aria-hidden="true">
+              <circle cx="24" cy="24" r="20" fill="none" stroke="currentColor" stroke-width="2"/>
+              <path d="M24 13v22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path d="M30 18.5c-1.4-2-3.4-3-6-3-3.2 0-5.5 1.8-5.5 4.4 0 6.2 12 2.7 12 9 0 2.7-2.5 4.6-6.4 4.6-3.1 0-5.3-1.2-6.8-3.3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          {% endif %}
+        </div>
+      {% endif %}
+
+      {% if s.heading != blank %}
+        <h2 class="garantie-banner__heading">
+          {{ s.heading }}
+        </h2>
+      {% endif %}
+
+      {% if s.text != blank %}
+        <div class="garantie-banner__text">
+          {{ s.text }}
+        </div>
+      {% endif %}
+
+      {% if s.button_label != blank %}
+        <a href="{{ button_href }}" class="garantie-banner__button">
+          <span>{{ s.button_label }}</span>
+
+          {% if s.show_arrow %}
+            <span class="garantie-banner__button-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M5 12h13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <path d="M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          {% endif %}
+        </a>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<style>
+  #garantie-banner-{{ section.id }} {
+    background: {{ s.section_background }};
+    padding-top: {{ s.padding_top }}px;
+    padding-bottom: {{ s.padding_bottom }}px;
+    padding-left: {{ s.padding_sides }}px;
+    padding-right: {{ s.padding_sides }}px;
+  }
+
+  #garantie-banner-{{ section.id }} .garantie-banner__wrapper {
+    position: relative;
+    overflow: hidden;
+    max-width: {{ s.max_width }}px;
+    min-height: {{ s.desktop_height }}px;
+    margin: 0 auto;
+    border-radius: {{ s.border_radius }}px;
+    background-color: {{ s.fallback_background }};
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: {{ s.desktop_image_position }};
+    display: flex;
+    align-items: {{ s.vertical_align }};
+    justify-content: {{ s.horizontal_align }};
+    padding: {{ s.desktop_inner_padding }}px;
+    box-sizing: border-box;
+
+    {% if s.desktop_image != blank %}
+      background-image: url('{{ s.desktop_image | image_url: width: 2400 }}');
+    {% endif %}
+  }
+
+  #garantie-banner-{{ section.id }} .garantie-banner__overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: {{ s.overlay_color }};
+    opacity: {{ s.overlay_opacity | divided_by: 100.0 }};
+  }
+
+  #garantie-banner-{{ section.id }} .garantie-banner__content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: {{ s.content_max_width }}px;
+    text-align: {{ s.text_align }};
+    color: {{ s.text_color }};
+  }
+
+  #garantie-banner-{{ section.id }} .garantie-banner__icon {
+    width: {{ s.icon_size }}px;
+    height: {{ s.icon_size }}px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: {{ s.icon_margin_bottom }}px;
+    color: {{ s.icon_color }};
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #garantie-banner-{{ section.id }} .garantie-banner__content[style*="left"] .garantie-banner__icon {
+    margin-left: 0;
+  }
+
+  #garantie-banner-{{ section.id }} .garantie-banner__icon svg,
+  #garantie-banner-{{ section.id }} .garantie-banner__icon-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  #garantie-banner-{{ section.id }} .garantie-banner__heading {
+    margin: 0;
+    color: {{ s.heading_color }};
+    font-size: {{ s.heading_size }}px;
+    font-weight: {{ s.heading_weight }};
+    line-height: {{ s.heading_line_height | divided_by: 100.0 }};
+    letter-spacing: {{ s.heading_letter_spacing }}px;
+  }
+
+  #garantie-banner-{{ section.id }} .garantie-banner__text {
+    margin-top: {{ s.text_margin_top }}px;
+    color: {{ s.text_color }};
+    font-size: {{ s.text_size }}px;
+    font-weight: {{ s.text_weight }};
+    line-height: {{ s.text_line_height | divided_by: 100.0 }};
+  }
+
+  #garantie-banner-{{ section.id }} .garantie-banner__text p {
+    margin: 0;
+  }
+
+  #garantie-banner-{{ section.id }} .garantie-banner__button {
+    display: inline-flex;
+    align-items: center;
+    gap: {{ s.button_gap }}px;
+    margin-top: {{ s.button_margin_top }}px;
+    padding: {{ s.button_padding_y }}px {{ s.button_padding_x }}px;
+    border-radius: {{ s.button_radius }}px;
+    background: {{ s.button_background }};
+    color: {{ s.button_text_color }};
+    text-decoration: none;
+    font-size: {{ s.button_font_size }}px;
+    font-weight: {{ s.button_font_weight }};
+    line-height: 1;
+    transition: transform 0.25s ease, opacity 0.25s ease, filter 0.25s ease;
+  }
+
+  #garantie-banner-{{ section.id }} .garantie-banner__button:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.08);
+  }
+
+  #garantie-banner-{{ section.id }} .garantie-banner__button-icon {
+    width: {{ s.button_icon_size }}px;
+    height: {{ s.button_icon_size }}px;
+    min-width: {{ s.button_icon_size }}px;
+    border-radius: 999px;
+    background: {{ s.button_icon_background }};
+    color: {{ s.button_icon_color }};
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #garantie-banner-{{ section.id }} .garantie-banner__button-icon svg {
+    width: 58%;
+    height: 58%;
+  }
+
+  @media screen and (max-width: 749px) {
+    #garantie-banner-{{ section.id }} {
+      padding-top: {{ s.mobile_padding_top }}px;
+      padding-bottom: {{ s.mobile_padding_bottom }}px;
+      padding-left: {{ s.mobile_padding_sides }}px;
+      padding-right: {{ s.mobile_padding_sides }}px;
+    }
+
+    #garantie-banner-{{ section.id }} .garantie-banner__wrapper {
+      min-height: {{ s.mobile_height }}px;
+      border-radius: {{ s.mobile_border_radius }}px;
+      padding: {{ s.mobile_inner_padding }}px;
+      align-items: {{ s.mobile_vertical_align }};
+      justify-content: {{ s.mobile_horizontal_align }};
+      background-position: {{ s.mobile_image_position }};
+
+      {% if s.mobile_image != blank %}
+        background-image: url('{{ s.mobile_image | image_url: width: 1000 }}');
+      {% endif %}
+    }
+
+    #garantie-banner-{{ section.id }} .garantie-banner__content {
+      max-width: 100%;
+      text-align: {{ s.mobile_text_align }};
+    }
+
+    #garantie-banner-{{ section.id }} .garantie-banner__icon {
+      width: {{ s.mobile_icon_size }}px;
+      height: {{ s.mobile_icon_size }}px;
+      margin-bottom: {{ s.mobile_icon_margin_bottom }}px;
+    }
+
+    #garantie-banner-{{ section.id }} .garantie-banner__heading {
+      font-size: {{ s.mobile_heading_size }}px;
+    }
+
+    #garantie-banner-{{ section.id }} .garantie-banner__text {
+      margin-top: {{ s.mobile_text_margin_top }}px;
+      font-size: {{ s.mobile_text_size }}px;
+    }
+
+    #garantie-banner-{{ section.id }} .garantie-banner__button {
+      margin-top: {{ s.mobile_button_margin_top }}px;
+      font-size: {{ s.mobile_button_font_size }}px;
+      padding: {{ s.mobile_button_padding_y }}px {{ s.mobile_button_padding_x }}px;
+    }
+
+    #garantie-banner-{{ section.id }} .garantie-banner__button-icon {
+      width: {{ s.mobile_button_icon_size }}px;
+      height: {{ s.mobile_button_icon_size }}px;
+      min-width: {{ s.mobile_button_icon_size }}px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Bannière garantie",
+  "tag": "section",
+  "class": "section-garantie-remboursement",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Images"
+    },
+    {
+      "type": "image_picker",
+      "id": "desktop_image",
+      "label": "Image de fond ordinateur"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_image",
+      "label": "Image de fond mobile"
+    },
+    {
+      "type": "select",
+      "id": "desktop_image_position",
+      "label": "Position image ordinateur",
+      "default": "center center",
+      "options": [
+        { "value": "left top", "label": "Haut gauche" },
+        { "value": "center top", "label": "Haut centre" },
+        { "value": "right top", "label": "Haut droite" },
+        { "value": "left center", "label": "Centre gauche" },
+        { "value": "center center", "label": "Centre" },
+        { "value": "right center", "label": "Centre droite" },
+        { "value": "left bottom", "label": "Bas gauche" },
+        { "value": "center bottom", "label": "Bas centre" },
+        { "value": "right bottom", "label": "Bas droite" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "mobile_image_position",
+      "label": "Position image mobile",
+      "default": "center center",
+      "options": [
+        { "value": "left top", "label": "Haut gauche" },
+        { "value": "center top", "label": "Haut centre" },
+        { "value": "right top", "label": "Haut droite" },
+        { "value": "left center", "label": "Centre gauche" },
+        { "value": "center center", "label": "Centre" },
+        { "value": "right center", "label": "Centre droite" },
+        { "value": "left bottom", "label": "Bas gauche" },
+        { "value": "center bottom", "label": "Bas centre" },
+        { "value": "right bottom", "label": "Bas droite" }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "fallback_background",
+      "label": "Couleur de fond si aucune image",
+      "default": "#111111"
+    },
+    {
+      "type": "color",
+      "id": "section_background",
+      "label": "Couleur autour de la bannière",
+      "default": "#f4f6f2"
+    },
+
+    {
+      "type": "header",
+      "content": "Overlay sombre"
+    },
+    {
+      "type": "color",
+      "id": "overlay_color",
+      "label": "Couleur overlay",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "label": "Opacité overlay",
+      "min": 0,
+      "max": 90,
+      "step": 1,
+      "unit": "%",
+      "default": 62
+    },
+
+    {
+      "type": "header",
+      "content": "Contenu"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_icon",
+      "label": "Afficher l’icône",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "icon_image",
+      "label": "Icône personnalisée"
+    },
+    {
+      "type": "textarea",
+      "id": "icon_svg",
+      "label": "Code SVG personnalisé",
+      "info": "Optionnel. Si vide, une icône par défaut sera affichée."
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Titre",
+      "default": "Garantie de remboursement de 30 jours"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Texte",
+      "default": "<p>Essayez nos produits. S’ils ne correspondent pas à vos attentes, nous les reprenons et vous remboursons intégralement, sans poser de questions.</p>"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Texte du bouton",
+      "default": "Achetez maintenant"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Lien du bouton"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_arrow",
+      "label": "Afficher la flèche dans le bouton",
+      "default": true
+    },
+
+    {
+      "type": "header",
+      "content": "Position du contenu ordinateur"
+    },
+    {
+      "type": "select",
+      "id": "horizontal_align",
+      "label": "Alignement horizontal",
+      "default": "center",
+      "options": [
+        { "value": "flex-start", "label": "Gauche" },
+        { "value": "center", "label": "Centre" },
+        { "value": "flex-end", "label": "Droite" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "vertical_align",
+      "label": "Alignement vertical",
+      "default": "center",
+      "options": [
+        { "value": "flex-start", "label": "Haut" },
+        { "value": "center", "label": "Centre" },
+        { "value": "flex-end", "label": "Bas" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "text_align",
+      "label": "Alignement du texte",
+      "default": "center",
+      "options": [
+        { "value": "left", "label": "Gauche" },
+        { "value": "center", "label": "Centre" },
+        { "value": "right", "label": "Droite" }
+      ]
+    },
+
+    {
+      "type": "header",
+      "content": "Position du contenu mobile"
+    },
+    {
+      "type": "select",
+      "id": "mobile_horizontal_align",
+      "label": "Alignement horizontal mobile",
+      "default": "center",
+      "options": [
+        { "value": "flex-start", "label": "Gauche" },
+        { "value": "center", "label": "Centre" },
+        { "value": "flex-end", "label": "Droite" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "mobile_vertical_align",
+      "label": "Alignement vertical mobile",
+      "default": "center",
+      "options": [
+        { "value": "flex-start", "label": "Haut" },
+        { "value": "center", "label": "Centre" },
+        { "value": "flex-end", "label": "Bas" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "mobile_text_align",
+      "label": "Alignement texte mobile",
+      "default": "center",
+      "options": [
+        { "value": "left", "label": "Gauche" },
+        { "value": "center", "label": "Centre" },
+        { "value": "right", "label": "Droite" }
+      ]
+    },
+
+    {
+      "type": "header",
+      "content": "Dimensions"
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "label": "Largeur maximale",
+      "min": 900,
+      "max": 1800,
+      "step": 20,
+      "unit": "px",
+      "default": 1420
+    },
+    {
+      "type": "range",
+      "id": "desktop_height",
+      "label": "Hauteur ordinateur",
+      "min": 220,
+      "max": 700,
+      "step": 10,
+      "unit": "px",
+      "default": 400
+    },
+    {
+      "type": "range",
+      "id": "mobile_height",
+      "label": "Hauteur mobile",
+      "min": 260,
+      "max": 700,
+      "step": 10,
+      "unit": "px",
+      "default": 420
+    },
+    {
+      "type": "range",
+      "id": "content_max_width",
+      "label": "Largeur maximale du contenu",
+      "min": 300,
+      "max": 1000,
+      "step": 10,
+      "unit": "px",
+      "default": 650
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "label": "Arrondi ordinateur",
+      "min": 0,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "mobile_border_radius",
+      "label": "Arrondi mobile",
+      "min": 0,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "default": 12
+    },
+
+    {
+      "type": "header",
+      "content": "Espacements"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Marge haute ordinateur",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Marge basse ordinateur",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "padding_sides",
+      "label": "Marge côtés ordinateur",
+      "min": 0,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "desktop_inner_padding",
+      "label": "Padding intérieur ordinateur",
+      "min": 20,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_top",
+      "label": "Marge haute mobile",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_bottom",
+      "label": "Marge basse mobile",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_sides",
+      "label": "Marge côtés mobile",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "mobile_inner_padding",
+      "label": "Padding intérieur mobile",
+      "min": 16,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 28
+    },
+
+    {
+      "type": "header",
+      "content": "Style du titre"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Couleur du titre",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Taille titre ordinateur",
+      "min": 18,
+      "max": 70,
+      "step": 1,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "mobile_heading_size",
+      "label": "Taille titre mobile",
+      "min": 18,
+      "max": 46,
+      "step": 1,
+      "unit": "px",
+      "default": 28
+    },
+    {
+      "type": "select",
+      "id": "heading_weight",
+      "label": "Graisse du titre",
+      "default": "400",
+      "options": [
+        { "value": "300", "label": "Light" },
+        { "value": "400", "label": "Normal" },
+        { "value": "500", "label": "Medium" },
+        { "value": "600", "label": "Semi-bold" },
+        { "value": "700", "label": "Bold" }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "heading_line_height",
+      "label": "Interligne titre",
+      "min": 90,
+      "max": 160,
+      "step": 5,
+      "unit": "%",
+      "default": 115
+    },
+    {
+      "type": "range",
+      "id": "heading_letter_spacing",
+      "label": "Espacement lettres titre",
+      "min": -2,
+      "max": 4,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+
+    {
+      "type": "header",
+      "content": "Style du texte"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Couleur du texte",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "text_size",
+      "label": "Taille texte ordinateur",
+      "min": 12,
+      "max": 28,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "mobile_text_size",
+      "label": "Taille texte mobile",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 15
+    },
+    {
+      "type": "select",
+      "id": "text_weight",
+      "label": "Graisse du texte",
+      "default": "400",
+      "options": [
+        { "value": "300", "label": "Light" },
+        { "value": "400", "label": "Normal" },
+        { "value": "500", "label": "Medium" },
+        { "value": "600", "label": "Semi-bold" }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "text_line_height",
+      "label": "Interligne texte",
+      "min": 100,
+      "max": 200,
+      "step": 5,
+      "unit": "%",
+      "default": 145
+    },
+    {
+      "type": "range",
+      "id": "text_margin_top",
+      "label": "Espace au-dessus du texte",
+      "min": 0,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "mobile_text_margin_top",
+      "label": "Espace texte mobile",
+      "min": 0,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "default": 10
+    },
+
+    {
+      "type": "header",
+      "content": "Style de l’icône"
+    },
+    {
+      "type": "color",
+      "id": "icon_color",
+      "label": "Couleur icône",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "icon_size",
+      "label": "Taille icône ordinateur",
+      "min": 18,
+      "max": 80,
+      "step": 1,
+      "unit": "px",
+      "default": 34
+    },
+    {
+      "type": "range",
+      "id": "mobile_icon_size",
+      "label": "Taille icône mobile",
+      "min": 18,
+      "max": 70,
+      "step": 1,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "icon_margin_bottom",
+      "label": "Espace sous icône",
+      "min": 0,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "mobile_icon_margin_bottom",
+      "label": "Espace sous icône mobile",
+      "min": 0,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "default": 8
+    },
+
+    {
+      "type": "header",
+      "content": "Style du bouton"
+    },
+    {
+      "type": "color",
+      "id": "button_background",
+      "label": "Fond bouton",
+      "default": "#6d6fc7"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Texte bouton",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "button_icon_background",
+      "label": "Fond rond flèche",
+      "default": "#1d1b2c"
+    },
+    {
+      "type": "color",
+      "id": "button_icon_color",
+      "label": "Couleur flèche",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "button_font_size",
+      "label": "Taille texte bouton ordinateur",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "mobile_button_font_size",
+      "label": "Taille texte bouton mobile",
+      "min": 12,
+      "max": 22,
+      "step": 1,
+      "unit": "px",
+      "default": 15
+    },
+    {
+      "type": "select",
+      "id": "button_font_weight",
+      "label": "Graisse bouton",
+      "default": "500",
+      "options": [
+        { "value": "400", "label": "Normal" },
+        { "value": "500", "label": "Medium" },
+        { "value": "600", "label": "Semi-bold" },
+        { "value": "700", "label": "Bold" }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "button_margin_top",
+      "label": "Espace au-dessus bouton",
+      "min": 0,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "default": 28
+    },
+    {
+      "type": "range",
+      "id": "mobile_button_margin_top",
+      "label": "Espace bouton mobile",
+      "min": 0,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "button_padding_x",
+      "label": "Padding horizontal bouton",
+      "min": 12,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "button_padding_y",
+      "label": "Padding vertical bouton",
+      "min": 8,
+      "max": 28,
+      "step": 1,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "mobile_button_padding_x",
+      "label": "Padding horizontal bouton mobile",
+      "min": 12,
+      "max": 50,
+      "step": 1,
+      "unit": "px",
+      "default": 22
+    },
+    {
+      "type": "range",
+      "id": "mobile_button_padding_y",
+      "label": "Padding vertical bouton mobile",
+      "min": 8,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "button_radius",
+      "label": "Arrondi bouton",
+      "min": 0,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "button_gap",
+      "label": "Espace texte / flèche",
+      "min": 4,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "button_icon_size",
+      "label": "Taille rond flèche",
+      "min": 22,
+      "max": 54,
+      "step": 1,
+      "unit": "px",
+      "default": 42
+    },
+    {
+      "type": "range",
+      "id": "mobile_button_icon_size",
+      "label": "Taille rond flèche mobile",
+      "min": 22,
+      "max": 50,
+      "step": 1,
+      "unit": "px",
+      "default": 38
+    }
+  ],
+  "presets": [
+    {
+      "name": "Bannière garantie remboursement"
+    }
+  ]
+}
+{% endschema %}
