@@ -17,7 +17,7 @@
         "message_MLnWAt": {
           "type": "message",
           "settings": {
-            "text": "OFFRE D'ÉTÉ JUSQU'À -25% DE RÉDUCTION",
+            "text": "OFFRE D'ÉTÉ 100€ DE RÉDUCTION OFFERT",
             "url": ""
           }
         },
@@ -59,8 +59,8 @@
         "enable_sticky": true,
         "hide_on_scroll": false,
         "logo": "shopify://shop_images/Design_sans_titre_-_2026-06-22T102014.419.png",
-        "logo_max_width": 135,
-        "logo_mobile_max_width": 135,
+        "logo_max_width": 130,
+        "logo_mobile_max_width": 125,
         "menu": "main-menu",
         "sidebar_menu": "",
         "secondary_menu": "",
