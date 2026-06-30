@@ -28,6 +28,7 @@
     "secondary_button_text_color": "#FFFFFF",
     "product_card_background": "#FFFFFF",
     "product_card_text_color": "#1a1a1a",
+    "product_on_sale_accent": "#000000",
     "product_primary_badge_background": "#803cee",
     "heading_font": "space_grotesk_n6",
     "heading_font_size": "small",
