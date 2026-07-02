@@ -14,13 +14,6 @@
     "announcement-bar": {
       "type": "announcement-bar",
       "blocks": {
-        "message_MLnWAt": {
-          "type": "message",
-          "settings": {
-            "text": "OFFRE D'ÉTÉ 100€ DE RÉDUCTION OFFERT !",
-            "url": ""
-          }
-        },
         "message": {
           "type": "message",
           "settings": {
@@ -37,7 +30,6 @@
         }
       },
       "block_order": [
-        "message_MLnWAt",
         "message",
         "message_nw4LDG"
       ],
